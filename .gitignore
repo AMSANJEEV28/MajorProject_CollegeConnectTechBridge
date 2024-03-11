@@ -1,0 +1,16 @@
+db.sqlite3
+media/profile_pics*
+!media/profile_pics/.gitkeep
+profile_pics/*
+!profile_pics/.gitkeep
+
+
+# Ignore database files
+*.sqlite3
+*.db
+
+# Ignore media files
+media/
+
+# Ignore sensitive settings
+local_settings.py

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        #academic-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
+            padding: 10px;
+        }
+
+        #academic-header {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        #academic-title {
+            color: #004080;
+            font-size: 4.5rem;
+        }
+
+        .academic-box {
+            display: flex;
+            align-items: center;
+            margin-top: 40px;
+            margin-bottom: 15vh;
+        }
+
+        .academic-box > .academic-item {
+            padding: 0 0vw;
+            height: 40vh;
+            width: 20.3vw;
+            margin-right: 10px;
+        }
+
+        .academic-box h5 {
+            color: #004080;
+            font-size: 1.7rem;
+            text-align: center;
+            margin-top: 2.5vh;
+            height: 15%;
+        }
+
+        .academic-box ul {
+            padding: 0 3vw;
+            margin: 0;
+        }
+
+        .academic-box li {
+            font-size: 1.3rem;
+        }
+
+        /* Alternating academic-box colors */
+        .academic-box:nth-child(even) {
+            background: #A8B49A;
+        }
+
+        .academic-box:nth-child(odd) {
+            background: #D2F2F2;
+        }
+    </style>
+
+    <div id="academic-container">
+        <div id="academic-header">
+            <h1 id="academic-title">Welcome to the Academic Resources</h1>
+        </div>
+        <div class="academic-box">
+            <div class="academic-item" style="background:#D2F2F2;">
+                <h5>Lecture Notes</h5>
+                <ul>
+                    <li>Access comprehensive lecture notes.</li>
+                    <li>Contribute your own notes</li>
+                </ul>
+            </div>
+            <div class="academic-item" style="background:#A8B49A;">
+                <h5>Collaborative Learning Environment</h5>
+                <ul>
+                    <li>Engage with shared resources.</li>
+                    <li>Discuss and collaborate with peers.</li>
+                </ul>
+            </div>
+            <div class="academic-item" style="background:#D2F2F2;">
+                <h5>Previous Year Papers</h5>
+                <ul>
+                    <li>Refer to the previous year's exam papers.</li>
+                    <li>Contribute your own papers.</li>
+                </ul>
+            </div>
+            <div class="academic-item" style="background:#A8B49A;">
+                <h5>Study Guides</h5>
+                <ul>
+                    <li>Explore curated study guides.</li>
+                    <li>Share your study guides with peers.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <style>
+        body {
+            background-color: #001735;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        h2 {
+            color: #ff3131;
+        }
+
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #000;
+            border-radius: 10px;
+            max-width: 300px;
+        }
+
+        label {
+            color: #fff;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ff3131;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #001735;
+        }
+    </style>
+
+    <h2>Create a Group</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="{{ form.name.id_for_label }}">Group Name:</label>
+        {{ form.name }}
+        <label for="{{ form.description.id_for_label }}">Group Description:</label>
+        {{ form.description }}
+        <button type="submit">Create Group</button>
+    </form>
+
+    <br><br>
+    <p style="margin-top: 20px;">
+        <a href="{% url 'social:search_group' %}"><button>Search Groups</button></a>
+        {% if group_id %}
+            <a href="{% url 'social:group_detail' group_id=group_id %}"><button>View Created Group</button></a>
+        {% endif %}
+    
+        </p>
+
+        
+{% endblock %}

@@ -1,0 +1,519 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect And Collaborate</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+</head>
+
+<body class="main-body">
+    <!-- ------------------------------------NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+        </div>
+        <div class="navbar-links">
+            <div class="dropdown">
+                <a href="">About Us</a>
+                <div class="dropdown-content">
+                    <a href="{%url 'about' %}">Team</a>
+                    <a href="#">Mission</a>
+                    <a href="#">Blog/News</a>
+                    <a href="#">Partnership</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="">Features</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'social:feeds_view' %}">Social Networking</a>
+                    <a href="{% url 'career:academic' %}">Academic Resources</a>
+                    <a href="{% url 'career:jobs' %}">Career Development</a>
+                    <!-- <a href="#">User Engagement</a> -->
+
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="">Get Involved</a>
+                <div class="dropdown-content">
+                    <a href="#">Support</a>
+                    <a href="#">Feedback/Survey</a>
+                    <a href="#">Alumni Network</a>
+                    <a href="#">User Dashboard</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="">Contact Us</a>
+                <div class="dropdown-content">
+                    <a href="#">Contact Information</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Help/Support</a>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-icons">
+            <div class="search-icon"><i class="material-icons" style="font-size: 1.8rem;">search</i></div>
+            <div class="notification-icon"><i class="material-icons" style="font-size: 1.8rem;">notifications</i></div>
+            
+            <div class="dropdown">
+                {% if user.is_authenticated %}
+                    <div class="user-profile">
+                        <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                    </div>
+                {% else %}
+                    <a class="login-text" href="{% url 'user:signin' %}">Login</a>
+                {% endif %}
+                
+                {% if user.is_authenticated %}
+                <div class="dropdown-content">
+                    <a href="{% url 'user:profile' %}">Profile</a>
+                    <a href="{% url 'user:signout' %}">Logout</a>
+                </div>
+                {% else %}
+                <div class="dropdown-content">
+                    <a href="{% url 'user:signin' %}">Login</a>
+                    <a href="{% url 'user:signup' %}">Signup</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+    </nav>
+
+    <!-- -----------------------------------------home -->
+    <div class="home" id="home">
+        <div class="background-image">
+            <img src="{% static 'images/background.png' %}" alt="background image" class="bg-image">
+        </div>
+        <div class="button-container">
+            <a href="{% url 'user:signin' %}" class="learn-more-button">Join For Free</a>
+            <a href="{% url 'user:signin' %}" class="learn-more-button">Learn More</a>
+        </div>
+    </div>
+    <!--  -->
+    <div class="page-change"></div>
+    <!--  -->
+    <!-- -----------------------------why college connect -->
+    <div class="whyCC" id="whyCC">
+        <br><br>
+        <h1 class="heading">Why College Connect?</h1>
+        <br><br><br><br><br>
+        <div class="boxes">
+            <div class="square-boxes">
+                <div class="upper-row">
+                    <div class="lower-boxes">
+                        <div class="box-content">
+                            <h3>Seamless Connection</h3>
+                            <p>Join a vibrant community of students, connect, and collaborate on your academic and
+                                personal endeavors.</p>
+                        </div>
+                    </div>
+                    <div class="lower-boxes">
+                        <div class="box-content">
+                            <h3>Academic Resources</h3>
+                            <p>Access lecture notes, study materials, and more to excel in your studies.</p>
+                        </div>
+                    </div>
+                    <div class="lower-boxes">
+                        <div class="box-content">
+                            <h3>Career Development</h3>
+                            <p>Build your path to success with job listings, resume builders, and mentorship.</p>
+                        </div>
+                    </div>
+                    <div class="lower-boxes">
+                        <div class="box-content">
+                            <h3>P2P Tutoring</h3>
+                            <p>Get one-on-one support from your peers to ace your courses.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lower-row">
+                    <div class="lower-boxes">
+                        <div class="box-content">
+                            <h3>Campus Community</h3>
+                            <p>Stay updated with campus events and engage with your fellow students.</p>
+                        </div>
+                    </div>
+                    <div class="lower-boxes">
+                        <div class="box-content">
+                            <h3>Student Organisation</h3>
+                            <p>Join clubs and organizations, or create your own groups.</p>
+                        </div>
+                    </div>
+                    <div class="lower-boxes">
+                        <div class="box-content">
+                            <h3>Multilingual Support</h3>
+                            <p>Ensuring inclusivity and accessibility for all students.</p>
+                        </div>
+                    </div>
+                    <div class="lower-boxes">
+                        <div class="box-content">
+                            <h3>Virtual Study Groups</h3>
+                            <p>Collaborate seamlessly with peers on projects, assignments, and study sessions using our
+                                robust messaging and video conferencing capabilities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a>
+                <div class="rectangle-box">
+                    <p class="explore-text">EXPLORE ALL</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!--  -->
+    <div class="page-change"></div>
+    <!--  -->
+    <!-- ------------------------------------featured events -->
+    <div class="featured-events" id="featured-events">
+        <br><br>
+        <h1 class="heading">Featured Events</h1>
+        <br><br><br>
+        <div class="featured-boxes">
+            <div class="box-container" id="box-container">
+                <div class="box">
+                    <div class="box-content-featured">
+                        <h3>Build With GKV</h3>
+                        <p>Build your path to success with job listings, resume builders, and mentorship.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-content-featured">
+                        <h3>Campus Community</h3>
+                        <p>Join a vibrant community of students, connect, and collaborate on your academic and personal
+                            endeavors.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-content-featured">
+                        <h3>Book Worms</h3>
+                        <p>Access lecture notes, study materials, and more to excel in your studies.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-content-featured">
+                        <h3>Careerathon</h3>
+                        <p>Build your path to success with job listings, resume builders, and mentorship.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-content-featured">
+                        <h3>Cultural</h3>
+                        <p>Stay updated with campus events and engage with your fellow students.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-content-featured">
+                        <h3>Open Mic</h3>
+                        <p>Engage with your fellow students.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-content-featured">
+                        <h3>Campus Community</h3>
+                        <p>Stay updated with campus events and engage with your fellow students.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-content-featured">
+                        <h3>Jnanagni</h3>
+                        <p>Stay updated with events.</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-content-featured">
+                        <h3>Campus Community</h3>
+                        <p>Stay updated with campus events and engage with your fellow students.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dot-container">
+                <div class="dot" onclick="showBoxes(0)"></div>
+                <div class="dot" onclick="showBoxes(1)"></div>
+                <div class="dot" onclick="showBoxes(2)"></div>
+            </div>
+            <a>
+                <div class="rectangle-feature">
+                    <h3>EXPLORE ALL</h3>
+                </div>
+            </a>
+            <br><br>
+        </div>
+
+
+        <script>
+            // Store the original content of each box
+            const originalContent = Array.from(document.getElementsByClassName('box')).map(box => box.innerHTML);
+
+            function showBoxes(index) {
+                const container = document.getElementById('box-container');
+                const boxes = container.getElementsByClassName('box');
+                const start = index * 3;
+
+                for (let i = 0; i < boxes.length; i++) {
+                    const dataIndex = start + i;
+
+                    // Restore the original content for each box
+                    boxes[i].innerHTML = originalContent[dataIndex];
+                }
+            }
+        </script>
+    </div>
+
+    <!--  -->
+    <div class="page-change"></div>
+    <!--  -->
+
+    <!-- Upcoming Events -->
+    <div class="upcoming-events" id="upcoming-events">
+        <br><br>
+        <h1 class="heading">Upcoming Events</h1>
+        <br>
+        <div class="upcoming-boxes">
+            <div class="upcoming-box-container" id="upcoming-box-container">
+                <div class="upcoming-box">
+                    <div class="upcoming-box-content">
+                        <h3>Event 1</h3>
+                        <p>Description of Event 1.</p>
+                    </div>
+                </div>
+                <div class="upcoming-box">
+                    <div class="upcoming-box-content">
+                        <h3>Event 2</h3>
+                        <p>Description of Event 2.</p>
+                    </div>
+                </div>
+                <div class="upcoming-box">
+                    <div class="upcoming-box-content">
+                        <h3>Event 3</h3>
+                        <p>Description of Event 3.</p>
+                    </div>
+                </div>
+                <div class="upcoming-box">
+                    <div class="upcoming-box-content">
+                        <h3>Event 4</h3>
+                        <p>Description of Event 1.</p>
+                    </div>
+                </div>
+                <div class="upcoming-box">
+                    <div class="upcoming-box-content">
+                        <h3>Event 5</h3>
+                        <p>Description of Event 2.</p>
+                    </div>
+                </div>
+                <div class="upcoming-box">
+                    <div class="upcoming-box-content">
+                        <h3>Event 6</h3>
+                        <p>Description of Event 3.</p>
+                    </div>
+                </div>
+                <div class="upcoming-box">
+                    <div class="upcoming-box-content">
+                        <h3>Event 7</h3>
+                        <p>Description of Event 1.</p>
+                    </div>
+                </div>
+                <div class="upcoming-box">
+                    <div class="upcoming-box-content">
+                        <h3>Event 8</h3>
+                        <p>Description of Event 2.</p>
+                    </div>
+                </div>
+                <div class="upcoming-box">
+                    <div class="upcoming-box-content">
+                        <h3>Event 9</h3>
+                        <p>Description of Event 3.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upcoming-dot-container">
+                <div class="upcoming-dot" onclick="showUpcomingBoxes(0)"></div>
+                <div class="upcoming-dot" onclick="showUpcomingBoxes(1)"></div>
+                <div class="upcoming-dot" onclick="showUpcomingBoxes(2)"></div>
+            </div>
+            
+            <a>
+                <div class="rectangle-feature rectangle-feature-upcoming">
+                    <h3>EXPLORE ALL</h3>
+                </div>
+            </a>
+            <br><br>
+        </div>
+    </div>
+
+    <script>
+        // Store the original content of each upcoming box
+        const upcomingOriginalContent = Array.from(document.getElementsByClassName('upcoming-box')).map(box => box.innerHTML);
+
+        function showUpcomingBoxes(index) {
+            const upcomingContainer = document.getElementById('upcoming-box-container');
+            const upcomingBoxes = upcomingContainer.getElementsByClassName('upcoming-box');
+            const start = index * 3;
+
+            for (let i = 0; i < upcomingBoxes.length; i++) {
+                const dataIndex = start + i;
+
+                // Restore the original content for each upcoming box
+                upcomingBoxes[i].innerHTML = upcomingOriginalContent[dataIndex];
+            }
+        }
+    </script>
+
+
+    <!-- ------------------------------------------------------------------------------------------------------------ -->
+    <!-- ------------------------------------------------------------------------------------------------------------ -->
+    <!-- ------------------------------------------------------------------------------------------------------------ -->
+    <!-- ------------------------------------------------------------------------------------------------------------ -->
+
+
+
+    <!-- STUDY GROUPS -->
+
+    <!--  -->
+    <div class="page-change"></div>
+    <!--  -->
+    <br><br>
+    <div class="study-groups">
+        <h1 class="heading">Join Study Groups</h1>
+        <br><br><br>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search Study Groups To Join">
+            <button>
+                <i class="material-icons">search</i>
+            </button>
+        </div>
+    </div>
+
+    <div class="study-home-buttons">
+        <a href="{% url 'social:search_group' %}"><button class="my-groups-button">My Groups</button></a>
+        <a href="{% url 'social:feeds_view' %}"><button class="virtual-sessions-button">Campus Community</button></a>
+    </div>
+
+    <br><br><br>
+    <br><br><br>
+
+    <!-- --------------------------------------review -->
+    <div class="testimonials">
+        <br><br>
+        <h1 class="heading">User Testimonials</h1>
+        <br><br>
+        <div class="user-testimonials">
+            <div class="arrow left" onclick="prevTestimonial()">&#8249;</div>
+            <div class="testimonial-container">
+                <div class="testimonial-box">
+                    <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="testimonial-image">
+                    <p class="testimonial-name">John Doe</p>
+                    <p class="testimonial-college">University of Example</p>
+                    <p class="review">I am incredibly grateful for the support I received from this community. The study
+                        groups have
+                        been a game-changer for me, providing a collaborative and engaging environment for learning. The
+                        resources available have been instrumental in my academic success, and the virtual study
+                        sessions have allowed me to connect with peers worldwide. The platform is user-friendly, making
+                        it easy to find study groups tailored to my needs. The diverse range of study materials has
+                        enriched my learning experience. Overall, joining this community has positively impacted my
+                        educational journey, and I highly recommend it to anyone seeking academic support and
+                        camaraderie</p>
+                </div>
+                <div class="testimonial-box">
+                    <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="testimonial-image">
+                    <p class="testimonial-name">Jane Smith</p>
+                    <p class="testimonial-college">Another University</p>
+                    <p class="review">I can't express how much this community has enhanced my learning journey. The
+                        study groups
+                        provide a dynamic space to collaborate and share knowledge. The platform's user-friendly design
+                        made it effortless to connect with like-minded individuals. The virtual study sessions have been
+                        a lifesaver, allowing me to participate in engaging discussions and broaden my perspectives. The
+                        range of resources available, from lecture notes to interactive quizzes, caters to diverse
+                        learning styles. I appreciate the sense of camaraderie and support from fellow students. This
+                        community has undoubtedly played a pivotal role in my academic success, and I highly recommend
+                        it for its valuable resources and vibrant community.</p>
+                </div>
+                <!-- Add more testimonials as needed -->
+            </div>
+            <div class="arrow right" onclick="nextTestimonial()">&#8250;</div>
+        </div>
+        <br><br><br>
+    </div>
+    <br><br><br>
+
+    <script>
+        let currentIndex = 0;
+        const testimonials = document.querySelector('.testimonial-container');
+
+        function showTestimonial(index) {
+            currentIndex = index;
+            const translateValue = -index * 100 + '%';
+            testimonials.style.transform = 'translateX(' + translateValue + ')';
+        }
+
+        function nextTestimonial() {
+            currentIndex = (currentIndex + 1) % testimonials.children.length;
+            showTestimonial(currentIndex);
+        }
+
+        function prevTestimonial() {
+            currentIndex = (currentIndex - 1 + testimonials.children.length) % testimonials.children.length;
+            showTestimonial(currentIndex);
+        }
+    </script>
+
+
+    <!-- ----------------------------FOOTER -->
+
+    <!-- Updated Footer HTML -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@collegeconnect.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{%url 'about' %}">About Us</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Get Involved</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="{%url 'social:search_group' %}">Groups</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Connect and Collaborate | Designed with ❤️ by Your Company</p>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>

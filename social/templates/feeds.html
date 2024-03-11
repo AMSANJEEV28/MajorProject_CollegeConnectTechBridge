@@ -1,0 +1,1065 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect And Collaborate</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+    <style>
+        body,
+        html {
+            background-color: #f0f0f0;
+            color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-body {
+            background-color: #f0f0f0 !important;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .navbar {
+            background-color: #fff;
+            color: #7e7e7e;
+            padding: 15px 55px 15px 55px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 60px;
+            margin-left: -3px;
+            font-size: large;
+
+        }
+
+        .navbar a {
+            color: #7e7e7e;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: large;
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            font-size: large;
+
+        }
+
+        .navbar-links a {
+            margin: 0 10px;
+            font-size: large;
+
+        }
+
+        .navbar-icons {
+            display: flex;
+            align-items: center;
+            font-size: large;
+
+        }
+
+        .search-icon,
+        .notification-icon {
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: large;
+
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #cbcbcb;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            right: 0;
+            /* Adjust to position the dropdown to the right */
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .content {
+            margin-top: 70px;
+            /* Adjust as needed */
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .heading {
+            color: #004080;
+            text-align: center;
+            /* Center the text */
+        }
+
+        .user-profile img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+
+        .feedpg {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* write post */
+
+
+        .card {
+            width: 675px;
+            height: 200px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 25px;
+            align-items: center;
+        }
+        
+        .profile-section {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            margin-top: -25px;
+            padding: 20px 20px 20px 60px;
+            border-radius: 5px;
+        }
+        
+        .profile-picture-feed {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+        }
+        
+        .post-section,
+        .post-section-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .post-section {
+            margin-left: 15px;
+        }
+        
+        .post-section-bottom {
+            margin-top: 15px;
+        }
+        
+        .caption-input {
+            margin-right: 15px;
+            width: 500px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+        }
+        
+        .post-type-section,
+        .group-section,
+        .upload {
+            margin-right: 25px;
+        }
+        
+        .post-type-section,
+        .group-section {
+            padding: 10px;
+        }
+        
+        .post-type-section {
+            margin-left: -85px;
+        }
+        
+        .group-section {
+            position: absolute;
+            right:700px;         }
+        
+        .upload {
+            position: absolute;
+            right:520px;        }
+
+        .post-type-label, .group-type-label{
+            visibility: hidden;
+        }
+        
+        .post-type-dropdown,
+        .group_dropdown,
+        .image-upload,
+        .post-button {
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .post-type-dropdown,
+        .group_dropdown,
+        .image-upload {
+            width: 130px;
+        }
+        
+        .post-button {
+            background-color: #7e7e7e;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            right: 460px;
+        }                
+        
+        .post-button:disabled {
+            background-color: #cbcbcb;
+            color: white;
+            cursor: not-allowed;
+        }
+        
+        .custom-file-upload {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #7e7e7e;
+            color: #fff;
+            border-radius: 5px;
+        }
+        
+        .custom-file-upload i {
+            margin-right: 5px;
+            font-size: large;
+        }
+        
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        
+        
+        
+
+        /* left part css */
+        .feedpgleft {
+            background-color: #ffffff;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            width: 350px;
+            /*height: 450px;*/
+            justify-content: center;
+            position: relative;
+            
+        }
+
+        .left-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-radius: 5px;
+        }
+      
+        .left-top h4{
+            color: #000;
+            z-index: 999;
+            position: absolute;
+            top: 110px;
+        }        
+        
+        .left-top p{
+            color: #545454;
+            z-index: 999;
+            position: absolute;
+            top: 110px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .bg-picture {
+            max-width: 100%; 
+            position: absolute;
+            top: 0;
+            left: 0; 
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .lt-pp {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            border: solid 1px #fff ;
+        }
+
+        .custom-line-break {
+            border-top: 4px solid #f0f0f0;
+            margin-top: 5px;  
+            margin-bottom: 5px;  
+            padding: 10px;
+            width: 350px;
+            position: absolute;
+            top:210px;
+        }
+
+        .group{
+            position: absolute;
+            top:115px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .group-list {
+            margin-top: 160px;
+            padding-bottom: 50px;
+            list-style-type: none;
+            padding: 0;
+            width: 250px;
+            text-align: left;
+            color: #000;
+        }
+
+        .group-list-item {
+            color: black;
+            margin: 5px 0;
+            list-style-type: none; 
+            position: relative;
+
+        }
+        .group-list-item::before {
+            content: "";
+            width: 8px; 
+            height: 8px;
+            background-color: #7e7e7e;
+            display: inline-block;
+            position: absolute;
+            left: -15px; 
+            top: 6px;
+        }
+       
+        .group-list-item a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .group-list-item a:hover {
+            color: #606770;
+        }
+
+        .group-h{
+            color: #000;
+        }
+
+        .group .group-h {
+            color: black; 
+        }        
+        
+        .group .group-h-create {
+            color: #005a8e; 
+            position: absolute;
+            top:200px;
+            left: 70px;
+            margin-top: 70px;
+        }
+
+        .group > ul {
+            color: black; 
+        }
+
+        .group > ul li {
+            background-color: #f0f0f0; 
+            color: black; 
+        }
+        .group > ul li a{
+            color: #000000;}
+ 
+
+        /* right part css */
+          
+          .feedpgright {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            height: 550px;
+            border-radius: 5px;
+          }
+          
+          .news-module {
+            margin: 20px auto;
+            border-radius: 8px;
+            padding: 20px; /* Adjusted padding */
+            width: 350px;
+          }
+          
+          .news-module__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #000;
+          }
+          
+          .news-module__title {
+            font-size: 1.3rem; /* Adjusted font size */
+            font-weight: bold;
+            color: #000;
+            z-index: 50;
+          }
+          
+          .news-module__notify-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+          }
+          
+          .news-module__notify-icon {
+            font-size: 1.3rem; /* Adjusted font size */
+          }
+          
+          .news-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+          }
+          
+          .news-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+          }
+          
+          .news-link {
+            text-decoration: none;
+            color: #333;
+          }
+          
+          .news-headline {
+            font-size: 1rem; /* Adjusted font size */
+            font-weight: bold;
+            margin-bottom: 5px;
+          }
+          
+          .news-subtext {
+            font-size: 0.8rem; /* Adjusted font size */
+            color: #666;
+          }
+          
+          .show-more-button {
+            background: #0073b1;
+            color: #fff;
+            border: none;
+            padding: 8px 12px; /* Adjusted padding */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem; /* Adjusted font size */
+          }
+          
+          .show-more-button:hover {
+            background: #005a8e;
+          }
+          
+
+        /* post css */
+        .feed-container {
+            max-width: 800px;
+            margin: 20px auto;
+            overflow-y: auto;
+            max-height: 72vh;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            color: #fff;
+        }
+
+        .post {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid #ddd;
+            padding: 20px;
+        }
+
+
+
+        .profile-pic {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .profile-pic img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .user-info .user-name {
+            font-weight: bold;
+            color: #385898;
+        }
+
+        /* Adjust the color and other styles as needed */
+        .user-info p {
+            color: #000000;
+            margin: 5px 0;
+            z-index: 1;
+        }
+
+        .post-info {
+            font-size: 14px;
+            color: #606770;
+        }
+
+        .post img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .post-content {
+            margin-top: 10px;
+        }
+
+        .post-actions {
+            margin-top: 10px;
+            color: #606770;
+        }
+
+        .post-actions i {
+            margin-right: 10px;
+        }
+
+        .midpart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45%
+        }
+
+        .message-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .message-popup {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .close-button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+
+
+        /* ________________________--------------------- FEEDS STYLE ----------------------____________________*/
+
+
+
+        .feeds-all {
+            width: 670px;
+            margin-top: 20px;
+        }
+        
+        .post-box {
+            background-color: white;
+            padding: 15px; 
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden; 
+        }
+        
+        .post-caption {
+            color: #545454;
+            word-wrap: break-word; 
+            margin-bottom: 10px; 
+            padding: 10px;
+        }
+        
+        .post-image {
+            margin-top: 10px; 
+        }
+        
+        .post-image img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            padding: 10px;
+        }
+        
+        .user-profile-feeds img {
+            max-width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .user-profile-feeds{
+            display: flex;
+            align-items: center;
+            margin-top:-10px ;
+        }
+
+        .user-profile-feeds h4{
+            z-index: 999;
+            color: #000;
+        }
+
+        .more-info-feeds{
+            display: flex;
+            z-index: 999;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+    
+        .more-info-feeds p {
+            color: #7e7e7e;
+            font-style: italic; 
+            z-index: 999;
+            margin-top: -15px;
+            font-size: small;
+        }
+
+
+        
+
+    </style>
+
+
+
+</head>
+
+<body class="main-body">
+    <!-- ------------------------------------NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+        </div>
+        <div class="navbar-links">
+            <div class="dropdown">
+                <a href="#">About Us</a>
+                <div class="dropdown-content">
+                    <a href="{%url 'about' %}">Team</a>
+                    <a href="#">Mission</a>
+                    <a href="#">Blog/News</a>
+                    <a href="#">Partnership</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="">Features</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'social:feeds_view' %}">Social Networking</a>
+                    <a href="{% url 'career:academic' %}">Academic Resources</a>
+                    <a href="{% url 'career:jobs' %}">Career Development</a>
+                    <!-- <a href="#">User Engagement</a> -->
+
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="">Get Involved</a>
+                <div class="dropdown-content">
+                    <a href="#">Support</a>
+                    <a href="#">Feedback/Survey</a>
+                    <a href="#">Alumni Network</a>
+                    <a href="#">User Dashboard</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="">Contact Us</a>
+                <div class="dropdown-content">
+                    <a href="#">Contact Information</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Help/Support</a>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-icons">
+            <div class="search-icon"><i class="material-icons" style="font-size: 1.8rem;">search</i></div>
+            <div class="notification-icon"><i class="material-icons" style="font-size: 1.8rem;">notifications</i></div>
+
+            <div class="dropdown">
+                {% if user.is_authenticated %}
+                    {% if user.userprofile.profile_picture %}
+                        <div class="user-profile">
+                            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                        </div>
+                    {% else %}
+                        <div class="user-profile">
+                            <!-- Add a default image or placeholder if profile picture doesn't exist -->
+                            <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture">
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <a class="login-text" href="{% url 'user:signin' %}">Login</a>
+                {% endif %}
+                
+                {% if user.is_authenticated %}
+                    <div class="dropdown-content">
+                        <a href="{% url 'user:profile' %}">Profile</a>
+                        <a href="{% url 'user:signout' %}">Logout</a>
+                    </div>
+                {% else %}
+                    <div class="dropdown-content">
+                        <a href="{% url 'user:signin' %}">Login</a>
+                        <a href="{% url 'user:signup' %}">Signup</a>
+                    </div>
+                {% endif %}
+            </div>
+            
+
+        </div>
+        
+    </nav>
+
+
+    <br><br>
+    <div class="content">
+        <!-- Other content goes here -->
+
+        <div class="feedpg">
+            <!-- left -->
+            <div class="feedpgleft">
+
+                <div class="left-top">
+                    <img class="bg-picture" src="{% static 'images/ind.jpeg' %}" alt="Bg Picture">
+                    {% if user.userprofile.profile_picture %}
+                        <img class="lt-pp" src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture">
+                    {% else %}
+                        <!-- Add a default image or placeholder if profile picture doesn't exist -->
+                        <img class="lt-pp" src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture">
+                    {% endif %}
+                    <h4>{{ user.userprofile.first_name }} {{ user.userprofile.last_name }}</h4>
+                    <p>{{ user.userprofile.bio }}</p>
+                    <div class="custom-line-break"></div>
+                
+                    <div class="group">
+                        <h4 class="group-h"> My Groups </h4>
+                        <div class="group-list">
+                            {% if user_groups %}
+                                {% for joined_group in user_groups %}
+                                    <div class="group-list-item">
+                                        <a href="{% url 'social:group_detail' group_id=joined_group.group_id %}">{{ joined_group.name }}</a>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p>No groups found for this user.</p>
+                            {% endif %}
+                        </div>
+                        <br><br>
+                        <a href="{% url 'social:create_group' %}"><h4 class="group-h-create"> Click To Create More Groups </h4></a>
+                    </div>
+                </div>
+                
+
+            </div>
+            
+            
+            
+
+            <!-- mid -->
+            <div class="midpart">
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const captionInput = document.querySelector('.caption-input');
+                        const postButton = document.querySelector('.post-button');
+                
+                        // Function to check if the caption is empty and update button state
+                        function updateButtonState() {
+                            postButton.disabled = captionInput.value.trim() === '';
+                        }
+                
+                        // Add event listener to the caption input
+                        captionInput.addEventListener('input', updateButtonState);
+                
+                        // Initial state check
+                        updateButtonState();
+                    });
+                </script>
+                                            
+            <!-- Add a form to create a post -->
+            <!-- _____________________________________________POST STARTS -->
+
+            {% if messages %}
+    <script>
+        function closeMessagePopup() {
+            document.getElementById("message-popup-overlay").style.display = "none";
+        }
+
+        function showMessagePopup() {
+            var messagePopup = document.getElementById("message-popup-overlay");
+            messagePopup.style.display = "flex";
+            setTimeout(function () {
+                closeMessagePopup();
+            }, 5000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            showMessagePopup();
+        });
+    </script>
+
+    <div id="message-popup-overlay" class="message-popup-overlay" onclick="closeMessagePopup()">
+        <div id="message-popup" class="message-popup" onclick="event.stopPropagation()">
+            <div class="message-content">
+                {% for message in messages %}
+                    <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+                <button class="close-button" onclick="closeMessagePopup()">Cancel</button>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+<div class="card">
+    <form method="post" enctype="multipart/form-data" action="{% url 'social:create_post' %}">
+        {% csrf_token %}
+        <div class="profile-section">
+            {% if user.userprofile.profile_picture %}
+                <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture-feed">
+            {% else %}
+                <!-- Add a default image or placeholder if profile picture doesn't exist -->
+                <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture-feed">
+            {% endif %}
+            <div class="post-section">
+                <textarea name="caption" class="caption-input" placeholder="Write your caption..."></textarea>
+            </div>
+        </div>
+        
+        <div class="post-section-bottom">
+            <div class="post-type-section">
+                <label for="post-type" class="post-type-label">Select post type:</label>
+                <select name="post_type" id="post-type" class="post-type-dropdown">
+                    <option value="normal">Normal Post</option>
+                    <option value="event">Event</option>
+                </select>
+            </div>
+            <div class="group-section">
+                <label for="group_dropdown" class="group-type-label">Select Group</label>
+                <select name="groups" id="group_dropdown" class="group_dropdown">
+                    <option value="" disabled selected>Select group</option>
+                    {% for group in user_groups %}
+                        <option value="{{ group.id }}">{{ group.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="upload">
+                <label for="image-upload" class="custom-file-upload" id="custom-upload-label">
+                    <i class="material-icons">cloud_upload</i> Upload Image
+                </label>
+            </div>
+            <input type="file" name="image" id="image-upload" class="image-upload visually-hidden" accept="image/*">
+            <button type="submit" class="post-button">Post</button>
+        </div>
+    </form>
+</div>
+
+<!-- {% for post in user_posts %}
+    <div class="card">
+        <div class="profile-section">
+            <img src="{{ post.user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture-feed">
+            <div class="post-section">
+                <p>{{ post.caption }}</p>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="Post Image" class="post-image">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endfor %} -->
+
+
+            <!-- ------------------------------POST ENDS -->
+
+
+<!-- <div class="feed-container">
+    <p>User Groups:</p>
+    <ul>
+        {% for group in user_groups %}
+            <li>{{ group.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>User Posts:</p>
+    <ul>
+        {% for post in user_posts %}
+            <li>{{ post.id }}</li> <li>{{ post.caption }} - {{ post.created_at }}</li>
+        {% endfor %}
+    </ul>
+</div> -->
+
+
+
+{% for post in user_posts %}
+
+
+<div class="feeds-all">
+    <div class="post-box">
+        <div class="user-profile-feeds">
+            <img src="{{ user.userprofile.profile_picture.url }}" class="profile-picture">
+            <div class="more-info-feeds">
+                <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                {% for group in user_groups %}
+                <p>Posted in Group : {{ group.name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="post-caption"> {{ post.caption }} </div>
+        <div class="post-image">
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Post Image" class="post-image">
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+
+    <!-- <div class="card">
+        <div class="profile-section">
+            <img src="{{ post.user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture-feed">
+            <div class="post-section">
+                <p>{{ post.caption }}</p>
+
+            </div>
+        </div>
+    </div> -->
+{% endfor %}
+
+
+  
+            </div>
+
+
+            <!-- right -->
+            <div class="feedpgright">
+                <div class="news-module">
+                  <div class="news-module__header">
+                    <h2 class="news-module__title">Student Chronicles | News</h2>
+                  </div>
+              
+                  <ul class="news-list">
+                    <li class="news-item">
+                      <a href="#" class="news-link">
+                        <div class="news-headline">Breakthrough Innovations in College Education</div>
+                        <div class="news-subtext">Exploring groundbreaking ideas for the future • 5,309 readers</div>
+                      </a>
+                    </li>
+                    <li class="news-item">
+                      <a href="#" class="news-link">
+                        <div class="news-headline">Record Funding for Student-Led Startups</div>
+                        <div class="news-subtext">Empowering the next generation • 1d ago • 3,687 readers</div>
+                      </a>
+                    </li>
+                    <li class="news-item">
+                      <a href="#" class="news-link">
+                        <div class="news-headline">Revolutionizing College E-learning Platforms</div>
+                        <div class="news-subtext">Adapting to the digital age • 4d ago • 726 readers</div>
+                      </a>
+                    </li>
+                    <li class="news-item">
+                      <a href="#" class="news-link">
+                        <div class="news-headline">Green Initiatives on Campus: Students Take the Lead</div>
+                        <div class="news-subtext">Creating sustainable educational environments • 2d ago • 493 readers</div>
+                      </a>
+                    </li>
+                    <li class="news-item">
+                      <a href="#" class="news-link">
+                        <div class="news-headline">The Rise of Digital Learning Resources</div>
+                        <div class="news-subtext">Transforming education with technology • 2d ago</div>
+                      </a>
+                    </li>
+                  </ul>
+              
+                  <button class="show-more-button" aria-label="Show more">Show more</button>
+                </div>
+              </div>
+              
+        </div>
+
+
+
+
+    </div>
+    <script>
+        document.getElementById('custom-upload-label').addEventListener('click', function () {
+            document.getElementById('image-upload').click();
+        });
+    </script>
+</body>
+
+</html>

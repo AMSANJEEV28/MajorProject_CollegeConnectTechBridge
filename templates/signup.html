@@ -1,0 +1,93 @@
+
+
+    <style>
+        body {
+            background-color: #001735;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #000;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #ff3131;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            background-color: #000;
+            color: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #ff3131;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: #ff3131;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <h2>Sign Up</h2>
+        
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {% if form.errors.username %}
+            <div class="error-message">{{ form.errors.username }}</div>
+        {% endif %}
+        
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {% if form.errors.email %}
+            <div class="error-message">{{ form.errors.email }}</div>
+        {% endif %}
+        
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        {% if form.errors.password1 %}
+            <div class="error-message">{{ form.errors.password1 }}</div>
+        {% endif %}
+        
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {% if form.errors.password2 %}
+            <div class="error-message">{{ form.errors.password2 }}</div>
+        {% endif %}
+        
+        <button type="submit">Sign Up</button>
+    </form>
+

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<style>
+    .background-image {
+        position: relative;
+        overflow: hidden;
+        width: 100%; 
+        height: 100%;
+    }
+
+    .bg-image {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: hidden;
+        z-index: 0;
+        background-size: cover;
+    }
+</style>
+<div class="home" id="home">
+    <div class="background-image">
+        <img src="{% static 'images/AboutUs.png' %}" alt="background image" class="bg-image">
+    </div>
+</div>
+{% endblock %}

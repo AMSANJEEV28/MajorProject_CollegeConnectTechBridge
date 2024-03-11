@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <style>
+        body {
+            background-color: #001735;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        h2,
+        h3 {
+            color: #ff3131;
+        }
+
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #000;
+            border-radius: 10px;
+            max-width: 300px;
+        }
+
+        label {
+            color: #fff;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #ff3131;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #001735;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            color: #ff3131;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <h2>Search Groups</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+
+    {% if user.is_authenticated %}
+        <div style="display: flex; justify-content: space-around;">
+            <div style="width: 48%;">
+                <h3>Your Groups:</h3>
+                <ul>
+                    {% for joined_group in user_groups %}
+                        <li><a href="{% url 'social:group_detail' group_id=joined_group.group_id %}">{{ joined_group.name }}</a></li>
+                    {% endfor %}
+                </ul>
+                <br>
+                <p><a href="{% url 'social:create_group' %}"><button>Create a Group</button></a></p>
+            </div>
+            <div style="width: 48%;">
+                {% if search_results %}
+                    <h3>Search Results:</h3>
+                    <ul>
+                        {% for group, already_member in search_results %}
+                            <li>
+                                <a href="{% url 'social:group_detail' group_id=group.group_id %}">{{ group.name }}</a>
+                                {% if already_member %}
+                                    (You are already a member)
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No groups found.</p>
+                {% endif %}
+                <br>
+                <p><a href="{% url 'social:create_group' %}"><button>Create a Group</button></a></p>
+            </div>
+        </div>
+    {% else %}
+        <p>Login to see your groups.</p>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <style>
+        /* Component Styles */
+        .main-header {
+            margin-top: 3vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-header h1 {
+            color: #004080;
+            font-size: 4.3rem;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: space-evenly;
+            margin-inline: 7vw;
+        }
+
+        .left-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-container {
+            margin: 2vh 0;
+            border-radius: 2rem;
+            height: 40vh;
+            width: 25vw;
+        }
+        .image-container img{
+            border-radius: 2rem;
+            height: 100%;
+            width:90%;
+        }
+
+        .right-section {
+            margin-bottom: -30px;
+            width: 60%;
+        }
+
+        .quote-section {
+            background: #5383FF;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3vh;
+        }
+
+        .quote-section h3 {
+            font-size: 1.8rem;
+            padding:0;
+        }
+
+        .feature-container {
+            display: flex;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .feature {
+            padding: 1vh;
+            height: 30vh;
+            width: 100%;
+        }
+
+        .resume-builder {
+            background: #D2F2F2;
+        }
+
+        .career-path {
+            background: #A8B49A;
+        }
+
+        .courses {
+            background: #D2F2F2;
+        }
+
+        .professional-toolkit {
+            background: #D2F2F2;
+        }
+
+        .industry-experts {
+            background: #A8B49A;
+        }
+
+        .feature h5 {
+            color: #004080;
+            font-size: 1.3rem;
+            text-align: center;
+            margin: 3vh 0;
+            height: 20%;
+        }
+
+        .feature ul {
+            padding: 0 1.8vw;
+        }
+        .feature ul li{
+            margin-bottom: 1vh;
+        }
+
+        .highlighted-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #004080;
+            background: #fee3e3;
+            width: 100%;
+            height: 7rem;
+            font-size: 3rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-top: 5vh;
+        }
+        .highlighted-block a{
+            text-decoration: none;
+            color:#004080
+        }
+
+        .quote-section h3{
+            color: #fff;
+            z-index: 9;
+        }
+    </style>
+
+    <title>Your Path to Professional Excellence</title>
+
+    <div class="main-header">
+        <h1>Your Path to Professional Excellence</h1>
+    </div>
+
+    <div class="main-content">
+        <!-- Left Section -->
+        <div class="left-section">
+            <div class="image-container">
+                <img src='https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=450&h=250&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dHlwaW5nJTIwbWFufGVufDB8fDB8fHww' alt='images1'>
+            </div>
+            <div class="image-container">
+                <img src='https://images.unsplash.com/photo-1521790361543-f645cf042ec4?w=450&h=250&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHR5cGluZyUyMG1hbnxlbnwwfHwwfHx8MA%3D%3D' alt='images2' style="margin-bottom:2vh;">
+            </div>
+            <div class="image-container">
+                <img src='https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=450&h=250&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHR5cGluZyUyMG1hbnxlbnwwfHwwfHx8MA%3D%3D' alt='images3' style="margin-bottom:2vh;">
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="quote-section">
+                <h3>"FORGE YOUR FUTURE: YOUR CAREER AWAITS."</h3>
+            </div>
+
+            <div class="feature-container">
+                <div class="feature resume-builder">
+                    <h5>Resume Builder</h5>
+                    <ul>
+                        <li>Access comprehensive lecture notes.</li>
+                        <li>Contribute your own notes.</li>
+                    </ul>
+                </div>
+                <div class="feature career-path">
+                    <h5>Career Path Resources</h5>
+                    <ul>
+                        <li>Engage with shared resources.</li>
+                        <li>Discuss and collaborate with peers.</li>
+                    </ul>
+                </div>
+                <div class="feature courses">
+                    <h5>Professional Development Courses</h5>
+                    <ul>
+                        <li>Refer to the previous year's exam papers.</li>
+                        <li>Contribute your own papers.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-container">
+                <div class="feature professional-toolkit">
+                    <h5>Professional Toolkit</h5>
+                    <ul>
+                        <li>Access comprehensive lecture notes.</li>
+                        <li>Contribute your own notes.</li>
+                    </ul>
+                </div>
+                <div class="feature industry-experts">
+                    <h5>Industry Experts</h5>
+                    <ul>
+                        <li>Connect with experienced professionals.</li>
+                        <li>Stay updated on industry trends.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlighted-block"><a href="#">Resume Builder</a></div>
+            <div class="highlighted-block"><a href="#">Industry Experts</a></div>
+        </div>
+    </div>
+
+{% endblock %}
