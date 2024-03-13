@@ -1,87 +1,105 @@
-{% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <!-- ------------------------------------NAVBAR -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ------------------------------------NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-image">
-            </a>
-        </div>
-        
-        <div class="navbar-links">
-            <div class="dropdown">
-                <a href="#">About Us</a>
-                <div class="dropdown-content">
-                    <a href="{%url 'about' %}">Team</a>
-                    <a href="#">Mission</a>
-                    <a href="#">Blog/News</a>
-                    <a href="#">Partnership</a>
-                </div>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Connect And Collaborate</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+      </head>
+    
+      <body class="main-body">
+    
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-image">
+                </a>
             </div>
-            <div class="dropdown">
-                <a href="">Features</a>
-                <div class="dropdown-content">
-                    <a href="{% url 'social:feeds_view' %}">Social Networking</a>
-                    <a href="{% url 'career:academic' %}">Academic Resources</a>
-                    <a href="{% url 'career:jobs' %}">Career Development</a>
-                    <!-- <a href="#">User Engagement</a> -->
-
-                </div>
-            </div>
-            <div class="dropdown">
-                <a href="">Get Involved</a>
-                <div class="dropdown-content">
-                    <a href="#">Support</a>
-                    <a href="#">Feedback/Survey</a>
-                    <a href="#">Alumni Network</a>
-                    <a href="#">User Dashboard</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a href="">Contact Us</a>
-                <div class="dropdown-content">
-                    <a href="#">Contact Information</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">Help/Support</a>
-                </div>
-            </div>
-        </div>
-        <div class="navbar-icons">
-            <div class="search-icon"><i class="material-icons" style="font-size: 1.8rem;">search</i></div>
-            <div class="notification-icon"><i class="material-icons" style="font-size: 1.8rem;">notifications</i></div>
             
+          <div class="navbar-links">
             <div class="dropdown">
-                {% if user.is_authenticated %}
-                    <div class="user-profile">
-                        {% if user.userprofile.profile_picture %}
-                        <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
-                    {% else %}
-                    <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
-                    {% endif %}                    </div>
-                {% else %}
-                    <a class="login-text" href="{% url 'user:signin' %}">Login</a>
-                {% endif %}
-                
-                {% if user.is_authenticated %}
-                <div class="dropdown-content">
-                    <a href="{% url 'user:profile' %}">Profile</a>
-                    <a href="{% url 'user:signout' %}">Logout</a>
-                </div>
-                {% else %}
-                <div class="dropdown-content">
-                    <a href="{% url 'user:signin' %}">Login</a>
-                    <a href="{% url 'user:signup' %}">Signup</a>
-                </div>
-                {% endif %}
+              <a href="">About Us</a>
+              <div class="dropdown-content">
+                <a href="{% url 'about' %}">Team</a>
+                <a href="#">Mission</a>
+                <a href="#">Blog/News</a>
+                <a href="#">Partnership</a>
+              </div>
             </div>
-        </div>
-        
-    </nav>
+            <div class="dropdown">
+              <a href="">Features</a>
+              <div class="dropdown-content">
+                <a href="{% url 'social:feeds_view' %}">Social Networking</a>
+                <a href="{% url 'career:academic' %}">Academic Resources</a>
+                <a href="{% url 'career:jobs' %}">Career Development</a>
+                <!-- <a href="#">User Engagement</a> -->
+              </div>
+            </div>
+            <div class="dropdown">
+              <a href="">Get Involved</a>
+              <div class="dropdown-content">
+                <a href="#">Support</a>
+                <a href="#">Feedback/Survey</a>
+                <a href="#">Alumni Network</a>
+                <a href="#">User Dashboard</a>
+              </div>
+            </div>
+            <div class="dropdown">
+              <a href="">Contact Us</a>
+              <div class="dropdown-content">
+                <a href="#">Contact Information</a>
+                <a href="#">FAQ</a>
+                <a href="#">Help/Support</a>
+              </div>
+            </div>
+          </div>
+          <div class="navbar-icons">
+            <div class="search-icon">
+              <i class="material-icons" style="font-size: 1.8rem;">search</i>
+            </div>
+            <div class="notification-icon">
+              <i class="material-icons" style="font-size: 1.8rem;">notifications</i>
+            </div>
+    
+            <div class="dropdown">
+              {% if user.is_authenticated %}
+                <div class="user-profile">
+            <!-- profile.html -->
+    
+            {% if user.userprofile.profile_picture %}
+                <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+            {% else %}
+            <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
+            {% endif %}
+    
+    
+                </div>
+              {% else %}
+                <a class="login-text" href="{% url 'user:signin' %}">Login</a>
+              {% endif %}
+    
+              {% if user.is_authenticated %}
+                <div class="dropdown-content" style="margin-left:-50px;">
+                  <a href="{% url 'user:profile' %}">Profile</a>
+                  <a href="{% url 'user:signout' %}">Logout</a>
+                </div>
+              {% else %}
+                <div class="dropdown-content" style="margin-left:-50px;">
+                  <a href="{% url 'user:signin' %}">Login</a>
+                  <a href="{% url 'user:signup' %}">Signup</a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </nav>
 
 
 
@@ -93,42 +111,67 @@
 
 
 
-    <!-- ----------------------------FOOTER -->
+
+    <!-- Updated Footer HTML -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@collegeconnect.com</p>
-                <p>Phone: +1 (123) 456-7890</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{%url 'about' %}">About Us</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Get Involved</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Explore</h3>
-                <ul>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Events</a></li>
-                    <li><a href="{%url 'social:search_group' %}">Groups</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Support</a></li>
-                </ul>
-            </div>
+          <div class="footer-section">
+            <h3 class="footer-h">Contact Us</h3>
+            <p>Email: info@collegeconnect.com</p>
+            <p>Phone: +1 (123) 456-7890</p>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-h">Quick Links</h3>
+            <ul>
+              <li>
+                <a href="{% url 'home' %}">Home</a>
+              </li>
+              <li>
+                <a href="{% url 'about' %}">About Us</a>
+              </li>
+              <li>
+                <a href="#">Features</a>
+              </li>
+              <li>
+                <a href="#">Get Involved</a>
+              </li>
+              <li>
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="#">Terms of Service</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-h">Explore</h3>
+            <ul>
+              <li>
+                <a href="#">Blog</a>
+              </li>
+              <li>
+                <a href="#">Events</a>
+              </li>
+              <li>
+                <a href="{% url 'social:search_group' %}">Groups</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3 class="footer-h">Resources</h3>
+            <ul>
+              <li>
+                <a href="#">FAQ</a>
+              </li>
+              <li>
+                <a href="#">Support</a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 Connect and Collaborate | Designed with ❤️ by Your Company</p>
+          <p>&copy; 2023 Connect and Collaborate | All rights reserved by Connect and Collaborate</p>
         </div>
-    </footer>
+      </footer>
+    </body>
+  </html>
