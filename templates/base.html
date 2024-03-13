@@ -8,8 +8,11 @@
     <!-- ------------------------------------NAVBAR -->
     <nav class="navbar">
         <div class="logo">
-            <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-image">
+            </a>
         </div>
+        
         <div class="navbar-links">
             <div class="dropdown">
                 <a href="#">About Us</a>
@@ -55,8 +58,11 @@
             <div class="dropdown">
                 {% if user.is_authenticated %}
                     <div class="user-profile">
+                        {% if user.userprofile.profile_picture %}
                         <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
-                    </div>
+                    {% else %}
+                    <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
+                    {% endif %}                    </div>
                 {% else %}
                     <a class="login-text" href="{% url 'user:signin' %}">Login</a>
                 {% endif %}

@@ -706,8 +706,11 @@
     <!-- ------------------------------------NAVBAR -->
     <nav class="navbar">
         <div class="logo">
-            <a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-image">
+            </a>
         </div>
+        
         <div class="navbar-links">
             <div class="dropdown">
                 <a href="#">About Us</a>
@@ -754,8 +757,11 @@
                 {% if user.is_authenticated %}
                     {% if user.userprofile.profile_picture %}
                         <div class="user-profile">
+                            {% if user.userprofile.profile_picture %}
                             <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
-                        </div>
+                        {% else %}
+                        <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
+                        {% endif %}                        </div>
                     {% else %}
                         <div class="user-profile">
                             <!-- Add a default image or placeholder if profile picture doesn't exist -->
@@ -796,11 +802,10 @@
                 <div class="left-top">
                     <img class="bg-picture" src="{% static 'images/ind.jpeg' %}" alt="Bg Picture">
                     {% if user.userprofile.profile_picture %}
-                        <img class="lt-pp" src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture">
-                    {% else %}
-                        <!-- Add a default image or placeholder if profile picture doesn't exist -->
-                        <img class="lt-pp" src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture">
-                    {% endif %}
+                    <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                {% else %}
+                <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
+                {% endif %}
                     <h4>{{ user.userprofile.first_name }} {{ user.userprofile.last_name }}</h4>
                     <p>{{ user.userprofile.bio }}</p>
                     <div class="custom-line-break"></div>
@@ -889,11 +894,10 @@
         {% csrf_token %}
         <div class="profile-section">
             {% if user.userprofile.profile_picture %}
-                <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture-feed">
-            {% else %}
-                <!-- Add a default image or placeholder if profile picture doesn't exist -->
-                <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture-feed">
-            {% endif %}
+            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+        {% else %}
+        <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
+        {% endif %}
             <div class="post-section">
                 <textarea name="caption" class="caption-input" placeholder="Write your caption..."></textarea>
             </div>
@@ -927,39 +931,11 @@
     </form>
 </div>
 
-<!-- {% for post in user_posts %}
-    <div class="card">
-        <div class="profile-section">
-            <img src="{{ post.user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture-feed">
-            <div class="post-section">
-                <p>{{ post.caption }}</p>
-                {% if post.image %}
-                    <img src="{{ post.image.url }}" alt="Post Image" class="post-image">
-                {% endif %}
-            </div>
-        </div>
-    </div>
-{% endfor %} -->
 
 
-            <!-- ------------------------------POST ENDS -->
 
 
-<!-- <div class="feed-container">
-    <p>User Groups:</p>
-    <ul>
-        {% for group in user_groups %}
-            <li>{{ group.name }}</li>
-        {% endfor %}
-    </ul>
 
-    <p>User Posts:</p>
-    <ul>
-        {% for post in user_posts %}
-            <li>{{ post.id }}</li> <li>{{ post.caption }} - {{ post.created_at }}</li>
-        {% endfor %}
-    </ul>
-</div> -->
 
 
 
@@ -969,8 +945,11 @@
 <div class="feeds-all">
     <div class="post-box">
         <div class="user-profile-feeds">
-            <img src="{{ user.userprofile.profile_picture.url }}" class="profile-picture">
-            <div class="more-info-feeds">
+            {% if user.userprofile.profile_picture %}
+            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+        {% else %}
+        <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
+        {% endif %}            <div class="more-info-feeds">
                 <h4>{{ user.first_name }} {{ user.last_name }}</h4>
                 {% for group in user_groups %}
                 <p>Posted in Group : {{ group.name }}</p>
@@ -987,17 +966,6 @@
 </div>
 
 
-
-
-    <!-- <div class="card">
-        <div class="profile-section">
-            <img src="{{ post.user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture-feed">
-            <div class="post-section">
-                <p>{{ post.caption }}</p>
-
-            </div>
-        </div>
-    </div> -->
 {% endfor %}
 
 
