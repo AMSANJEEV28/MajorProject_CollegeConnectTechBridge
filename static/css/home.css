@@ -113,13 +113,14 @@ a {
 }
 
 .dropdown-content {
+    width:max-content;
     display: none;
     position: absolute;
-    background-color: rgba(100, 100, 100);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    background-color: #ff313f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     z-index: 1;
-    border-radius: 5px;
+    border-radius: 3px;
     margin-left: -5px;
     margin-top: 2px;
 }
@@ -135,10 +136,8 @@ a {
     margin: 5px 0;
     transition: color 0.3s;
     font-size: 20px;
-}
-
-.dropdown-content a:hover {
-    color: #ff313f;
+    padding:5px;
+    border-bottom:1px solid #d6d6d6;
 }
 
 .profile-picture {
@@ -764,8 +763,8 @@ i.material-icons {
 .footer {
     background-color: #f0f0f0;
     color: #ffffff;
-    padding: 40px 0;
-    text-align: center;
+    padding: 60px;
+    text-align: left;
 }
 
 .footer-content {
@@ -782,11 +781,13 @@ i.material-icons {
 }
 
 .footer h3 {
-    color: #ff3131;
+    color: #333333;
+    font-weight:bold;
 }
 
 .footer p {
     margin: 5px 0;
+    color:#5b5b5b
 }
 
 .footer-section ul {
@@ -795,16 +796,16 @@ i.material-icons {
 }
 
 .footer-section li {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .footer-section a {
-    color: #ffffff;
+    color: #5b5b5b;
     text-decoration: none;
 }
 
 .footer-section a:hover {
-    color: #ff3131;
+    color: #272727;
 }
 
 .social-icons {
@@ -824,7 +825,7 @@ i.material-icons {
 }
 
 .footer-bottom {
-    background-color: #001735;
+    background-color: #ff3131;
     padding: 10px 0;
     text-align: center;
 }

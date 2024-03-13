@@ -5,10 +5,12 @@ from django.shortcuts import render, redirect
 from .models import Group
 from .forms import GroupCreationForm, GroupSearchForm
 from user.models import UserProfile
+from django.contrib.auth.decorators import login_required
 
 
 
 
+@login_required
 def create_group(request):
     group_id = None
 
@@ -29,7 +31,7 @@ def create_group(request):
         form = GroupCreationForm()
     return render(request, 'create_group.html', {'form': form, 'group_id': group_id})
 
-
+@login_required
 def search_group(request):
     user_groups = []
 
@@ -53,7 +55,7 @@ def search_group(request):
 
     return render(request, 'search_group.html', {'form': form, 'search_results': search_results, 'user_groups': user_groups})
 
-
+@login_required
 def join_group(request, group_id):
     group = Group.objects.get(group_id=group_id)
     group.members.add(request.user)
@@ -62,7 +64,7 @@ def join_group(request, group_id):
 
 # social/views.py
 
-
+@login_required
 def group_detail(request, group_id):
     group = Group.objects.get(group_id=group_id)
     user_groups = request.user.group_members.all()
@@ -92,7 +94,7 @@ from .models import Group
 from django.shortcuts import render
 from .models import Post
 from user.models import UserProfile
-
+@login_required
 def feeds_view(request):
     # Retrieve the user's profile
     try:
@@ -160,7 +162,7 @@ from .models import Post
 from django.contrib import messages
 from user.models import UserProfile
 from .models import Group  
-
+@login_required
 def create_post(request):
     user_groups = Group.objects.filter(members=request.user)
 

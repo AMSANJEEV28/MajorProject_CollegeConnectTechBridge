@@ -85,12 +85,12 @@
           {% endif %}
 
           {% if user.is_authenticated %}
-            <div class="dropdown-content">
+            <div class="dropdown-content" style="margin-left:-50px;">
               <a href="{% url 'user:profile' %}">Profile</a>
               <a href="{% url 'user:signout' %}">Logout</a>
             </div>
           {% else %}
-            <div class="dropdown-content">
+            <div class="dropdown-content" style="margin-left:-50px;">
               <a href="{% url 'user:signin' %}">Login</a>
               <a href="{% url 'user:signup' %}">Signup</a>
             </div>
@@ -619,12 +619,12 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>Contact Us</h3>
+          <h3 class="footer-h">Contact Us</h3>
           <p>Email: info@collegeconnect.com</p>
           <p>Phone: +1 (123) 456-7890</p>
         </div>
         <div class="footer-section">
-          <h3>Quick Links</h3>
+          <h3 class="footer-h">Quick Links</h3>
           <ul>
             <li>
               <a href="{% url 'home' %}">Home</a>
@@ -647,7 +647,7 @@
           </ul>
         </div>
         <div class="footer-section">
-          <h3>Explore</h3>
+          <h3 class="footer-h">Explore</h3>
           <ul>
             <li>
               <a href="#">Blog</a>
@@ -661,7 +661,7 @@
           </ul>
         </div>
         <div class="footer-section">
-          <h3>Resources</h3>
+          <h3 class="footer-h">Resources</h3>
           <ul>
             <li>
               <a href="#">FAQ</a>
@@ -673,7 +673,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2023 Connect and Collaborate | Designed with ❤️ by Your Company</p>
+        <p>&copy; 2023 Connect and Collaborate | All rights reserved by Connect and Collaborate</p>
       </div>
     </footer>
   </body>
