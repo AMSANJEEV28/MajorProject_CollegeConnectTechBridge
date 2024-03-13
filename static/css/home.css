@@ -945,12 +945,14 @@ i.material-icons {
     background-color:#fff;
     padding:20px 40px 100px 40px;
     border-radius:5px;
-    height:500px;;
+    height:500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   
   .teamcard-container {
     justify-content: space-evenly;
     margin-bottom:20px;
+
   }
   
   .team-img-wrapper {
@@ -1242,7 +1244,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left:-40px;
 }
 
 .contacts ul {
@@ -1271,5 +1272,324 @@ body {
 }
 
 .home{
+  margin-top:-20px;
     margin-bottom:40px;
+    background-color:#fff;
+    padding-top:1px;
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------MISSION________________________________ */
+
+
+  
+.mission-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: -10px 50px 50px 50px;
+    margin-top:-20px;
+    background-color:#fff;
+  }
+
+  h1{
+    z-index:9;
+  }
+
+  .photo-cluster {
+    position: relative;
+    width: 100%;
+    max-width: 1500px;
+    height: max-content;
+    overflow: hidden;
+  }
+
+  .photo-group {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .photo-group img {
+    width: 110px; 
+    height: 110px;
+    object-fit: cover;
+    border-radius: 10%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    transition: transform 0.5s ease;
+  }
+
+  .photo-group img:hover {
+    transform: scale(1.2);
+  }
+
+  .photo-1 {
+    top: 35px;
+    left: 10px;
+  }
+
+  .photo-2 {
+    top: 55px;
+    left: 265px;
+  }
+
+  .photo-3 {
+    top: 35px;
+    right:10px;
+  }
+
+  .photo-4 {
+    top: 185px;
+    right: 5px;
+  }
+
+  .photo-5 {
+    top: 215;
+    right: 265px;
+  }
+
+  .photo-6 {
+      top:185px;
+    left: 15px;
+  }
+
+  .photo-7 {
+      top: 1500px;
+    left:35px;
+  }
+
+  .photo-8 {
+    top: 1525px;
+    left: 315px;
+  }
+
+  .photo-9 {
+      top: 1505px;
+    left: 600px;
+  }
+
+  .photo-10 {
+      top: 1650px;
+      left: 0px;
+  }
+
+  .photo-11 {
+    top: 1675px;
+    left: 285px;
+  }
+
+  .content-wrapper {
+      max-width: 100%;
+      text-align: center;
+      margin: 0 auto; /* This will center the div horizontally */
+    }
+
+  .content-wrapper1 {
+      max-width: 100%;
+      text-align: center;
+      margin-top:350px;
+    }
+
+  .content-wrapper2 {
+      max-width: 100%;
+      text-align: center;
+      margin-top:350px;
+    }
+
+  h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color:#000;
+  }
+
+  p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color:#222222;
+  }
+
+  .mission{
+    text-align: center;
+    justify-content:center;
+  }
+
+  .container1-mission{
+    margin-top:-200px;
+  }
+
+
+  .underline{
+    background-color:#000;
+    height:2px;  
+    text-align:left;
+    justify-content:center;
+    margin: -15px 0 0 0; /* Center the underline horizontally */
+}
+
+  }
+
+  @media (max-width: 768px) {
+    .photo-group img {
+      width: 80px; /* Adjust width as needed for smaller screens */
+      height: 80px;
+    }
+  }
+
+
+      
+  .container1-mission {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: justify;
+  }
+
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+  }
+
+
+
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    color:#222222;
+    font-size: 18px;
+}
+
+  ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color:#222222;
+  }
+
+  ol {
+    text-align: left;
+    color:#222222;
+  }
+
+  ol li {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .flex-item {
+    width: 48%;
+  }
+
+
+
+
+
+
+
+
+
+  /* ------------------BLOG---------------------------------- */
+
+  .container {
+    display: flex;
+    width: 1040px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+  .card-blog {
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 300px;
+  }
+  .card-blog-header img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  .card-blog-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    min-height: 250px;
+  }
+  
+  .tag {
+    background: #cccccc;
+    border-radius: 50px;
+    font-size: 12px;
+    margin: 0;
+    color: #fff;
+    padding: 2px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .tag-teal {
+    background-color: #47bcd4;
+  }
+  .tag-purple {
+    background-color: #5e76bf;
+  }
+  .tag-pink {
+    background-color: #cd5b9f;
+  }
+  
+  .card-blog-body p {
+    font-size: 13px;
+    margin: 0 0 40px;
+  }
+  .user {
+    display: flex;
+    margin-top: auto;
+  }
+  
+  .user img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  .user-info h5, h4 {
+    margin: 0;
+    color:black;
+  }
+  .user-info small {
+    color: #545d7a;
+  }
+  
+  h4, h5, p{
+      z-index:9;
+  }
