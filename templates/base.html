@@ -6,6 +6,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+
+
     <!DOCTYPE html>
     <html lang="en">
       <head>
@@ -20,7 +24,7 @@
         <nav class="navbar">
             <div class="logo">
                 <a href="{% url 'home' %}">
-                    <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-image">
+                    <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo-image">
                 </a>
             </div>
             
@@ -117,8 +121,8 @@
         <div class="footer-content">
           <div class="footer-section">
             <h3 class="footer-h">Contact Us</h3>
-            <p>Email: info@collegeconnect.com</p>
-            <p>Phone: +1 (123) 456-7890</p>
+            <p>Email: <a href="mailto:info@collegeconnect.com">info@collegeconnect.com</a></p>
+            <p>Phone: <a href="tel:+919608685873">+91 9608685873</a></p>            
           </div>
           <div class="footer-section">
             <h3 class="footer-h">Quick Links</h3>

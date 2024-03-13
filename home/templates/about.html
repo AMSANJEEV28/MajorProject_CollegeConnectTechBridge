@@ -3,26 +3,203 @@
 
 
 {% block content %}
-<style>
-    .background-image {
-        position: relative;
-        overflow: hidden;
-        width: 100%; 
-        height: 100%;
-    }
-
-    .bg-image {
-        width: 100%;
-        height: 100%;
-        display: block;
-        overflow: hidden;
-        z-index: 0;
-        background-size: cover;
-    }
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 <div class="home" id="home">
-    <div class="background-image">
-        <img src="{% static 'images/AboutUs.png' %}" alt="background image" class="bg-image">
+    <div class="container-block container">
+        <p class="text-blk team-head-text">
+          Our Team
+        </p>
+        <div class="responsive-container-block teamcard-container">          
+
+
+            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+                <div class="team-card">
+                <div class="team-card-inner">
+                <div class="team-card-front">
+                    <div class="team-img-wrapper">
+                    <img class="team-img" src="{% static 'images/team/amsanjeev.jpg' %}" alt="A M Sanjeev">
+                    </div>
+                    <div class="team-card-content">
+                    <p class="text-blk name">A M Sanjeev</p>
+                    <p class="text-blk position">Full Stack Developer & UI/UX Designer</p>
+                    </div>
+                </div>
+                <div class="team-card-back">
+                    <div class="team-card-content">
+                    <p class="text-blk name">About A M Sanjeev</p>
+                    <br>
+                    <p class="text-blk">A M Sanjeev, final-year CS student with expertise in web dev, HTML, CSS, JavaScript, Angular, Node.js, Ruby on Rails, OOP. Proficient in software testing, leadership, and content writing. Passionate about coding and connecting with tech enthusiasts.</p>
+                    </div>
+                </div>
+                </div>
+                </div>
+                <div  class="social-buttons-team"> 
+                    <div class="contacts">
+                    <ul>
+                        <li>
+                        <a href="https://github.com/AMSANJEEV28" target="_blank"
+                            ><i class="fab fa-github"></i
+                        ></a>
+                        </li>
+                        <li>
+                        <a
+                            href="https://www.linkedin.com/in/a-m-sanjeev-456431207/"
+                            target="_blank"
+                            ><i class="fab fa-linkedin"></i
+                        ></a>
+                        </li>
+                        <li>
+                        <a href="mailto:206320028@gkv.ac.in" target="_blank"
+                            ><i class="fab fa-google"></i
+                        ></a>
+                        </li>
+                        <li>
+                        <a
+                            href="https://www.youtube.com/@amsanjeev28/channels"
+                            target="_blank"
+                            ><i class="fab fa-youtube"></i
+                        ></a>
+                        </li>
+                        <li>
+                        <a
+                            href="https://dev-academy.com/contributors/a-m-sanjeev"
+                            target="_blank"
+                            ><i class="fas fa-pen"></i
+                        ></a>
+                        </li>
+                    </ul>
+                    </div>
+
+                </div>
+
+            </div> 
+              
+            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+            <div class="team-card">
+                <div class="team-card-inner">
+                <div class="team-card-front">
+                    <div class="team-img-wrapper">
+                    <img class="team-img" src="{% static 'images/team/himanshu.jpg' %}" alt="A M Sanjeev">
+                    </div>
+                    <div class="team-card-content">
+                    <p class="text-blk name">Himanshu Shekhar</p>
+                    <p class="text-blk position">Front-end Designer and Database Architect</p>
+                    </div>
+                </div>
+                <div class="team-card-back">
+                    <div class="team-card-content">
+                    <p class="text-blk name">About Himanshu Shekhar</p>
+                    <br>
+                    <p class="text-blk">Himanshu Shekhar, pursuing a Bachelor of Tech in Computer Science. Aiming to be a Fullstack dev, keen on infrastructure. Strong in JS, Python, Java. Eager to learn.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div  class="social-buttons-team"> 
+                    <div class="contacts">
+                    <ul>
+                        <li>
+                        <a href="https://github.com/Shekhar1276" target="_blank"
+                            ><i class="fab fa-github"></i
+                        ></a>
+                        </li>
+                        <li>
+                        <a
+                            href="https://www.linkedin.com/in/himanshu-shekhar-430175221/"
+                            target="_blank"
+                            ><i class="fab fa-linkedin"></i
+                        ></a>
+                        </li>
+                        <li>
+                        <a href="hshekhar6008@gmail.com" target="_blank"
+                            ><i class="fab fa-google"></i
+                        ></a>
+                        </li>
+                        <li>
+                        <a
+                            href="https://twitter.com/Shekhar1276"
+                            target="_blank"
+                            ><i class="fab fa-twitter"></i
+                        ></a>
+                        </li>
+                        {% comment %} <li>
+                        <a
+                            href=""
+                            target="_blank"
+                            ><i class="fas fa-pen"></i
+                        ></a>
+                        </li> {% endcomment %}
+                    </ul>
+                    </div>
+
+            </div>
+
+            </div>          
+              
+            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+                <div class="team-card">
+                <div class="team-card-inner">
+                    <div class="team-card-front">
+                    <div class="team-img-wrapper">
+                        <img class="team-img" src="{% static 'images/team/akarsh.jpg' %}" alt="A M Sanjeev">
+                    </div>
+                    <div class="team-card-content">
+                        <p class="text-blk name">Akarsh Kumar Pandey</p>
+                        <p class="text-blk position">Front-end Developer</p>
+                    </div>
+                    </div>
+                    <div class="team-card-back">
+                    <div class="team-card-content">
+                        <p class="text-blk name">About Akarsh Kumar Pandey</p>
+                        <br>
+                        <p class="text-blk">Akarsh Kumar Pandey is a Full Stack Web Developer, React.js, DS & algorithms. Experienced in software dev, interning at CodeClause & Oasis Infobyte.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div  class="social-buttons-team"> 
+                    <div class="contacts">
+                        <ul>
+                        <li>
+                            <a href="https://github.com/AKARSH1593" target="_blank"
+                            ><i class="fab fa-github"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                            href="https://www.linkedin.com/in/akarsh-kumar-pandey-58499311b/"
+                            target="_blank"
+                            ><i class="fab fa-linkedin"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a href="akarsh.1593ap@gmail.com" target="_blank"
+                            ><i class="fab fa-google"></i
+                            ></a>
+                        </li>
+                        {% comment %} <li>
+                            <a
+                            href=""
+                            target="_blank"
+                            ><i class="fab fa-youtube"></i
+                            ></a>
+                        </li>
+                        <li>
+                            <a
+                            href=""
+                            target="_blank"
+                            ><i class="fas fa-pen"></i
+                            ></a>
+                        </li> {% endcomment %}
+                        </ul>
+                    </div>
+    
+                </div>
+    
+            </div>
+
+        </div>
     </div>
 </div>
+
 {% endblock %}
