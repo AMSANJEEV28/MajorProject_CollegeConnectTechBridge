@@ -171,7 +171,6 @@ Access to CollegeConnect is restricted to verified college students using their 
 - A M Sanjeev
 - Himanshu Shekhar
 - Akarsh Kumar Pandey
-- Abhishek Inderesh Mishra
 
 ## Planned Functionality for Major Project:
 
