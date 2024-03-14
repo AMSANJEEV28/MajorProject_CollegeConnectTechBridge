@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+
+
+  <div class="blog">
+    <div class="blog-head">
+        <div class="blogCover">
+      <img loading="lazy" src="{% static 'images/blogs/cover/BlogCover (12).jpg' %}" alt="College Connect Blog Cover Image">
+        </div>
+      <div class="header-content">
+        <h1>Level Up Your College Journey </h1>
+        <div class="underline" style="width:200px; background-color:#ffa1a1; height:5px; border-radius:10px; margin:15px 0 45px 0;"></div>
+        
+        <div class="author-card">
+            <img loading="lazy" style="width:50px; height:50px;" src="{% static 'images/testimonialProfiles/testimonial1.jpg' %}" alt="Default Profile Picture" class="profile-picture-author profile-picture">
+            <div class="author-card-info">
+              <p class="author-name">A M Sanjeev</p>
+              <p class="author-info">Gurukula Kangri Deemed To Be University, Haridwar</p>
+            </div>
+            <div class="topics">
+              <div class="tag">
+                <p>tags</p>
+              </div>
+              <div class="tag">
+                <p>tags</p>
+              </div>
+              <p class="date-of-blog"> 14 March 2024</p>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    
+    <div class="blog-content-bottom">
+      <div class="content-wrapper">
+        <div id="toc" class="table-of-contents sticky">
+          <h3>Table of Contents</h3>
+          <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#benefits">Benefits of College Connect</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+          </ul>
+        </div>
+
+
+        <div class="main-content scrollable">
+
+          <h2>Introduction</h2>
+          <p>Embarking on a college journey is an exciting yet challenging time in one's life. It's a period of growth, self-discovery, and academic exploration. However, navigating through the intricacies of college life can sometimes feel overwhelming. Fear not, for with the right mindset and strategies, you can level up your college journey and make the most out of this transformative experience.</p>
+
+          <h2 id="benefits">Setting Goals for Success</h2>
+          <p>Setting clear and achievable goals is essential for success in college. Whether it's academic, personal, or professional goals, having a roadmap can provide direction and motivation throughout your journey. Begin by identifying what you want to accomplish during your time in college. Are you aiming for a high GPA, seeking to join a particular club or organization, or planning for a future career? Once you have established your goals, break them down into smaller, manageable tasks. This approach will help you stay focused and make progress towards your aspirations.</p>
+
+          <h2>Effective Time Management</h2>
+          <p>Time management is a crucial skill that can significantly impact your college experience. With classes, assignments, extracurricular activities, and social commitments vying for your attention, it's easy to feel overwhelmed. To level up your college journey, prioritize your tasks and allocate time wisely. Create a schedule or use a planner to organize your days and ensure you're making efficient use of your time. Remember to include time for self-care and relaxation to avoid burnout.</p>
+
+          <h2 id="benefits">Embrace Opportunities for Growth</h2>
+          <p>College is not just about academics; it's also a time for personal and professional growth. Take advantage of the myriad opportunities available on campus to expand your horizons and develop new skills. Join clubs or student organizations that align with your interests or passions. Attend workshops, seminars, and networking events to broaden your knowledge and connect with like-minded individuals. Step out of your comfort zone and embrace challenges as opportunities for growth and learning.</p>
+
+          <h2>Building Relationships</h2>
+          <p>Building meaningful relationships is an integral part of the college experience. Surround yourself with supportive peers who share your goals and values. Form study groups to collaborate on assignments and projects, and seek out mentors who can offer guidance and advice. Establishing connections with professors and academic advisors can also be beneficial in navigating your academic journey and exploring future opportunities. Remember that relationships require effort and communication, so invest time and energy in nurturing these connections.</p>
+
+          <h2 id="benefits">Staying Healthy and Balanced</h2>
+          <p>Maintaining a healthy balance between academics, extracurricular activities, and personal well-being is essential for a fulfilling college experience. Prioritize self-care by getting enough sleep, eating nutritious meals, and staying physically active. Find activities that help you relax and recharge, whether it's practicing yoga, going for a run, or spending time with friends. Don't hesitate to seek support from campus resources such as counseling services if you're feeling overwhelmed or struggling with mental health issues.</p>
+
+          <h2>Seeking Professional Development</h2>
+          <p>College is an opportune time to invest in your professional development and prepare for future career opportunities. Take advantage of career services offered by your university to explore potential career paths, polish your resume, and practice interview skills. Seek out internships, part-time jobs, or volunteer opportunities related to your field of interest to gain practical experience and build your professional network. Additionally, consider pursuing further education or certifications that can enhance your credentials and marketability in the job market.
+
+          </p>
+
+          <h2 id="benefits">Embracing Diversity and Inclusion</h2>
+          <p>Diversity and inclusion are essential values that enrich the college experience and foster a sense of belonging for all students. Embrace diversity in all its forms – whether it's cultural, ethnic, socioeconomic, or ideological. Engage in meaningful conversations with individuals from diverse backgrounds to broaden your perspectives and challenge your assumptions. Take an active role in creating an inclusive campus community by participating in initiatives and events that promote equity and social justice.</p>
+
+          <h2>Fostering Resilience</h2>
+          <p>College life is full of ups and downs, and resilience is key to overcoming challenges and bouncing back from setbacks. Cultivate resilience by developing coping strategies, such as practicing mindfulness, seeking social support, and reframing negative thoughts. Learn from failures and setbacks rather than letting them deter you from pursuing your goals. Remember that setbacks are not indicative of your worth or potential; they are merely temporary obstacles on your journey to success.</p>
+
+          <h2 id="benefits">Conclusion</h2>
+          <p>Your college journey is what you make of it. By setting goals, managing your time effectively, embracing opportunities for growth, building meaningful relationships, prioritizing health and well-being, investing in professional development, embracing diversity and inclusion, and fostering resilience, you can level up your college experience and emerge stronger, wiser, and more prepared for the opportunities that lie ahead. So seize the moment, embrace the challenges, and make the most out of your college journey.</p>
+
+        </div>
+
+
+        <div class="related-posts sticky">
+          <h3>Related Articles</h2>
+          <ul>
+            <li><a href="#">How to Ace Your College Applications</a></li>
+            <li><a href="#">The Ultimate Guide to College Survival</a></li>
+            <li><a href="#">Building a Strong College Support Network</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="author-card-bottom">
+      <img loading="lazy" src="{% static 'images/testimonialProfiles/testimonial1.jpg' %}" alt="Author Image" class="author-portrait-bottom">
+      <div class="author-details-wrapper-bottom">
+        <h3 class="author-title-bottom">A M Sanjeev</h3>
+        <p class="author-designation-bottom">Software Engineer</p>
+        <div class="author-info-bottom">
+          <p class="author-expertise-bottom">Expertise: Web Development, Machine Learning</p>
+          <div class="contribution-meter-container-bottom">
+            <p class="contribution-label-bottom">Contributions</p>
+            <div class="contribution-meter-bottom">
+              <div class="meter-fill-bottom" style="width: 70%"></div>  </div>
+            <p class="contribution-count-bottom">14</p> </div>
+          <p class="publication-date-bottom">Published: 14 March 2024</p>
+        </div>
+
+        <div class="social-icons">
+
+          <div  class="social-buttons-team"> 
+              <div class="contacts">
+              <ul>
+                  <li>
+                  <a href="https://github.com/AMSANJEEV28" target="_blank"
+                      ><i class="fab fa-github"></i
+                  ></a>
+                  </li>
+                  <li>
+                  <a
+                      href="https://www.linkedin.com/in/a-m-sanjeev-456431207/"
+                      target="_blank"
+                      ><i class="fab fa-linkedin"></i
+                  ></a>
+                  </li>
+                  <li>
+                  <a href="mailto:206320028@gkv.ac.in" target="_blank"
+                      ><i class="fab fa-google"></i
+                  ></a>
+                  </li>
+                  <li>
+                  <a
+                      href="https://www.youtube.com/@amsanjeev28/channels"
+                      target="_blank"
+                      ><i class="fab fa-youtube"></i
+                  ></a>
+                  </li>
+                  <li>
+                  <a
+                      href="https://dev-academy.com/contributors/a-m-sanjeev"
+                      target="_blank"
+                      ><i class="fas fa-pen"></i
+                  ></a>
+                  </li>
+              </ul>
+              </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    
+    
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+  {% comment %} <script>
+    window.addEventListener('scroll', function() {
+      var tableOfContents = document.getElementById('toc');
+      var bounding = tableOfContents.getBoundingClientRect();
+  
+      if (bounding.top <= 1000) { // Change 100 to the desired offset from the top
+        tableOfContents.classList.add('sticky');
+      } else {
+        tableOfContents.classList.remove('sticky');
+      }
+    });
+  </script> {% endcomment %}  
+  
+  
+
+{% endblock %}

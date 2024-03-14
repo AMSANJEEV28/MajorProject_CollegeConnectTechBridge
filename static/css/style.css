@@ -1,0 +1,253 @@
+
+  .blog {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+  }
+  
+  .blog-head {
+    position: relative;
+    justify-content:center;
+    align-items:center;
+    height:130vh; 
+  }
+
+  .blogCover{
+    justify-content:center;
+    align-items:center;
+    display: flex;
+  }
+  
+  .blog-head img {
+    width:1200px;
+    height: 500px;;
+    object-fit: cover;
+    justify-content:center;
+    align-items:center;
+    max-width: 100%;
+    max-height:100%;
+  }
+  
+  h1,
+  p {
+    margin: 0;
+    color: #fff;
+  }
+  
+  h1 {
+    font-size: 2.9em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .header-content{
+    margin-top:30px;
+    width:1200px;
+  }
+  
+.author-card{
+    margin:20px;
+    display:flex;
+  }
+
+  .author-card-info{
+    margin-left:-15px;
+  }
+
+  .author-info{
+    color:#d7d7d7;
+  }
+
+  .topics{
+    display:flex;
+    width:100%;
+  }
+  
+  .tag{
+    position:relative;
+    top:100px;
+    left:-400px;
+    border-radius:30px;
+    background-color:#fff;
+    margin-left:20px;
+    padding:10px;
+    width:150px;
+    height:40px;
+    text-align:center;
+    justify-content: center;
+    align-items:center;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+  }
+
+  .tag p{
+    color:#ff3131;
+    text-transform: lowercase;
+  }
+
+  .date-of-blog{
+    position:relative;
+    top:160px;
+    left:-710px;
+  }
+
+  .blog-content-bottom {
+    flex: 1;
+    display: flex;
+    background-color: #fff;
+  }
+
+  .blog-content-bottom p {
+    color:black;
+    text-align:justify;
+
+}
+
+.content-wrapper{
+  display:flex;
+  margin:0 30px;
+  width:100%;
+}
+
+.table-of-contents{
+  width:20% ;
+  text-align:left;
+  position: sticky;
+  top: 100px; /* Stick to the top of the scrollable area */
+  max-height: 80vh;
+  overflow-y: auto;
+  margin-left:40px;
+}
+
+.table-of-contents ul li a {
+  color:#372a65;
+  font-size:medium;
+  font-weight:600;
+}
+
+.table-of-contents ul li a:hover {
+  color:#080026;
+}
+
+.main-content{
+  width:100%;
+  text-align:left;
+  padding: 20px 60px 80px 20px;
+  margin-top:-35px;
+}
+
+.main-content h2{
+  font-size:40px;;
+}
+
+.related-posts{
+  text-align:left;
+  width:20%;
+  position: sticky;
+  top: 100px; /* Stick to the top of the scrollable area */
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.related-posts ul li a {
+  color:#372a65;
+  font-size:medium;
+  font-weight:600;
+}
+
+.related-posts ul li a:hover {
+  color:#080026;
+}
+
+
+
+.author-card-bottom {
+  display: flex;
+  align-items: center;
+  margin: 20px auto; /* Add some margin for spacing */
+  padding: 15px;
+  border-radius: 10px; /* Add a subtle border radius */
+  background-color: #fafafa; /* Light background color */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle box-shadow for depth */
+  width:800px;
+  height:300px;
+}
+
+.author-portrait-bottom {
+  width: 105px;
+  height: 105px;
+  border-radius: 50%; /* Make image circular */
+  object-fit: cover; /* Ensure image fills the container */
+  position:relative;
+  top:-80px;
+}
+
+.author-details-wrapper-bottom {
+  flex: 1; /* Allow content to expand within available space */
+  margin-left: 20px;
+  position:relative;
+  top:-30px;
+}
+
+.author-title-bottom {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.author-designation-bottom {
+  color: #888; /* Dimmer text color for designation */
+  margin-bottom: 5px;
+}
+
+.author-expertise-bottom {
+  font-style: italic;
+  margin-bottom: 5px;
+  color: #888; 
+}
+
+.contribution-meter-container-bottom {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  color: #888; 
+}
+
+.contribution-label-bottom {
+  margin-right: 10px;
+  color: #888; 
+}
+
+.contribution-meter-bottom {
+  width: 80px;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  color: #888; 
+}
+
+.meter-fill-bottom {
+  height: 100%;
+  background-color: #2ecc71; /* Green for progress meter */
+  transition: width 0.3s ease-in-out;  /* Add smooth transition for progress animation */
+  color: #888; 
+}
+
+.contribution-count-bottom {
+  margin-left: 10px;
+  color: #888; 
+}
+
+.publication-date-bottom {
+  color: #888; 
+  font-style: italic;
+
+}
+
+.social-icons{
+position:absolute;
+margin-top:10px;
+left:-15px;
+}

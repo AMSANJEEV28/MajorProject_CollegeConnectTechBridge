@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('user.urls')), 
     path('social/', include('social.urls')),
     path('career/', include('career.urls')),
+    path('blogs/', include('blogs.urls')),
 
 
     # Add more URL patterns for other apps if needed
