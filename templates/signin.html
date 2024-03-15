@@ -1,6 +1,150 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
 
 
-    <style>
+<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!-- Include Google's official CSS for the sign-in button -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connect And Collaborate: Sign-In</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+  </head>
+
+  <body class="main-body-signin">
+
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo-image">
+                </a>
+            </div>
+            
+            <div class="navbar-links">
+
+                <a href="{% url 'home' %}">
+                <div class="navbar-icons-signin">
+                    <div class="home-icon icon-home">
+                        <i class="material-icons icon-home" style="font-size: 1.8rem;">home</i>
+                    </div>
+                </div>
+                </a>
+            </div>
+        </nav>
+
+        <div class="signin-body">
+
+            <div class="signin-body-left">
+                <div class="logo-signin">                    
+                    <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo-image-signin">
+                </div>
+            </div>
+
+            <div class="signin-body-right">
+                <div class="login-login">
+                    <p class="login-text">Log In</p>
+
+                    <div class="login-via">
+                        
+                        <div class="login-via-linkedin">
+                            <a href="{YOUR_AUTH_URL}">
+                                <img src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png" 
+                                     alt="Sign in with LinkedIn" 
+                                     width="160" 
+                                     height="auto" 
+                                     border="0">
+                            </a>
+                        </div>
+
+                        <div class="login-via-google">
+
+                            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+                            <!-- Custom button with Google logo -->
+                            <a href="#" onclick="onSignIn()" class="google-button">
+                              <img src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA" alt="Google Logo" width="20" height="20">
+                              Continue with Google
+                            </a>
+
+                            <script>
+                                function onSignIn(googleUser) {
+                                  // Handle sign-in logic here
+                                  // For example, send the user's Google ID token to your backend for verification
+                                  var profile = googleUser.getBasicProfile();
+                                  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                                  console.log('Name: ' + profile.getName());
+                                  console.log('Image URL: ' + profile.getImageUrl());
+                                  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                                }
+                              </script>
+
+                        </div>
+                    <div class="login-login-bottommost">
+
+                        <div class="or">
+                            <span class="dash"></span>
+                            <p>or</p>
+                            <span class="dash"></span>
+                          </div>
+
+                        <form method="post">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="form-field">
+                                    {{ field }}
+                                    {% for error in field.errors %}
+                                        <div class="error-message">{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                            {% for message in messages %}
+                                <div class="error-message">{{ message }}</div>
+                            {% endfor %}
+
+                            <p style="color:#000; margin-top:10px; font-size:medium;">
+                                Forgot Password? <a href="{% url 'password_reset' %}" style="color:#38b6ff; margin-top:10px; font-size:medium;">Click Here</a>
+                            </p>
+                            
+                            <button type="submit" class="login-btn">Log In</button>
+                        </form>
+                        
+
+
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="signup-login">
+                    <p class="login-text">New To College Connect?</p>
+                    <a href="{% url 'user:signup' %}" class="login-btn signup-btn">Sign Up</a>
+                </div>
+            </div>
+
+        </div>
+   
+    </body> 
+
+
+    
+
+    {% comment %} <style>
         body {
             margin: 0;
             padding: 0;
@@ -57,13 +201,12 @@
         button:hover {
             background-color: #ff0000;
         }
-    </style>
+    </style> {% endcomment %}
 
-    
+{% comment %}     
     <form method="post">
         <h2>Sign In</h2>
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Sign In</button>
-    </form>
-
+    </form> {% endcomment %}

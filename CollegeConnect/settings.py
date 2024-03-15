@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'password_reset',
+    'debug_toolbar',
     'home',
     'events',
     'social',
@@ -44,6 +46,16 @@ INSTALLED_APPS = [
     'career',  
     'blogs',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = '206320028@gkv.ac.in'
+EMAIL_HOST_PASSWORD = 'yewy wlmc nqos rjev' 
+PASSWORD_RESET_TIMEOUT_DAYS = 1  # Reset links will expire after 1 day
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -73,6 +85,9 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_URL = '/user/signin/'
+
 
 WSGI_APPLICATION = 'CollegeConnect.wsgi.application'
 
@@ -138,8 +153,29 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # myproject/settings.py
 AUTH_USER_MODEL = 'user.CustomUser'
 
+# Include Django's ModelBackend for authentication
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    # Add other authentication backends if needed
+]
 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+# settings.py
+
+# Ensure that the Django Debug Toolbar is only enabled in development mode
+if DEBUG:
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
+
+    # Allow only requests from localhost
+    INTERNAL_IPS = [
+        '127.0.0.1',
+    ]
+
+    # Configure toolbar settings
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG,
+    }

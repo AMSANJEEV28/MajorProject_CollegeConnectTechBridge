@@ -251,3 +251,245 @@ position:absolute;
 margin-top:10px;
 left:-15px;
 }
+
+
+
+
+
+
+
+
+
+/* ------------------------SIGNIN--------------------------------- */
+
+.navbar-icons-signin {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-left:-50px;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  justify-content: center;
+}
+
+.navbar-icons-signin>* {
+  font-size: 20px;
+  font-weight: bold;
+  vertical-align: middle;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  justify-content: center;
+}
+
+.icon-home{
+  background-color:#ffeeee;
+  height: 45px;
+  width:45px;
+  color:#ff3131;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  justify-content: center;
+  border-radius:50%;
+}
+
+.material-icons{
+padding-top:5px;
+}
+
+.main-body-signin{
+  background-color:#fff;
+  margin-top:120px;
+  padding:20px 50px 50px 50px;
+}
+
+.signin-body{
+  width:100%;
+  display:flex;
+}
+
+.signin-body-left{
+  width:50%;
+  height:500px;;
+  display:flex;
+  align-items:center;
+}
+
+.signin-body-right{
+  width:50%;
+  height:500px;
+}
+
+.logo-signin{
+margin-left:100px;
+}
+
+.logo-image-signin{
+  height:272px;
+  width:272px;
+  border-radius:100px;
+}
+
+.login-login{
+  width:430px;
+  height:460px;
+  background-color: #ffeeee;
+  border:1px black solid;
+  border-radius:16px;
+}
+
+.login-text{
+  margin:20px;
+  font-size:17px;
+  position:relative;
+  top:-10px;
+}
+
+.login-via-linkedin {
+  border-radius: 5px;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  justify-content:center;
+}
+
+/* Style for the custom Google button */
+
+
+.login-via-google {
+  display:flex;
+  align-items:center;
+  text-align:center;
+  justify-content:center;
+  margin:8px;
+}
+
+
+.google-button {
+  display: inline-block;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid transparent;
+  padding: 8px 10px;
+  border-radius: 36px;
+  font-family: sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  width:400px;
+}
+
+.google-button img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.login-login-bottommost{
+  text-align:center;
+  justify-content:center;
+  color:#000;
+  font-family: sans-serif;
+}
+
+.dash {
+  display: inline-block;
+  width: 160px;
+  background-color: #606060;
+  height: 1px;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.or {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.or p {
+  margin: 0 10px;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.or .dash::before,
+.or .dash::after {
+  content: '';
+  display: inline-block;
+  width: 160px;
+  background-color: #606060;
+  height: 1px;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.custom-email-field, .custom-password-field {
+  position: relative;
+  width: 400px;
+  height: 40px;
+  background-color: #fff; 
+  border-radius: 36px;
+  padding: 20px;
+  margin:3px;
+  border:1px solid transparent;
+}
+
+.custom-email-field::placeholder, .custom-password-field::placeholder {
+  color: #000; 
+  font-family: sans-serif; 
+  text-align: left; 
+  opacity: 1; 
+  font-size:larger;
+}
+
+/* Force background color to be white for autofilled fields */
+.custom-email-field:-webkit-autofill,
+.custom-password-field:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+.error-message{
+  color:red;
+  margin:10px;
+}
+
+.login-btn{
+  width: 400px;
+  height: 40px;
+  background-color: #ff3131; 
+  border-radius: 36px;
+  padding: 20px;
+  margin:3px;
+  border:1px solid transparent;
+  color:#000;
+  display:inline-flex;
+  align-items:center;
+  text-align:center;
+  justify-content:center;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.signup-login{
+  margin-top:55px;
+  width:430px;
+  height:120px;
+  background-color:#ffeeee;
+  border:1px black solid;
+  border-radius:16px;
+}
+
+.signup-btn{
+  display:inline-flex;
+  align-items:center;
+  text-align:center;
+  justify-content:center;
+  margin:-15px 0 0 14px;
+}

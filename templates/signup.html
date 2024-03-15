@@ -59,7 +59,42 @@
         }
     </style>
 </head>
-<body>
+
+
+
+    {% comment %} <form method="post">
+        {% csrf_token %}
+        <h2>Sign Up</h2>
+        
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {% if form.errors.username %}
+            <div class="error-message">{{ form.errors.username }}</div>
+        {% endif %}
+        
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {% if form.errors.email %}
+            <div class="error-message">{{ form.errors.email }}</div>
+        {% endif %}
+        
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+        {% if form.errors.password1 %}
+            <div class="error-message">{{ form.errors.password1 }}</div>
+        {% endif %}
+        
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+        {% if form.errors.password2 %}
+            <div class="error-message">{{ form.errors.password2 }}</div>
+        {% endif %}
+        
+        <button type="submit">Sign Up</button>
+    </form> {% endcomment %}
+
+
+
     <form method="post">
         {% csrf_token %}
         <h2>Sign Up</h2>
@@ -90,4 +125,4 @@
         
         <button type="submit">Sign Up</button>
     </form>
-
+    

@@ -87,15 +87,15 @@ a {
 }
 
 .navbar-icons {
-    display: flex;
-    gap: 40px;
-    align-items: center;
+  display: flex;
+  gap: 30px;
+  align-items: center;
 }
 
 .navbar-icons>* {
-    font-size: large;
-    font-weight: bold;
-    vertical-align: middle;
+  font-size: large;
+  font-weight: bold;
+  vertical-align: middle;
 }
 
 .navbar-links {
@@ -105,7 +105,7 @@ a {
 .navbar-links a {
     color: #ffffff;
     text-decoration: none;
-    margin: 0 15px;
+    margin: 0 10px;
     position: relative;
 }
 
