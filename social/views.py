@@ -10,6 +10,39 @@ from django.contrib.auth.decorators import login_required
 
 
 
+# @login_required
+# def create_group(request):
+#     group_id = None
+
+#     if request.method == 'POST':
+#         form = GroupCreationForm(request.POST)
+#         if form.is_valid():
+#             group = form.save(commit=False)
+#             group.creator = request.user
+#             group.save()
+#             group.members.add(request.user)
+#             # Get the group_id after saving the form
+#             group_id = group.group_id
+
+#             # Redirect to the 'group_detail' view with the correct group_id
+#             return redirect('social:group_detail', group_id=group_id)
+
+#     else:
+#         form = GroupCreationForm()
+#     return render(request, 'create_group.html', {'form': form, 'group_id': group_id})
+
+
+from django.shortcuts import render, redirect
+from .models import Group
+from .forms import GroupCreationForm
+from django.contrib.auth.decorators import login_required
+
+# social/views.py
+from django.shortcuts import render, redirect
+from .models import Group
+from .forms import GroupCreationForm
+from django.contrib.auth.decorators import login_required
+
 @login_required
 def create_group(request):
     group_id = None
@@ -21,15 +54,25 @@ def create_group(request):
             group.creator = request.user
             group.save()
             group.members.add(request.user)
+            # Save tags
+            tags = form.cleaned_data.get('tags')
+            if tags:
+                # Split tags by comma and strip whitespace
+                tag_list = [tag.strip() for tag in tags.split(',')]
+                # Add tags to the group
+                group.tags = ','.join(tag_list)
+                group.save()
+
             # Get the group_id after saving the form
             group_id = group.group_id
-
             # Redirect to the 'group_detail' view with the correct group_id
             return redirect('social:group_detail', group_id=group_id)
 
     else:
         form = GroupCreationForm()
     return render(request, 'create_group.html', {'form': form, 'group_id': group_id})
+
+
 
 @login_required
 def search_group(request):
@@ -161,7 +204,8 @@ from .forms import PostCreationForm
 from .models import Post
 from django.contrib import messages
 from user.models import UserProfile
-from .models import Group  
+from .models import Group 
+ 
 @login_required
 def create_post(request):
     user_groups = Group.objects.filter(members=request.user)

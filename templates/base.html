@@ -29,7 +29,7 @@
             
           <div class="navbar-links">
             <div class="dropdown">
-              <a href="{% url 'about' %}">About Us</a>
+              <a href="">About Us</a>
               <div class="dropdown-content">
                 <a href="{% url 'team' %}">Team</a>
                 <a href="{% url 'mission' %}">Mission</a>
@@ -40,6 +40,7 @@
               <a href="">Features</a>
               <div class="dropdown-content">
                 <a href="{% url 'social:feeds_view' %}">Social Networking</a>
+                <a href="{% url 'events:events' %}">Events</a>
                 <a href="{% url 'career:academic' %}">Academic Resources</a>
                 <a href="{% url 'career:jobs' %}">Career Development</a>
                 <!-- <a href="#">User Engagement</a> -->
@@ -48,18 +49,16 @@
             <div class="dropdown">
               <a href="">Get Involved</a>
               <div class="dropdown-content">
-                <a href="#">Support</a>
-                <a href="#">Feedback/Survey</a>
-                <a href="#">Alumni Network</a>
-                <a href="#">User Dashboard</a>
+                {% comment %} <a href="#">Support</a> {% endcomment %}
+                <a href="{% url 'getinvolved:alumni_network'%}">Alumni Network</a>
               </div>
             </div>
             <div class="dropdown">
               <a href="">Contact Us</a>
               <div class="dropdown-content">
-                <a href="#">Contact Information</a>
-                <a href="#">FAQ</a>
-                <a href="#">Help/Support</a>
+                <a href="{% url 'contactus:contactinfo' %}">Contact Information</a>
+                <a href="{% url 'contactus:faq' %}">FAQ</a>
+                {% comment %} <a href="#">Help/Support</a> {% endcomment %}
               </div>
             </div>
           </div>
@@ -119,7 +118,7 @@
         <div class="footer-content">
           <div class="footer-section">
             <h3 class="footer-h">Contact Us</h3>
-            <p>Email: <a href="mailto:info@collegeconnect.com">info@collegeconnect.com</a></p>
+            <p>Email: <a href="mailto:206320028@gkv.ac.in">206320028@gkv.ac.in</a></p>
             <p>Phone: <a href="tel:+919608685873">+91 9608685873</a></p>            
           </div>
           <div class="footer-section">
@@ -131,10 +130,10 @@
               <li>
                 <a href="{% url 'about' %}">About Us</a>
               </li>
-              <li>
+              {% comment %} <li>
                 <a href="#">Features</a>
-              </li>
-              <li>
+              </li> {% endcomment %}
+              {% comment %} <li>
                 <a href="#">Get Involved</a>
               </li>
               <li>
@@ -142,7 +141,7 @@
               </li>
               <li>
                 <a href="#">Terms of Service</a>
-              </li>
+              </li> {% endcomment %}
             </ul>
           </div>
           <div class="footer-section">
@@ -152,7 +151,7 @@
                 <a href="{% url 'blog' %}">Blog</a>
               </li>
               <li>
-                <a href="#">Events</a>
+                <a href="{% url 'events:events' %}">Events</a>
               </li>
               <li>
                 <a href="{% url 'social:search_group' %}">Groups</a>
@@ -165,9 +164,9 @@
               <li>
                 <a href="#">FAQ</a>
               </li>
-              <li>
+              {% comment %} <li>
                 <a href="#">Support</a>
-              </li>
+              </li> {% endcomment %}
             </ul>
           </div>
         </div>

@@ -1,0 +1,382 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
+
+
+<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!-- Include Google's official CSS for the sign-in button -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
+<body class="main-body-events">
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo-image">
+            </a>
+        </div>
+        
+        <div class="navbar-links">
+            <div class="nav-item-search">
+                <form class="search-form" action= method="GET">
+                    <input class="search-input" type="text" name="query">
+                    <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+    
+            <div class="notification-icon">
+                <i class="material-icons" style="font-size: 1.8rem; margin-top:-3px;">notifications</i>
+            </div>
+
+
+            <div class="dropdown">
+                {% if user.is_authenticated %}
+                    <div class="user-profile">
+                        {% if user.userprofile.profile_picture %}
+                            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                        {% else %}
+                            <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
+                        {% endif %}
+                    </div>
+                        
+                {% else %}
+                    <a class="login-text" href="{% url 'user:signin' %}">Login</a>
+                {% endif %}
+    
+                {% if user.is_authenticated %}
+                    <div class="dropdown-content" style="margin-left:-40px;">
+                        <a href="{% url 'user:profile' %}">Profile</a>
+                        <a href="{% url 'user:signout' %}">Logout</a>
+                    </div>
+                {% else %}
+                    <div class="dropdown-content" style="margin-left:-40px;">
+                        <a href="{% url 'user:signin' %}">Login</a>
+                        <a href="{% url 'user:signup' %}">Signup</a>
+                    </div>
+                {% endif %}
+            </div>  
+        </div>
+    </nav>
+    
+    <div class="events-main">
+        <h2 style="font-size:32px; font-weight:bold;">Events</h2>
+
+        <div class="events-section-main">
+
+
+            {% comment %} <div class="active-events">
+                    <p style="font-size:18px; text-align:left;color:#000; margin:20px 0 0px 80px;">All Events</p>
+                    <div class="container-events">
+                        {% for event in events %}
+                        <div class="card-events">
+                            <div class="card-events-header">
+                                <img loading="lazy" src="{{ event.image.url }}" alt="Event Cover Image" class="event-cover-image">
+                            </div>
+                            <div class="card-events-footer">
+                                <div class="card-events-footer-content">                            
+                                    <p class="date-of-event">{{ event.date_and_time }}</p>
+                                    <div style="height:1px; margin-bottom:5px; background-color:#cbcbcb;" class="underline"></div>
+                                    <p class="title-of-event">{{ event.title }}</p>
+                                    <p class="venue-of-event">{{ event.location }}</p>
+                                </div>
+                                <div class="participate-icon">
+                                    <a href="#" class="participate-button" data-event-id="{{ event.id }}">
+                                        <i class="material-icons" style="font-size: 56px; margin-left:50px; color:#ff3131;">add_circle_outline</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}                        
+                    </div>
+                </div>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                $(document).ready(function() {
+                    $('.participate-button').click(function(e) {
+                        e.preventDefault();
+                        var eventId = $(this).data('event-id');
+                        var icon = $(this).find('i');
+                        
+                        // Simulate AJAX call to toggle participation status
+                        // Here, you can use AJAX to send a request to the server to update participation status
+                        // For demo purposes, I'll just toggle the icon
+                        if (icon.hasClass('add_circle_outline')) {
+                            icon.removeClass('add_circle_outline').addClass('add_circle');
+                            // Add logic to handle participation status change
+                            console.log('User participated in event with ID:', eventId);
+                        } else {
+                            icon.removeClass('add_circle').addClass('add_circle_outline');
+                            // Add logic to handle participation status change
+                            console.log('User removed participation from event with ID:', eventId);
+                        }
+                    });
+                });
+                </script> 
+            {% endcomment %}
+
+            <div class="events-section-all">
+                
+
+                {% comment %} <div class="active-events">
+                    <p style="font-size:18px; text-align:left;color:#000; margin:20px 0 0px 80px;">All Events</p>
+                    <div class="container-events">
+                        {% for event in events %}
+                        <div class="card-events">
+                            <div class="card-events-header">
+                                <img loading="lazy" src="{{ event.image.url }}" alt="Event Cover Image" class="event-cover-image">
+                            </div>
+                            <div class="card-events-footer">
+                                <div class="card-events-footer-content">                            
+                                    <p class="date-of-event">{{ event.date_and_time }}</p>
+                                    <div style="height:1px; margin-bottom:5px; background-color:#cbcbcb;" class="underline"></div>
+                                    <p class="title-of-event">{{ event.title }}</p>
+                                    <p class="venue-of-event">{{ event.location }}</p>
+                                </div>
+                                <div class="participate-icon">
+                                    <a href="{% url 'events:participate_event' event.id %}" class="participate-button" data-event-id="{{ event.id }}">
+                                        <i class="material-icons {% if user in event.participants.all %}participating{% else %}not-participating{% endif %}" style="font-size: 56px; margin-left:50px;">add_circle_outline</i>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}                        
+                    </div>
+                </div> {% endcomment %}
+                
+                
+                <div class="active-events">
+                    <p style="font-size:18px; text-align:left;color:#000; margin:20px 0 0px 80px;">All Events</p>
+                    <div class="container-events">
+                        {% for event in events %}
+                        <div class="card-events">
+                            <div class="card-events-header">
+                                <img loading="lazy" src="{{ event.image.url }}" alt="Event Cover Image" class="event-cover-image">
+                            </div>
+                            <div class="card-events-footer">
+                                <div class="card-events-footer-content">                            
+                                    <p class="date-of-event">{{ event.date_and_time }}</p>
+                                    <div style="height:1px; margin-bottom:5px; background-color:#cbcbcb;" class="underline"></div>
+                                    <p class="title-of-event">{{ event.title }}</p>
+                                    <p class="venue-of-event">{{ event.location }}</p>
+                                </div>
+                                <div class="participate-icon">
+                                    <a href="{% url 'events:participate_event' event.id %}" class="participate-button" data-event-id="{{ event.id }}">
+                                        {% if user in event.participants.all %}
+                                            <i class="material-icons participating" style="font-size: 56px; margin-left:50px; color: #00ff00;">done</i>
+                                        {% else %}
+                                            <i class="material-icons not-participating" style="font-size: 56px; margin-left:50px; color: #ff0000;">add_circle_outline</i>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}                        
+                    </div>
+                </div>
+                
+
+
+                <div class="created-events">
+                    <p style="font-size:18px; text-align:left;color:#000; margin:20px 0 0px 115px;">Your Created Events</p>
+                    <div class="container-events">
+                        {% for event in created_events %}
+                        <div class="card-events">
+                            <div class="card-events-header">
+                                <img loading="lazy" src="{{ event.image.url }}" alt="Event Cover Image" class="event-cover-image">
+                            </div>
+                            <div class="card-events-footer">
+                                <div class="card-events-footer-content">                            
+                                    <p class="date-of-event">{{ event.date_and_time }}</p>
+                                    <div style="height:1px; margin-bottom:5px; background-color:#cbcbcb;" class="underline"></div>
+                                    <p class="title-of-event">{{ event.title }}</p>
+                                    <p class="venue-of-event">{{ event.location }}</p>
+                                </div>
+                                <div class="delete-icon">
+                                    <a href="{% url 'events:delete_event' event.id %}">
+                                        <i class="material-icons" style="font-size: 56px; margin-left:50px; color:ff3131;">delete</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+
+                <div class="participated-events">
+                    <p style="font-size:18px; text-align:left;color:#000; margin:20px 0 0px 115px;">Participated Events</p>
+                    <div class="container-events">
+                        {% for event in user.participated_events.all %}
+                        <div class="card-events">
+                            <div class="card-events-header">
+                                <img loading="lazy" src="{{ event.image.url }}" alt="Event Cover Image" class="event-cover-image">
+                            </div>
+                            <div class="card-events-footer">
+                                <div class="card-events-footer-content">                            
+                                    <p class="date-of-event">{{ event.date_and_time }}</p>
+                                    <div style="height:1px; margin-bottom:5px; background-color:#cbcbcb;" class="underline"></div>
+                                    <p class="title-of-event">{{ event.title }}</p>
+                                    <p class="venue-of-event">{{ event.location }}</p>
+                                </div>
+                                <div class="participate-icon">
+                                    <!-- You can customize this based on participation status -->
+                                    <a href="{% url 'events:participate_event' event.id %}">
+                                        {% if user in event.participants.all %}
+                                            <!-- User is participating in this event -->
+                                            <i class="material-icons" style="font-size: 56px; margin-left:50px; color: #00ff00;">done</i>
+                                        {% else %}
+                                            <!-- User is not participating in this event -->
+                                            <i class="material-icons" style="font-size: 56px; margin-left:50px; color: #ff0000;">add_circle_outline</i>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                
+
+
+
+
+                
+
+            </div>
+            
+
+            <div class="event-section-right">
+                <div class="events-search">
+                    <p style="font-size:18px; text-align:left;color:#000;">Search Events</p>
+                    <div class="event-search-bar">
+                        <form class="event-search-form" action= method="GET">
+                            <input class="event-search-input" type="text" name="query">
+                        </form>
+                    </div>
+                    <div class="searched-events">
+                        <div class="searched-events-list">
+                            <div class="event-icon">
+                                <i class="material-icons" style="font-size: 25px; color:000; ">group</i></a>
+                            </div>
+                            <p style="font-size:15px; color:#000; font-weight:bold;position:relative;top:9px;"> Event Name</p>
+                            <a href=""><button class="searched-event-interested-btn">Interested</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="events-create">
+
+                        <button type="button" id ="create-event-btn"  class="btn btn-primary" data-toggle="modal" data-target="#createEventModal">Create Event</button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="createEventModal" tabindex="-1" role="dialog" aria-labelledby="createEventModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="createEventModalLabel">Create Event</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="id_title">Title:</label>
+                                        {{ form.title }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_description">Description:</label>
+                                        {{ form.description }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_date_and_time">Date and Time:</label>
+                                        {{ form.date_and_time }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_location">Location:</label>
+                                        {{ form.location }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_category">Category:</label>
+                                        {{ form.category }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_organizer">Organizer:</label>
+                                        {{ form.organizer }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_contact_email">Contact Email:</label>
+                                        {{ form.contact_email }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_image">Image:</label>
+                                        {{ form.image }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_tags">Tags:</label>
+                                        {{ form.tags }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_registration_required">Registration Required:</label>
+                                        {{ form.registration_required }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_registration_deadline">Registration Deadline:</label>
+                                        {{ form.registration_deadline }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_additional_instructions">Additional Instructions:</label>
+                                        {{ form.additional_instructions }}
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Create</button>
+                                </form>
+
+                                
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Bootstrap CSS -->
+                        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+                        <!-- Bootstrap JS and jQuery -->
+                        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+                                            
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+          
+
+
+</body> 

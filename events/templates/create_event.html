@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+</head>
+<body>
+    <h1>Create Event</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_title">Title:</label>
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            <label for="id_description">Description:</label>
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            <label for="id_date_and_time">Date and Time:</label>
+            {{ form.date_and_time }}
+        </div>
+        <div class="form-group">
+            <label for="id_location">Location:</label>
+            {{ form.location }}
+        </div>
+        <div class="form-group">
+            <label for="id_category">Category:</label>
+            {{ form.category }}
+        </div>
+        <div class="form-group">
+            <label for="id_organizer">Organizer:</label>
+            {{ form.organizer }}
+        </div>
+        <div class="form-group">
+            <label for="id_contact_email">Contact Email:</label>
+            {{ form.contact_email }}
+        </div>
+        <div class="form-group">
+            <label for="id_image">Image:</label>
+            {{ form.image }}
+        </div>
+        <div class="form-group">
+            <label for="id_tags">Tags:</label>
+            {{ form.tags }}
+        </div>
+        <div class="form-group">
+            <label for="id_registration_required">Registration Required:</label>
+            {{ form.registration_required }}
+        </div>
+        <div class="form-group">
+            <label for="id_registration_deadline">Registration Deadline:</label>
+            {{ form.registration_deadline }}
+        </div>
+        <div class="form-group">
+            <label for="id_additional_instructions">Additional Instructions:</label>
+            {{ form.additional_instructions }}
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+    
+    
+</body>
+</html>

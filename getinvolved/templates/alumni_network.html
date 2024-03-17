@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Network - College Connect</title>
+    <style>
+        body {
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 300px; /* Adjust as needed */
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .card-header img {
+            width: 50px; /* Adjust as needed */
+            height: 50px; /* Adjust as needed */
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .card-header h3 {
+            margin: 0;
+            font-size: large;
+            color:black;
+            z-index:99;
+            margin:5px;
+        }
+        .card p {
+            margin: 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <img src="{% static 'images/team/amsanjeev.jpg' %}" alt="Profile Picture">
+            <h3>John Doe</h3>
+        </div>
+        <p>Class of 2010</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <img src="{% static 'images/team/amsanjeev.jpg' %}" alt="Profile Picture">
+            <h3>Jane Smith</h3>
+        </div>
+        <p>Class of 2015</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <img src="{% static 'images/team/amsanjeev.jpg' %}" alt="Profile Picture">
+            <h3>Michael Johnson</h3>
+        </div>
+        <p>Class of 2020</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+    <!-- Add more alumni cards as needed -->
+</div>
+
+</body>
+</html>
+
+
+
+{% endblock %} 

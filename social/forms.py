@@ -2,10 +2,19 @@ from django import forms
 from .models import Group, Post
 
 
+from django import forms
+from .models import Group
+from taggit.forms import TagField
+
+
+from django import forms
+from .models import Group
+
 class GroupCreationForm(forms.ModelForm):
     class Meta:
         model = Group
-        fields = ['name', 'description']
+        fields = ['name', 'description', 'tags']
+
 
 
 class GroupSearchForm(forms.Form):

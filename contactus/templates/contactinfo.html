@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<br></br>
+<div class="underline" style="background-color:#fff; height:20px;"></div>
+<p class="text-blk team-head-text" style="margin:30px; padding:20px;">
+Contact Us  </p>
+<div class="contactus-main">
+
+        <div class="container-contact">
+            <div class="map">
+                <!-- Google Map Embed Code -->
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27665.4212906597!2d78.02582917431643!3d29.916787100000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390949367eb45c4d%3A0xeede3030e4b3bc7b!2sFaculty%20of%20Engineering%20and%20Technology%2C%20GKV!5e0!3m2!1sen!2sin!4v1710593031670!5m2!1sen!2sin" width="600" height="600" style="border:1px solid transparent; border-radius:10px; margin-left:50px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
+            <div class="contact-info">
+                <div class="contact-info-main" >
+                    <div class="info">
+                    <p><strong>Email:</strong> 206320028@gkv.ac.in</p>
+                    <p><strong>Phone:</strong> +91 9608685873</p>
+                    </div>
+                    <div class="enquiry-form">
+                        <h3 style="text-align:left; font-size:larger;">Send Us an Enquiry</h3>
+                        <form action="{% url 'contactus:contactinfo' %}" method="post">
+                            {% csrf_token %}                            <input type="text" name="name" placeholder="Your Name" required><br>
+                            <input type="email" name="email" placeholder="Your Email" required><br>
+                            <textarea name="message" placeholder="Your Message" required></textarea><br>
+                            <input type="submit" value="Send">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br><br><br><br>
+</div>
+
+
+
+
+
+{% endblock %} 

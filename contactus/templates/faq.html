@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <style>
+        /* General CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffeeee;
+            border-radius: 8px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ccc;
+            padding: 20px 0;
+        }
+        .question {
+            font-weight: bold;
+        }
+        .answer {
+            margin-top: 10px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Frequently Asked Questions</h2>
+    
+    <div class="faq-item">
+        <div class="question">1. What is College Connect?</div>
+        <div class="answer">College Connect is a transformative digital platform designed to revolutionize the collegiate experience by providing an integrated ecosystem addressing academic, social, and professional needs.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">2. Why is College Connect necessary?</div>
+        <div class="answer">College Connect is necessary to address the evolving challenges and opportunities in higher education by providing students with a comprehensive digital platform that meets their academic, social, and professional needs.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">3. How does College Connect benefit students?</div>
+        <div class="answer">College Connect benefits students by offering access to educational resources, fostering social connections, and providing career development tools, thus enhancing their overall college experience and preparing them for future success.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">4. Who can use College Connect?</div>
+        <div class="answer">College Connect is designed for college students, educators, and administrators who seek to enhance the educational experience and promote student success in higher education.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">5. Is College Connect accessible on mobile devices?</div>
+        <div class="answer">Yes, College Connect is optimized for mobile devices, allowing users to access the platform anytime, anywhere, using their smartphones or tablets.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">6. Can I provide feedback on College Connect?</div>
+        <div class="answer">Yes, College Connect welcomes feedback from users. You can provide feedback through the platform's interface or contact support directly to share your suggestions and comments.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">7. How secure is College Connect?</div>
+        <div class="answer">College Connect prioritizes user security and data privacy. The platform employs industry-standard security measures to safeguard user information and ensure a secure online environment for all users.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">8. Can I collaborate with other students on College Connect?</div>
+        <div class="answer">Yes, College Connect facilitates collaboration among students through various features such as discussion forums, group projects, and shared resources, allowing users to work together on academic and extracurricular activities.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">9. Are there resources for career development on College Connect?</div>
+        <div class="answer">Yes, College Connect offers a range of career development resources including job listings, resume builders, interview preparation tips, and connections to industry professionals, to help students prepare for their future careers.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">10. How can I join College Connect?</div>
+        <div class="answer">You can join College Connect by signing up for an account on the platform's website or mobile app. Simply follow the registration process and create your profile to start accessing the available features and resources.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">11. Is there a cost to use College Connect?</div>
+        <div class="answer">No, College Connect is free for users. There are no subscription fees or hidden charges associated with accessing the platform's features and resources.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">12. Can I customize my profile on College Connect?</div>
+        <div class="answer">Yes, you can customize your profile on College Connect by adding personal information, academic details, interests, and preferences to tailor your experience on the platform.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">13. How often is College Connect updated?</div>
+        <div class="answer">College Connect is regularly updated with new features, improvements, and content to enhance the user experience and ensure that users have access to the latest educational resources and tools.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">14. Can I access College Connect offline?</div>
+        <div class="answer">No, College Connect requires an internet connection to access its features and resources. However, you can save certain materials for offline viewing within the platform's interface.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">15. Can students provide feedback or suggestions for improving College Connect?</div>
+        <div class="answer">Yes, College Connect values feedback from students and encourages them to provide suggestions for improving the platform. Users can submit feedback through the platform's interface or contact support directly.</div>
+    </div>
+</div>
+
+
+
+{% endblock %}

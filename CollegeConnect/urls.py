@@ -11,7 +11,12 @@ urlpatterns = [
     path('social/', include('social.urls')),
     path('career/', include('career.urls')),
     path('blogs/', include('blogs.urls')),
-        path('user/', include('user.urls')), 
+    path('user/', include('user.urls')), 
+    path('contactus/', include('contactus.urls')),
+    path('getinvolved/', include('getinvolved.urls')),
+    path('events/', include('events.urls')),
+    
+     
 
 
     # Add more URL patterns for other apps if needed
