@@ -72,7 +72,7 @@
     </nav>
     
     <div class="events-main">
-        <h2 style="font-size:32px; font-weight:bold;">Events</h2>
+        <h2 style="font-size:32px; font-weight:bold; margin-left:50px;">Events</h2>
 
         <div class="events-section-main">
 
@@ -161,101 +161,109 @@
                 <div class="active-events">
                     <p style="font-size:18px; text-align:left;color:#000; margin:20px 0 0px 80px;">All Events</p>
                     <div class="container-events">
-                        {% for event in events %}
-                        <div class="card-events">
-                            <div class="card-events-header">
-                                <img loading="lazy" src="{{ event.image.url }}" alt="Event Cover Image" class="event-cover-image">
-                            </div>
-                            <div class="card-events-footer">
-                                <div class="card-events-footer-content">                            
-                                    <p class="date-of-event">{{ event.date_and_time }}</p>
-                                    <div style="height:1px; margin-bottom:5px; background-color:#cbcbcb;" class="underline"></div>
-                                    <p class="title-of-event">{{ event.title }}</p>
-                                    <p class="venue-of-event">{{ event.location }}</p>
+                        {% if events %}
+                            {% for event in events %}
+                            <div class="card-events">
+                                <div class="card-events-header">
+                                    <img loading="lazy" src="{{ event.image.url }}" alt="Event Cover Image" class="event-cover-image">
                                 </div>
-                                <div class="participate-icon">
-                                    <a href="{% url 'events:participate_event' event.id %}" class="participate-button" data-event-id="{{ event.id }}">
-                                        {% if user in event.participants.all %}
-                                            <i class="material-icons participating" style="font-size: 56px; margin-left:50px; color: #00ff00;">done</i>
-                                        {% else %}
-                                            <i class="material-icons not-participating" style="font-size: 56px; margin-left:50px; color: #ff0000;">add_circle_outline</i>
-                                        {% endif %}
-                                    </a>
+                                <div class="card-events-footer">
+                                    <div class="card-events-footer-content">                            
+                                        <p class="date-of-event">{{ event.date_and_time }}</p>
+                                        <div style="height:1px; margin:-12px 0 6px 0; background-color:#cbcbcb; width:150px;" class="underline"></div>
+                                        <p class="title-of-event"><span style="font-weight:bold;">Title: </span> {{ event.title }}</p>
+                                        <p class="venue-of-event"><span style="font-weight:bold;">Venue: </span>{{ event.location }}</p>
+                                    </div>
+                                    <div class="event-icon participate-icon">
+                                        <a style="text-decoration:none;" href="{% url 'events:participate_event' event.id %}" class="participate-button" data-event-id="{{ event.id }}">
+                                            {% if user in event.participants.all %}
+                                                <i class="material-icons participating" style="color:#ffeeee;text-decoration:none;">done</i>
+                                            {% else %}
+                                                <i class="material-icons not-participating" style="color: #ffeeee;text-decoration:none;">add_circle</i>
+                                            {% endif %}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {% endfor %}                        
+                            {% endfor %}
+                        {% else %}
+                            <p style="width:max-content; color:#000; font-weight:bold;">No events available at the moment.</p>
+                        {% endif %}                    
                     </div>
                 </div>
                 
 
 
-                <div class="created-events">
-                    <p style="font-size:18px; text-align:left;color:#000; margin:20px 0 0px 115px;">Your Created Events</p>
+
+                <div class="active-events created-events">
+                    <p style="font-size:18px; text-align:left;color:#000; margin:20px 0 0px 80px;">My Created Events</p>
                     <div class="container-events">
-                        {% for event in created_events %}
-                        <div class="card-events">
-                            <div class="card-events-header">
-                                <img loading="lazy" src="{{ event.image.url }}" alt="Event Cover Image" class="event-cover-image">
-                            </div>
-                            <div class="card-events-footer">
-                                <div class="card-events-footer-content">                            
-                                    <p class="date-of-event">{{ event.date_and_time }}</p>
-                                    <div style="height:1px; margin-bottom:5px; background-color:#cbcbcb;" class="underline"></div>
-                                    <p class="title-of-event">{{ event.title }}</p>
-                                    <p class="venue-of-event">{{ event.location }}</p>
+                        {% if created_events %}
+                            <!-- Events are available -->
+                            {% for event in created_events %}
+                                <div class="card-events">
+                                    <div class="card-events-header">
+                                        <img loading="lazy" src="{{ event.image.url }}" alt="Event Cover Image" class="event-cover-image">
+                                    </div>
+                                    <div class="card-events-footer">
+                                        <div class="card-events-footer-content">                            
+                                            <p class="date-of-event">{{ event.date_and_time }}</p>
+                                            <div style="height:1px; margin:-12px 0 6px 0; background-color:#cbcbcb; width:150px;" class="underline"></div>
+                                            <p class="title-of-event"><span style="font-weight:bold;">Title: </span>{{ event.title }}</p>
+                                            <p class="venue-of-event"><span style="font-weight:bold;">Venue: </span>{{ event.location }}</p>
+                                        </div>
+                                        <div class=" event-icon delete-icon participate-icon">
+                                            <a style="text-decoration:none;" href="{% url 'events:delete_event' event.id %}">
+                                                <i class="material-icons delete" style="color:ffeeee; text-decoration:none;">delete</i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="delete-icon">
-                                    <a href="{% url 'events:delete_event' event.id %}">
-                                        <i class="material-icons" style="font-size: 56px; margin-left:50px; color:ff3131;">delete</i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
+                            {% endfor %}
+                        {% else %}
+                            <!-- No events are available -->
+                            <p style="width:max-content; color:#000; font-weight:bold;">You haven't created any events yet.</p>
+                        {% endif %}
                     </div>
                 </div>
+                
 
 
 
-                <div class="participated-events">
-                    <p style="font-size:18px; text-align:left;color:#000; margin:20px 0 0px 115px;">Participated Events</p>
+                <div class="active-events participated-events">
+                    <p style="font-size:18px; text-align:left;color:#000; margin:20px 0 0px 80px;">My Participated Events</p>
                     <div class="container-events">
-                        {% for event in user.participated_events.all %}
-                        <div class="card-events">
-                            <div class="card-events-header">
-                                <img loading="lazy" src="{{ event.image.url }}" alt="Event Cover Image" class="event-cover-image">
-                            </div>
-                            <div class="card-events-footer">
-                                <div class="card-events-footer-content">                            
-                                    <p class="date-of-event">{{ event.date_and_time }}</p>
-                                    <div style="height:1px; margin-bottom:5px; background-color:#cbcbcb;" class="underline"></div>
-                                    <p class="title-of-event">{{ event.title }}</p>
-                                    <p class="venue-of-event">{{ event.location }}</p>
+                        {% if user.participated_events.all %}
+                            {% for event in user.participated_events.all %}
+                                <div class="card-events">
+                                    <div class="card-events-header">
+                                        <img loading="lazy" src="{{ event.image.url }}" alt="Event Cover Image" class="event-cover-image">
+                                    </div>
+                                    <div class="card-events-footer">
+                                        <div class="card-events-footer-content">                            
+                                            <p class="date-of-event">{{ event.date_and_time }}</p>
+                                            <div style="height:1px; margin:-12px 0 6px 0; background-color:#cbcbcb; width:150px;" class="underline"></div>
+                                            <p class="title-of-event"><span style="font-weight:bold;">Title: </span>{{ event.title }}</p>
+                                            <p class="venue-of-event"><span style="font-weight:bold;">Venue: </span>{{ event.location }}</p>
+                                        </div>
+                
+                                        <div class="event-icon participate-icon">
+                                            <a style="text-decoration:none;" href="{% url 'events:participate_event' event.id %}">
+                                                {% if user in event.participants.all %}
+                                                    <i class="material-icons participating" style="color:#ffeeee; text-decoration:none;">done</i>
+                                                {% else %}
+                                                    <i class="material-icons not-participating" style="color: #ffeeee; text-decoration:none;">add_circle</i>
+                                                {% endif %}
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="participate-icon">
-                                    <!-- You can customize this based on participation status -->
-                                    <a href="{% url 'events:participate_event' event.id %}">
-                                        {% if user in event.participants.all %}
-                                            <!-- User is participating in this event -->
-                                            <i class="material-icons" style="font-size: 56px; margin-left:50px; color: #00ff00;">done</i>
-                                        {% else %}
-                                            <!-- User is not participating in this event -->
-                                            <i class="material-icons" style="font-size: 56px; margin-left:50px; color: #ff0000;">add_circle_outline</i>
-                                        {% endif %}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
+                            {% endfor %}
+                        {% else %}
+                            <p style="width:max-content; color:#000; font-weight:bold;">You haven't participated in any events.</p>
+                        {% endif %}
                     </div>
                 </div>
-                
-                
-
-
-
-
                 
 
             </div>
