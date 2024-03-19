@@ -370,10 +370,10 @@ p {
 }
 
 .rectangle-feature {
-    width: 80px;
+    width: 200px;
     height: 70px;
     background-color: #fff;
-    margin-left: 450px;
+    margin-left: 550px;
     border-radius: 10px;
     margin-top: 20px;
     transition: transform 0.3s, background-color 0.3s;

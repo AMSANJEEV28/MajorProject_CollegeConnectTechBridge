@@ -135,3 +135,6 @@ def participate_event(request, event_id):
     # Redirect back to the events page
     return HttpResponseRedirect(reverse('events:events'))
 
+def create_event_view(request):
+    # Your view logic here
+    return render(request, 'create_event.html')

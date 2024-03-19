@@ -922,3 +922,18 @@ a{
 .alert-danger ul li {
   list-style-type: disc;
 }
+
+/* Custom CSS for modal */
+
+/* .modal-content {
+  width: 20px; 
+  /* max-width: 600px;  */
+  margin: auto; 
+  z-index:9999;
+} */
+/* 
+/* Adjust iframe height as needed */
+#createEventIframe {
+  width: 100%;
+  height: 400px; /* Adjust height as needed */
+} */
