@@ -923,17 +923,89 @@ a{
   list-style-type: disc;
 }
 
-/* Custom CSS for modal */
+/* ----------------POPUP----------------------- */
 
-/* .modal-content {
-  width: 20px; 
-  /* max-width: 600px;  */
-  margin: auto; 
-  z-index:9999;
-} */
-/* 
-/* Adjust iframe height as needed */
-#createEventIframe {
-  width: 100%;
-  height: 400px; /* Adjust height as needed */
-} */
+.modal{
+  margin-top:80px;
+  width:100%;
+  min-width:100%;
+  display:flex;
+  text-align:center;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal-content{
+  min-width:1200px;
+  margin:0 0 0 -350px;
+}
+
+.modal-body{
+  min-height:540px;
+  height:540px;
+}
+
+.form-group{
+  margin:5px;
+  padding:5px;
+  display:flex;
+}
+
+.modal-body label{
+  margin:5px;
+}
+
+#id_description, #id_additional_instructions {
+    height: 100px; 
+    resize: vertical;
+}
+
+.location, .category, .organizer, .contact, .image, .tags, .reg, .regD, .addIns {
+  position:relative;
+}
+
+.category{
+  top:-65px;
+  left:400px;
+}
+
+.organizer{
+  left:465px;
+  top:-65px;
+}
+
+.contact{
+  left:-800px;
+  top:20px;
+}
+
+.image{
+  top:-42px;
+  left:400px;
+}
+
+.tags{
+  left:900px;
+  top:-100px;
+}
+
+.reg{
+  left:-400px;
+}
+
+.regD{
+  left:-500px;
+}
+
+.addIns{
+  top:-100px;
+  left:800px;
+}
+
+.create-btn{
+  position:relative;
+  top:-90px;
+  width:100px;
+  padding:5px;
+
+}

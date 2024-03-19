@@ -309,7 +309,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="post" enctype="multipart/form-data">
+                                        {% comment %} <form method="post" enctype="multipart/form-data">
                                             {% csrf_token %}
                                             <div class="form-group">
                                                 <label for="id_title">Title:</label>
@@ -360,7 +360,94 @@
                                                 {{ form.additional_instructions }}
                                             </div>
                                             <button type="submit" class="btn btn-primary">Create</button>
-                                        </form>  
+                                        </form>   {% endcomment %}
+
+                                        <form method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                              <div class="col-md-4">
+                                                <div class="form-group">
+                                                  <label for="id_title">Title:</label>
+                                                  {{ form.title }}
+                                                </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                <div class="form-group">
+                                                  <label for="id_description">Description:</label>
+                                                  {{ form.description }}
+                                                </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                <div class="form-group" style="margin:0 0 0 50px;">
+                                                  <label for="id_date_and_time">Date and Time:</label>
+                                                  {{ form.date_and_time }}
+                                                </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                <div class="form-group location">
+                                                  <label for="id_location">Location:</label>
+                                                  {{ form.location }}
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-md-4">
+                                                <div class="form-group category">
+                                                  <label for="id_category">Category:</label>
+                                                  {{ form.category }}
+                                                </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                <div class="form-group organizer">
+                                                  <label for="id_organizer">Organizer:</label>
+                                                  {{ form.organizer }}
+                                                </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                <div class="form-group contact">
+                                                  <label for="id_contact_email">Contact Email:</label>
+                                                  {{ form.contact_email }}
+                                                </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                <div class="form-group image">
+                                                  <label for="id_image">Image:</label>
+                                                  {{ form.image }}
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-md-4">
+                                                <div class="form-group tags">
+                                                  <label for="id_tags">Tags:</label>
+                                                  {{ form.tags }}
+                                                </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                <div class="form-group reg">
+                                                  <label for="id_registration_required">Registration Required:</label>
+                                                  {{ form.registration_required }}
+                                                </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                <div class="form-group regD">
+                                                  <label for="id_registration_deadline">Registration Deadline:</label>
+                                                  {{ form.registration_deadline }}
+                                                </div>
+                                              </div>
+                                              <div class="col-md-4">
+                                                <div class="form-group addIns">
+                                                  <label for="id_additional_instructions">Additional Instructions:</label>
+                                                  {{ form.additional_instructions }}
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="row">
+                                              <div class="col-md-12 text-center">
+                                                <button type="submit" class="btn btn-primary create-btn">Create</button>
+                                              </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
