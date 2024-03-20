@@ -936,13 +936,15 @@ a{
 }
 
 .modal-content{
-  min-width:1200px;
-  margin:0 0 0 -350px;
+  min-width:1300px;
+  margin:0 0 0 -400px;
 }
 
 .modal-body{
-  min-height:540px;
-  height:540px;
+  min-height:560px;
+  height:560px;
+  background-color: #ffeeee;
+
 }
 
 .form-group{
@@ -966,31 +968,31 @@ a{
 
 .category{
   top:-65px;
-  left:400px;
+  left:425px;
 }
 
 .organizer{
-  left:465px;
+  left:500px;
   top:-65px;
 }
 
 .contact{
-  left:-800px;
+  left:-870px;
   top:20px;
 }
 
 .image{
   top:-42px;
-  left:400px;
+  left:425px;
 }
 
 .tags{
-  left:900px;
+  left:970px;
   top:-100px;
 }
 
 .reg{
-  left:-400px;
+  left:-440px;
 }
 
 .regD{
@@ -999,13 +1001,18 @@ a{
 
 .addIns{
   top:-100px;
-  left:800px;
+  left:860px;
 }
 
 .create-btn{
   position:relative;
-  top:-90px;
+  top:-100px;
   width:100px;
   padding:5px;
 
+}
+
+#id_title, #id_description, #id_date_and_time, #id_location, #id_category, #id_organizer, #id_contact_email, #id_image, #id_tags , #id_registration_required, #id_registration_deadline, #id_additional_instructions {
+  padding:10px;
+  border-radius:5px;
 }

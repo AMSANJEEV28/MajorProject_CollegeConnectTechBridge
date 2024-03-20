@@ -1,7 +1,28 @@
-{% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
+
+
+<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!-- Include Google's official CSS for the sign-in button -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
+{% comment %} 
 <style>
     @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
     @import url("https://fonts.googleapis.com/css?family=Bree+Serif&display=swap");
@@ -361,7 +382,7 @@
       justify-content: center;
       margin: 20px auto;
     }
-    </style>
+</style>
 <br><br><br><br><br><br><br><br>
 <div class="container">
     <div class="profile-header">
@@ -451,8 +472,8 @@
         </div>
       </div>
     </div>
-  </div>
-  <script>$(".nav ul li").click(function() {
+</div>
+<script>$(".nav ul li").click(function() {
     $(this)
       .addClass("active")
       .siblings()
@@ -495,5 +516,257 @@
   if (document.querySelector(".alert-message").innerText > 9) {
     document.querySelector(".alert-message").style.fontSize = ".7rem";
   }
-  </script>
-{% endblock %}
+</script>
+ {% endcomment %}
+
+
+
+
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo-image">
+        </a>
+    </div>
+    
+    <div class="navbar-links">
+        <div class="dropdown">
+            {% if user.is_authenticated %}
+                <div class="user-profile">
+                    {% if user.userprofile.profile_picture %}
+                        <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                    {% else %}
+                        <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
+                    {% endif %}
+                </div>
+                    
+            {% else %}
+                <a class="login-text" href="{% url 'user:signin' %}">Login</a>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+                <div class="dropdown-content" style="margin-left:-40px;">
+                    <a href="{% url 'user:signout' %}">Logout</a>
+                </div>
+            {% else %}
+                <div class="dropdown-content" style="margin-left:-40px;">
+                    <a href="{% url 'user:signin' %}">Login</a>
+                    <a href="{% url 'user:signup' %}">Signup</a>
+                </div>
+            {% endif %}
+        </div>  
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="main-body">
+
+      <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">My Profile</li>
+        </ol>
+      </nav>
+
+      <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex flex-column align-items-center text-center">
+
+                  {% if user.userprofile.profile_picture %}
+                    <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle" width="150">
+                  {% else %}
+                    <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="rounded-circle" width="150">
+                  {% endif %}
+
+                  <div class="mt-3">
+                    <h4>{{ user_profile.first_name }}
+                          {% if user_profile.last_name %}
+                        {{ user_profile.last_name }}
+                          {% endif %} 
+                    </h4>
+                    <p class="text-secondary mb-1 font-size-sm">{{user_profile.college_name }}</p>
+                    <p class="text-muted font-size-sm">{{user_profile.university_name }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-3">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <a href="" target="_blank">
+                      <i class="fa-solid fa-globe"></i>Website
+                    </a>
+                    <span class="text-secondary">https://bootdey.com</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <a href="" target="_blank">
+                    <i class="fa-solid fa-globe"></i>Github
+                  </a>
+                  <span class="text-secondary">https://bootdey.com</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <a href="" target="_blank">
+                    <i class="fa-solid fa-globe"></i>Twitter
+                  </a>
+                  <span class="text-secondary">https://bootdey.com</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <a href="" target="_blank">
+                    <i class="fa-solid fa-globe"></i>Instagram
+                  </a>
+                  <span class="text-secondary">https://bootdey.com</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                  <a href="" target="_blank">
+                    <i class="fa-solid fa-globe"></i>Facebook
+                  </a>
+                  <span class="text-secondary">https://bootdey.com</span>
+                </li>
+              </ul>
+            </div>
+
+        </div>
+                    
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3"><h6 class="mb-0">Full Name</h6></div>
+                <div class="col-sm-9 text-secondary">{{ user_profile.first_name }}
+                                                      {% if user_profile.last_name %}
+                                                        {{ user_profile.last_name }}
+                                                      {% endif %} 
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="row">
+                <div class="col-sm-3"><h6 class="mb-0">Email</h6></div>
+                <div class="col-sm-9 text-secondary"><a href="mailto:{{ user_email }}">{{ user_email }}</a>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="row">
+                <div class="col-sm-3"><h6 class="mb-0">Mobile</h6></div>
+                <div class="col-sm-9 text-secondary"></div>
+              </div>
+
+              <hr>
+                    
+              <div class="row">
+                  <div class="col-sm-12">
+                      <a class="btn btn-info" href="{% url 'user:edit_profile' %}">Edit</a>
+                  </div>
+              </div>
+              
+            </div>
+          </div>
+                    
+          <div class="row gutters-sm">
+                    
+            <div class="col-sm-6 mb-3">      
+              <div class="card h-100">   
+              </div>      
+            </div>
+                    
+            <div class="col-sm-6 mb-3">      
+              <div class="card h-100">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 class="footer-h">Contact Us</h3>
+        <p>Email: <a href="mailto:206320028@gkv.ac.in">206320028@gkv.ac.in</a></p>
+        <p>Phone: <a href="tel:+919608685873">+91 9608685873</a></p>          
+      </div>
+      <div class="footer-section">
+        <h3 class="footer-h">Quick Links</h3>
+        <ul>
+          <li>
+            <a href="{% url 'home' %}">Home</a>
+          </li>
+          <li>
+            <a href="{% url 'about' %}">About Us</a>
+          </li>
+          {% comment %} <li>
+            <a href="#">Features</a>
+          </li>
+          <li>
+            <a href="#">Get Involved</a>
+          </li>
+          <li>
+            <a href="#">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="#">Terms of Service</a>
+          </li> {% endcomment %}
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3 class="footer-h">Explore</h3>
+        <ul>
+          <li>
+            <a href="{% url 'blog' %}">Blog</a>
+          </li>
+          <li>
+            <a href="#">Events</a>
+          </li>
+          <li>
+            <a href="{% url 'social:search_group' %}">Groups</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3 class="footer-h">Resources</h3>
+        <ul>
+          <li>
+            <a href="#">FAQ</a>
+          </li>
+          {% comment %} <li>
+            <a href="#">Support</a>
+          </li> {% endcomment %}
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 Connect and Collaborate | All rights reserved by Connect and Collaborate</p>
+    </div>
+  </footer>
+
+</body>  
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+

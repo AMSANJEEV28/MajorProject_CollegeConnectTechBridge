@@ -16,61 +16,11 @@ def edit_profile(request):
     else:
         form = UserProfileForm(instance=user_profile)
 
-    return render(request, 'profile.html', {'form': form})
+    return render(request, 'create_profile.html', {'form': form})
 
 
 def profile_not_created(user):
     return not hasattr(user, 'userprofile')
-
-# def signup(request):
-#     if request.user.is_authenticated:
-#         # If the user is already authenticated, redirect to the profile page
-#         return redirect('user:create_profile')
-
-#     if request.method == 'POST':
-#         form = SignUpForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             return redirect('user:create_profile')
-#         else:
-#             messages.error(request, 'There was an error with your signup. Please correct the errors below.')
-#     else:
-#         form = SignUpForm()
-
-#     return render(request, 'signup.html', {'form': form})
-
-
-# def signin(request):
-#     if request.user.is_authenticated:
-#         # If the user is already authenticated, redirect to the profile page
-#         return redirect('user:profile')
-
-#     if request.method == 'POST':
-#         form = SignInForm(request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-
-#             # Authenticate user
-#             user = authenticate(request, username=username, password=password)
-
-#             if user is not None:
-#                 login(request, user)
-
-#                 if profile_not_created(user):
-#                     return redirect('user:create_profile')
-#                 else:
-#                     return redirect('home')
-
-#             else:
-#                 messages.error(request, 'Invalid username or password. Please try again.')
-#         else:
-#             messages.error(request, 'There was an error with your signin. Please correct the errors below.')
-#     else:
-#         form = SignInForm()
-
-#     return render(request, 'signin.html', {'form': form})
 
 
 from django.shortcuts import render, redirect
@@ -112,76 +62,6 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import SignInForm
-
-
-# def signin(request):
-#     if request.user.is_authenticated:
-#         return redirect('user:profile')
-
-#     if request.method == 'POST':
-#         form = SignInForm(request.POST)
-#         if form.is_valid():
-#             email = form.cleaned_data['email']
-#             password = form.cleaned_data['password']
-
-#             print("Email:", email)  # Print email for debugging
-#             print("Password:", password)  # Print password for debugging
-
-#             user = authenticate(request, email=email, password=password)
-#             if user is not None:
-#                 login(request, user)
-
-#                 if profile_not_created(user):
-#                     return redirect('user:create_profile')
-#                 else:
-#                     return redirect('home')
-#             else:
-#                 error_message = 'Invalid email or password. Please try again.'
-#                 messages.error(request, error_message)
-#                 print(error_message)  # Print error message for debugging
-#         else:
-#             for field, errors in form.errors.items():
-#                 for error in errors:
-#                     messages.error(request, f'{field}: {error}')
-#                     print(f'{field}: {error}')  # Print form errors for debugging
-#             return render(request, 'signin.html', {'form': form})
-#     else:
-#         form = SignInForm()
-
-#     return render(request, 'signin.html', {'form': form})
-
-
-
-# def signin(request):
-#     if request.user.is_authenticated:
-#         # If the user is already authenticated, redirect to the profile page
-#         return redirect('user:profile')
-
-#     if request.method == 'POST':
-#         form = SignInForm(request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-
-#             # Authenticate user
-#             user = authenticate(request, username=username, password=password)
-
-#             if user is not None:
-#                 login(request, user)
-
-#                 if profile_not_created(user):
-#                     return redirect('user:create_profile')
-#                 else:
-#                     return redirect('home')
-
-#             else:
-#                 messages.error(request, 'Invalid username or password. Please try again.')
-#         else:
-#             messages.error(request, 'There was an error with your signin. Please correct the errors below.')
-#     else:
-#         form = SignInForm()
-
-#     return render(request, 'signin.html', {'form': form})
 
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
@@ -256,7 +136,8 @@ def create_profile(request):
 @login_required
 def profile(request):
     user_profile = request.user.userprofile
-    return render(request, 'profile.html', {'user_profile': user_profile})
+    user_email = request.user.email  # Accessing the email from CustomUser model
+    return render(request, 'profile.html', {'user_profile': user_profile, 'user_email': user_email})
 
 
 def signout(request):

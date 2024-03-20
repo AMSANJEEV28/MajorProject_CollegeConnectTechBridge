@@ -94,7 +94,13 @@ class SignInForm(forms.Form):
 from django import forms
 from .models import UserProfile
 
+from django import forms
+from .models import UserProfile, University, College
+
 class UserProfileForm(forms.ModelForm):
+    university_name = forms.ModelChoiceField(queryset=University.objects.all(), empty_label="Select your university")
+    college_name = forms.ModelChoiceField(queryset=College.objects.all(), empty_label="Select your college")
+
     class Meta:
         model = UserProfile
         fields = ['first_name', 'last_name', 'date_of_birth', 'gender', 'bio', 'university_name', 'college_name', 'registration_id', 'department', 'course', 'profile_picture']
@@ -110,8 +116,6 @@ class UserProfileForm(forms.ModelForm):
             'date_of_birth': 'Select your date of birth',
             'gender': 'Select your gender',
             'bio': 'Write a brief bio (max 50 words)',
-            'university_name': 'Enter your university name',
-            'college_name': 'Enter your college name',
             'registration_id': 'Enter your registration ID',
             'course': 'Enter your course',
             'department': 'Enter your department',
@@ -119,7 +123,7 @@ class UserProfileForm(forms.ModelForm):
         }
 
         for field in self.fields:
-            self.fields[field].widget.attrs['placeholder'] = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholders.get(field, '')
 
         # Set required attribute for all fields except last_name
         for field_name, field in self.fields.items():

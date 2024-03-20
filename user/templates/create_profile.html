@@ -1,114 +1,183 @@
-<style>
-    .custom-body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f2f2f2;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-    }
+{% load static %}
 
-    .custom-form {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 80%;
-        max-width: 600px;
-        margin: 0 auto;
-    }
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
 
-    .custom-h2 {
-        text-align: center;
-        color: #333333;
-    }
 
-    .custom-section {
-        display: grid;
-        gap: 16px;
-        grid-template-columns: 1fr;
-    }
+<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
 
-    .custom-label {
-        font-weight: bold;
-        color: #555555;
-        margin-bottom: 6px;
-    }
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!-- Include Google's official CSS for the sign-in button -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    .custom-input {
-        width: 100%;
-        padding: 8px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
 
-    .custom-button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        width: 100%;
-    }
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    .custom-button:hover {
-        background-color: #45a049;
-    }
-</style>
 
-<body class="custom-body">
-    <form method="post" enctype="multipart/form-data" class="custom-form">
-        {% csrf_token %}
-        <h2 class="custom-h2">Create Your Profile</h2>
+
+
+
+{% comment %} <body class="custom-body-profile">
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo-image">
+            </a>
+        </div>
+    </nav>
+
+    <div class="create-profile-content">
+        <form method="post" enctype="multipart/form-data" class="custom-form">
+            {% csrf_token %}
+            <h2 class="custom-h2">Create Your Profile</h2>
+            
+            <section class="custom-section">
+                <label for="{{ form.first_name.id_for_label }}" class="custom-label">First Name:</label>
+                {{ form.first_name }}
+                
+                <label for="{{ form.last_name.id_for_label }}" class="custom-label">Last Name:</label>
+                {{ form.last_name }}
+                
+                <label for="{{ form.date_of_birth.id_for_label }}" class="custom-label">Date of Birth:</label>
+                {{ form.date_of_birth }}
+                
+                <label for="{{ form.gender.id_for_label }}" class="custom-label">Gender:</label>
+                {{ form.gender }}
+            </section>
+            
+            <section class="custom-section">
+                <label for="{{ form.bio.id_for_label }}" class="custom-label">Bio (max 50 words):</label>
+                {{ form.bio }}
+
+                <label for="{{ form.university_name.id_for_label }}" class="custom-label">University Name:</label>
+                {{ form.university_name }}
+                
+                <label for="{{ form.college_name.id_for_label }}" class="custom-label">College Name:</label>
+                {{ form.college_name }}
+                
+            </section>
+            
+            <section class="custom-section">
+                <label for="{{ form.registration_id.id_for_label }}" class="custom-label">Registration ID:</label>
+                {{ form.registration_id }}
+
+                <label for="{{ form.course.id_for_label }}" class="custom-label">Course:</label>
+                {{ form.course }}
+                
+                <label for="{{ form.department.id_for_label }}" class="custom-label">Department:</label>
+                {{ form.department }}
+
+                <label for="{{ form.profile_picture.id_for_label }}" class="custom-label">Profile Picture:</label>
+                {{ form.profile_picture }}
+            </section>
+            
+            <button type="submit" class="custom-button">Submit</button>
+        </form>
+    </div>
+</body> {% endcomment %}
+
+
+<body class="custom-body-profile">      
+      
+    <nav class="navbar">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo-image">
+            </a>
+        </div>
         
-        <section class="custom-section">
-            <label for="{{ form.first_name.id_for_label }}" class="custom-label">First Name:</label>
-            {{ form.first_name }}
-            
-            <label for="{{ form.last_name.id_for_label }}" class="custom-label">Last Name:</label>
-            {{ form.last_name }}
-            
-            <label for="{{ form.date_of_birth.id_for_label }}" class="custom-label">Date of Birth:</label>
-            {{ form.date_of_birth }}
-            
-            <label for="{{ form.gender.id_for_label }}" class="custom-label">Gender:</label>
-            {{ form.gender }}
-        </section>
-        
-        <section class="custom-section">
-            <label for="{{ form.bio.id_for_label }}" class="custom-label">Bio (max 50 words):</label>
-            {{ form.bio }}
-        </section>
+        <div class="navbar-links">
 
-        <section class="custom-section">
-            <label for="{{ form.university_name.id_for_label }}" class="custom-label">University Name:</label>
-            {{ form.university_name }}
+            <div class="notification-home">
+                <a href="{% url 'home' %}">
+                    <i class="material-icons" style="font-size: 1.8rem; margin-top:-3px;">home</i>
+                </a>
+            </div>
+
+            <div class="dropdown">
+                {% if user.is_authenticated %}
+                    <div class="user-profile">
+                        {% if user.userprofile.profile_picture %}
+                            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                        {% else %}
+                            <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
+                        {% endif %}
+                    </div>
+                        
+                {% else %}
+                    <a class="login-text" href="{% url 'user:signin' %}">Login</a>
+                {% endif %}
+    
+                {% if user.is_authenticated %}
+                    <div class="dropdown-content" style="margin-left:-40px;">
+                        <a href="{% url 'user:signout' %}">Logout</a>
+                    </div>
+                {% else %}
+                    <div class="dropdown-content" style="margin-left:-40px;">
+                        <a href="{% url 'user:signin' %}">Login</a>
+                        <a href="{% url 'user:signup' %}">Signup</a>
+                    </div>
+                {% endif %}
+            </div>  
+        </div>
+    </nav>
+    <h2 class="custom-h2">Create Your Profile</h2>
+
+    <div class="create-profile-content">
+
+        <form method="post" enctype="multipart/form-data" class="custom-form">
+            {% csrf_token %}
             
-            <label for="{{ form.college_name.id_for_label }}" class="custom-label">College Name:</label>
-            {{ form.college_name }}
+            <div class="custom-section">
+                <label for="id_first_name" class="custom-label">First Name: {{ form.first_name }}</label>
+
+                <label for="id_last_name" class="custom-label">Last Name: {{ form.last_name }}</label>
+
+                <label for="id_date_of_birth" class="custom-label">Date of Birth: {{ form.date_of_birth }}</label>
+
+                <label for="id_gender" class="custom-label">Gender: {{ form.gender }}</label>
+            </div>
+
+            <div class="custom-section">
+                <label for="id_bio" class="custom-label">Bio (max 50 words): {{ form.bio }}</label>
+
+                <label for="id_university_name" class="custom-label">University Name: {{ form.university_name }}</label>
+
+                <label for="id_college_name" class="custom-label">College Name: {{ form.college_name }}</label>
+            </div>
+
+            <div class="custom-section">
+                <label for="id_registration_id" class="custom-label">Registration ID: {{ form.registration_id }}</label>
+
+                <label for="id_course" class="custom-label">Course: {{ form.course }}</label>
+
+                <label for="id_department" class="custom-label">Department: {{ form.department }}</label>
+
+                {% comment %} <label for="id_profile_picture" class="custom-label">Profile Picture: {{ form.profile_picture }}</label> {% endcomment %}
             
-            <label for="{{ form.registration_id.id_for_label }}" class="custom-label">Registration ID:</label>
-            {{ form.registration_id }}
-        </section>
-        
-        <section class="custom-section">
-            <label for="{{ form.course.id_for_label }}" class="custom-label">Course:</label>
-            {{ form.course }}
+                <div class="profile-picture-wrapper">
+                    {% comment %} {{ form.profile_picture }} {% endcomment %}
+
+                    <label for="id_profile_picture" class="custom-label">Profile Picture: {{ form.profile_picture }}</label>
+
+                </div>
+
             
-            <label for="{{ form.department.id_for_label }}" class="custom-label">Department:</label>
-            {{ form.department }}
-        </section>
+            </div>
+            
+            <button type="submit" class="custom-button">Submit</button>
+        </form>
+
+
         
-        <section class="custom-section">
-            <label for="{{ form.profile_picture.id_for_label }}" class="custom-label">Profile Picture:</label>
-            {{ form.profile_picture }}
-        </section>
-        
-        <button type="submit" class="custom-button">Submit</button>
-    </form>
+
+    </div>
 </body>
