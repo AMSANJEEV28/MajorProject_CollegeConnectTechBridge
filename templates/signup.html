@@ -1,128 +1,189 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
 
+
+<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<!-- Include Google's official CSS for the sign-in button -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connect And Collaborate: Sign-Up</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
 
     <style>
-        body {
-            background-color: #001735;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
 
-        form {
-            background-color: #000;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
-
-        h2 {
-            color: #ff3131;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            color: #fff;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-            border: 1px solid #fff;
-            border-radius: 4px;
-            background-color: #000;
-            color: #fff;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            background-color: #ff3131;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .error-message {
-            color: #ff3131;
-            margin-top: 5px;
-        }
     </style>
-</head>
 
+  </head>
 
+  <body class="main-body-signup">
 
-    {% comment %} <form method="post">
-        {% csrf_token %}
-        <h2>Sign Up</h2>
-        
-        {{ form.username.label_tag }}
-        {{ form.username }}
-        {% if form.errors.username %}
-            <div class="error-message">{{ form.errors.username }}</div>
-        {% endif %}
-        
-        {{ form.email.label_tag }}
-        {{ form.email }}
-        {% if form.errors.email %}
-            <div class="error-message">{{ form.errors.email }}</div>
-        {% endif %}
-        
-        {{ form.password1.label_tag }}
-        {{ form.password1 }}
-        {% if form.errors.password1 %}
-            <div class="error-message">{{ form.errors.password1 }}</div>
-        {% endif %}
-        
-        {{ form.password2.label_tag }}
-        {{ form.password2 }}
-        {% if form.errors.password2 %}
-            <div class="error-message">{{ form.errors.password2 }}</div>
-        {% endif %}
-        
-        <button type="submit">Sign Up</button>
-    </form> {% endcomment %}
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo-image">
+                </a>
+            </div>
+            
+            <div class="navbar-links">
 
+                <a href="{% url 'home' %}">
+                <div class="navbar-icons-signin">
+                    <div class="home-icon icon-home">
+                        <i class="material-icons icon-home" style="font-size: 1.8rem;">home</i>
+                    </div>
+                </div>
+                </a>
+            </div>
+        </nav>
 
+        <div class="signup-body">
 
-    <form method="post">
-        {% csrf_token %}
-        <h2>Sign Up</h2>
-        
-        {{ form.username.label_tag }}
-        {{ form.username }}
-        {% if form.errors.username %}
-            <div class="error-message">{{ form.errors.username }}</div>
-        {% endif %}
-        
-        {{ form.email.label_tag }}
-        {{ form.email }}
-        {% if form.errors.email %}
-            <div class="error-message">{{ form.errors.email }}</div>
-        {% endif %}
-        
-        {{ form.password1.label_tag }}
-        {{ form.password1 }}
-        {% if form.errors.password1 %}
-            <div class="error-message">{{ form.errors.password1 }}</div>
-        {% endif %}
-        
-        {{ form.password2.label_tag }}
-        {{ form.password2 }}
-        {% if form.errors.password2 %}
-            <div class="error-message">{{ form.errors.password2 }}</div>
-        {% endif %}
-        
-        <button type="submit">Sign Up</button>
-    </form>
+            <div class="signup-body-left">
+                <div class="sign-up-main">
+                    <p>Sign Up</p>
+                    <div class="signup-buttons">
+                        <div class="linkedin-signup">
+                            <div class="login-via-linkedin">
+                                <a href="{YOUR_AUTH_URL}">
+                                    <img src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png" 
+                                         alt="Sign in with LinkedIn" 
+                                         width="160" 
+                                         height="auto" 
+                                         border="0">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="google-signup">
+                            <div class="login-via-google">
+
+                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
     
+                                <!-- Custom button with Google logo -->
+                                <a href="#" onclick="onSignIn()" class="google-button-signup">
+                                  <img src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA" alt="Google Logo" width="20" height="20">
+                                  Continue with Google
+                                </a>
+    
+                                <script>
+                                    function onSignIn(googleUser) {
+                                      // Handle sign-in logic here
+                                      // For example, send the user's Google ID token to your backend for verification
+                                      var profile = googleUser.getBasicProfile();
+                                      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                                      console.log('Name: ' + profile.getName());
+                                      console.log('Image URL: ' + profile.getImageUrl());
+                                      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                                    }
+                                </script>
+    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="login-login-bottommost">
+
+                        <div style="margin-top:-2px;" class="or">
+                            <span class="dash"></span>
+                            <p>or</p>
+                            <span class="dash"></span>
+                        </div>
+
+                        {% comment %} <form method="post">
+                            {% csrf_token %}
+                            
+                            {{ form.username.label_tag }}
+                            {{ form.username }}
+                            {% if form.errors.username %}
+                                <div class="error-message">{{ form.errors.username }}</div>
+                            {% endif %}
+                            
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                            {% if form.errors.email %}
+                                <div class="error-message">{{ form.errors.email }}</div>
+                            {% endif %}
+                            
+                            {{ form.password1.label_tag }}
+                            {{ form.password1 }}
+                            {% if form.errors.password1 %}
+                                <div class="error-message">{{ form.errors.password1 }}</div>
+                            {% endif %}
+                            
+                            {{ form.password2.label_tag }}
+                            {{ form.password2 }}
+                            {% if form.errors.password2 %}
+                                <div class="error-message">{{ form.errors.password2 }}</div>
+                            {% endif %}
+                            
+                            <button type="submit">Sign Up</button>
+                        </form> {% endcomment %}
+                        
+                        <div class="form">
+                            <form method="post">
+                                {% csrf_token %}
+                                
+                                <div class="form-group">
+                                    <label for="id_email_signup"></label>
+                                    {{ form.email }}
+                                </div>
+                            
+                                <div class="form-group">
+                                    <label for="id_password1"></label>
+                                    {{ form.password1 }}
+                                </div>
+                                    <small class="pass-rules">
+                                        <ul style="margin:15px 30px;">
+                                            <li>Passwords must be a minimum of 8 characters in length.</li>
+                                            <li>Passwords must include a combination of the following:</li>
+                                            <ul>
+                                                <li>Uppercase letters (A-Z)</li>
+                                                <li>Lowercase letters (a-z)</li>
+                                                <li>Numbers (0-9)</li>
+                                                <li>Special characters (!, @, #, $, %, etc.)</li>
+                                            </ul>
+                                        </ul>                          
+                                    </small>
+                                <div class="form-group">
+                                    <label for="id_password2"></label>
+                                    {{ form.password2 }}
+                                </div>
+                            
+                                <button type="submit" class="btn btn-primary signup-btn-signup">Continue</button>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                
+            </div>
+
+            <div class="signup-body-right">
+
+                <div class="signup-login-signup">
+                    <p class="login-text-signup">Already have an account?</p>
+                    <a href="{% url 'user:signin' %}" class="login-btn-signup">Log In</a>
+                </div>
+
+            </div>
+
+        </div>
+   
+    </body> 

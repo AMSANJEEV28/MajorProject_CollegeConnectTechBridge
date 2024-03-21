@@ -43,3 +43,4 @@ CollegeConnect/settings.py
 CollegeConnect/settings.py
 
 
+user/social_auth.py

@@ -66,9 +66,11 @@ from .models import UserProfile
 CustomUser = get_user_model()
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(label='Email')  # Add email field
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)  # Change password1 label
-    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)  # Change password2 label
+    # email = forms.EmailField(label='Email', widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+    email = forms.EmailField(label='Email', widget=forms.TextInput(attrs={'id': 'id_email_signup', 'placeholder': 'Email'}))  
+
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+    password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}))
 
     class Meta:
         model = CustomUser
