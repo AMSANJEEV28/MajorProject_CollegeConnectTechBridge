@@ -61,7 +61,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = '206320028@gkv.ac.in'
-EMAIL_HOST_PASSWORD = 'yewy ' 
+EMAIL_HOST_PASSWORD = 'yewy wlmc nqos rjev' 
 PASSWORD_RESET_TIMEOUT_DAYS = 1  # Reset links will expire after 1 day
 
 
