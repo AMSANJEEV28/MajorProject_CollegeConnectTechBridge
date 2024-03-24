@@ -1,0 +1,187 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.body{
+    background: grey;
+}
+
+/* navbar */
+.leftnavpg1{
+    display:flex;
+    align-items: center;
+    color: white;
+    font-size: 3vh;
+    font-weight: 100;
+    
+    
+}
+
+.rightnavpg1{
+    display:flex;
+    align-items: center;
+}
+
+.navbarpg1{
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 1rem;
+    height: 10vh;
+    padding-inline: 1vw;
+}
+
+.navbarpg1 img{
+    border-radius: 10rem;
+    width: 3vw;
+    height: 3vw;
+}
+
+
+
+.fa-search{
+    margin-left: -1.9vw;
+    margin-right: 2vw;
+    color:red;
+    cursor: pointer;
+}
+
+/* navbar end */
+
+.gslcol1{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    width:70%;
+    height:80vh;
+    border:2px solid black;
+    background-color: pink;
+    border-radius: 1rem;
+}
+
+.gslc1row{
+    height:49%;
+}
+
+.gslc1row >p{
+    font-size: 1.5rem;
+    margin: 0.5vh 1vw;
+}
+
+.gslcards {
+    width: 100%;
+    height: 85%;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+}
+
+.gslcard {
+    flex: 0 0 auto; 
+    background-color: whitesmoke;
+    width: 20%;
+    padding: 1vh;
+    border-radius: 1rem;
+    margin: 0 1vw;
+}
+
+.gslcard img{
+    width:100%;
+    height:65%;
+    border-radius:1rem;
+    
+}
+
+.gslcardgrpname{
+    display:flex;
+    background-color: grey;
+    align-items: center;
+    border-radius:1rem;
+    padding: 0.5vh 0;
+}
+
+.grpicon{
+    border: 2px solid black;
+    padding: 0.2vw;
+    margin: 0 0.5vw;
+    border-radius: 10rem;
+    background-color: red;
+    width:1.2vw;
+    height:1.2vw;
+    font-size: 1vw; 
+}
+
+.gslcardsymbolscol1{
+    display:flex;
+    align-items: center;
+    justify-content:space-between;
+    border:2px solid black;
+    border-radius: 0.5rem;;
+    padding: 0.4vh 1vw;
+}
+
+.fa-trash-can{
+    color:red;
+}
+
+/* modal css */
+/* vertically centered modal css */
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    display:flex;
+    flex-direction: column;
+    background-color: pink;
+    margin: 5% auto;
+    padding: 2vw;
+    width: 55%;
+    border-radius: 10px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.modal1pg1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.grpnametagsmodalpg1 div{
+    display:flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.grpnametagsmodalpg1 div input{
+    width:24vw;
+    border-radius:0.3rem;
+    height:4vh;
+    margin-top:0.8vh;
+    /* background-color: white; */
+}
