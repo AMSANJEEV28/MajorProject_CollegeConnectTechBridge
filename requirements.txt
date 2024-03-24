@@ -82,3 +82,15 @@ Werkzeug==2.3.4
 whitenoise==5.2.0
 WTForms==3.0.1
 zipp==3.4.0
+
+django-debug-toolbar
+django-password-reset
+django-allauth
+django-allauth-socialaccount
+django-taggit
+beautifulsoup4==4.12.2
+captcha==0.4
+django-braces==1.15.0
+psycopg2-binary==2.9.6
+requests==2.31.0
+WTForms==3.0.1

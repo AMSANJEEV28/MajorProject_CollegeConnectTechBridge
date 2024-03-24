@@ -1,0 +1,31 @@
+# Ignore database files
+*.sqlite3
+*.db
+
+# Ignore media files
+media/
+
+# Ignore sensitive settings
+local_settings.py
+
+# Ignore project settings file
+settings.py
+
+# Ignore pycache
+__pycache__/
+
+# Ignore compiled Python files
+*.pyc
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore specified directories and files
+media/profile_pics*
+!media/profile_pics/.gitkeep
+profile_pics/*
+!profile_pics/.gitkeep
+
+# Ignore specified files
+CollegeConnect/settings.py
+user/social_auth.py
