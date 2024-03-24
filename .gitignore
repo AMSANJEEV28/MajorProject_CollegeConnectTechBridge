@@ -29,3 +29,6 @@ profile_pics/*
 # Ignore specified files
 CollegeConnect/settings.py
 user/social_auth.py
+
+
+
