@@ -56,28 +56,7 @@ INSTALLED_APPS = [
    
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = '206320028@gkv.ac.in'
-EMAIL_HOST_PASSWORD = 'yewy wlmc nqos rjev' 
-PASSWORD_RESET_TIMEOUT_DAYS = 1  # Reset links will expire after 1 day
 
-
-SOCIALACCOUNT_PROVIDERS = {
-    'linkedin': {
-        'SCOPE': ['openid', 'profile', 'email'],
-        'PROFILE_FIELDS': ['id', 'first-name', 'last-name', 'email-address'],
-        'VERIFIED_EMAIL': True,
-        'AUTH_PARAMS': {'auth_type': 'rerequest'},
-        'INITIAL_STATE': {'auth_type': 'rerequest'},
-        'FIELDS': ['id', 'first-name', 'last-name', 'email-address'],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_KEY': 'lang',
-        'redirect_uri': 'http://localhost:8000/accounts/linkedin_oauth2/login/callback/',
-    }
-}
 
 
 
