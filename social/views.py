@@ -243,3 +243,4 @@ def create_post(request):
         print(f"- {user_post.id} - {user_post.caption}")
 
     return render(request, 'feeds.html', {'user': request.user, 'user_profile': user_profile, 'user_groups': user_groups, 'user_posts': user_posts, 'post_form': post_form})
+

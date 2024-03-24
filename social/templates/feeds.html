@@ -1,1033 +1,436 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect And Collaborate</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/feeds_new.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-
-    <style>
-        body,
-        html {
-            background-color: #f0f0f0;
-            color: #f0f0f0;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .main-body {
-            background-color: #f0f0f0 !important;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .navbar {
-            background-color: #fff;
-            color: #7e7e7e;
-            padding: 15px 55px 15px 55px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            height: 60px;
-            margin-left: -3px;
-            font-size: large;
-
-        }
-
-        .navbar a {
-            color: #7e7e7e;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: large;
-        }
-
-        .navbar-links {
-            display: flex;
-            align-items: center;
-            font-size: large;
-
-        }
-
-        .navbar-links a {
-            margin: 0 10px;
-            font-size: large;
-
-        }
-
-        .navbar-icons {
-            display: flex;
-            align-items: center;
-            font-size: large;
-
-        }
-
-        .search-icon,
-        .notification-icon {
-            margin-right: 10px;
-            cursor: pointer;
-            font-size: large;
-
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #cbcbcb;
-            min-width: 160px;
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            right: 0;
-            /* Adjust to position the dropdown to the right */
-        }
-
-        .dropdown-content a {
-            color: #fff;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .content {
-            margin-top: 70px;
-            /* Adjust as needed */
-            width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .heading {
-            color: #004080;
-            text-align: center;
-            /* Center the text */
-        }
-
-        .user-profile img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 50%;
-        }
-
-
-        .feedpg {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* write post */
-
-
-        .card {
-            width: 675px;
-            height: 200px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            margin-top: 25px;
-            align-items: center;
-        }
-        
-        .profile-section {
-            display: flex;
-            align-items: center;
-            background-color: #fff;
-            margin-top: -25px;
-            padding: 20px 20px 20px 60px;
-            border-radius: 5px;
-        }
-        
-        .profile-picture-feed {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-        
-        .user-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            padding: 20px;
-            margin: 20px;
-            border-radius: 8px;
-        }
-        
-        .post-section,
-        .post-section-bottom {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .post-section {
-            margin-left: 15px;
-        }
-        
-        .post-section-bottom {
-            margin-top: 15px;
-        }
-        
-        .caption-input {
-            margin-right: 15px;
-            width: 500px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            resize: none;
-        }
-        
-        .post-type-section,
-        .group-section,
-        .upload {
-            margin-right: 25px;
-        }
-        
-        .post-type-section,
-        .group-section {
-            padding: 10px;
-        }
-        
-        .post-type-section {
-            margin-left: -85px;
-        }
-        
-        .group-section {
-            position: absolute;
-            right:700px;         }
-        
-        .upload {
-            position: absolute;
-            right:520px;        }
-
-        .post-type-label, .group-type-label{
-            visibility: hidden;
-        }
-        
-        .post-type-dropdown,
-        .group_dropdown,
-        .image-upload,
-        .post-button {
-            padding: 10px;
-            border-radius: 5px;
-        }
-        
-        .post-type-dropdown,
-        .group_dropdown,
-        .image-upload {
-            width: 130px;
-        }
-        
-        .post-button {
-            background-color: #7e7e7e;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            position: absolute;
-            right: 460px;
-        }                
-        
-        .post-button:disabled {
-            background-color: #cbcbcb;
-            color: white;
-            cursor: not-allowed;
-        }
-        
-        .custom-file-upload {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            cursor: pointer;
-            background-color: #7e7e7e;
-            color: #fff;
-            border-radius: 5px;
-        }
-        
-        .custom-file-upload i {
-            margin-right: 5px;
-            font-size: large;
-        }
-        
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            padding: 0;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
-        
-        
-        
-
-        /* left part css */
-        .feedpgleft {
-            background-color: #ffffff;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            width: 350px;
-            /*height: 450px;*/
-            justify-content: center;
-            position: relative;
-            
-        }
-
-        .left-top {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            border-radius: 5px;
-        }
-      
-        .left-top h4{
-            color: #000;
-            z-index: 999;
-            position: absolute;
-            top: 110px;
-        }        
-        
-        .left-top p{
-            color: #545454;
-            z-index: 999;
-            position: absolute;
-            top: 110px;
-            padding: 30px;
-            text-align: center;
-        }
-        
-        .bg-picture {
-            max-width: 100%; 
-            position: absolute;
-            top: 0;
-            left: 0; 
-            border-radius: 5px 5px 0 0;
-        }
-        
-        .lt-pp {
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            position: absolute;
-            top: 40px;
-            border: solid 1px #fff ;
-        }
-
-        .custom-line-break {
-            border-top: 4px solid #f0f0f0;
-            margin-top: 5px;  
-            margin-bottom: 5px;  
-            padding: 10px;
-            width: 350px;
-            position: absolute;
-            top:210px;
-        }
-
-        .group{
-            position: absolute;
-            top:115px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .group-list {
-            margin-top: 160px;
-            padding-bottom: 50px;
-            list-style-type: none;
-            padding: 0;
-            width: 250px;
-            text-align: left;
-            color: #000;
-        }
-
-        .group-list-item {
-            color: black;
-            margin: 5px 0;
-            list-style-type: none; 
-            position: relative;
-
-        }
-        .group-list-item::before {
-            content: "";
-            width: 8px; 
-            height: 8px;
-            background-color: #7e7e7e;
-            display: inline-block;
-            position: absolute;
-            left: -15px; 
-            top: 6px;
-        }
-       
-        .group-list-item a {
-            color: #000000;
-            text-decoration: none;
-        }
-
-        .group-list-item a:hover {
-            color: #606770;
-        }
-
-        .group-h{
-            color: #000;
-        }
-
-        .group .group-h {
-            color: black; 
-        }        
-        
-        .group .group-h-create {
-            color: #005a8e; 
-            position: absolute;
-            top:200px;
-            left: 70px;
-            margin-top: 70px;
-        }
-
-        .group > ul {
-            color: black; 
-        }
-
-        .group > ul li {
-            background-color: #f0f0f0; 
-            color: black; 
-        }
-        .group > ul li a{
-            color: #000000;}
- 
-
-        /* right part css */
-          
-          .feedpgright {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #ffffff;
-            height: 550px;
-            border-radius: 5px;
-          }
-          
-          .news-module {
-            margin: 20px auto;
-            border-radius: 8px;
-            padding: 20px; /* Adjusted padding */
-            width: 350px;
-          }
-          
-          .news-module__header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #000;
-          }
-          
-          .news-module__title {
-            font-size: 1.3rem; /* Adjusted font size */
-            font-weight: bold;
-            color: #000;
-            z-index: 50;
-          }
-          
-          .news-module__notify-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-          }
-          
-          .news-module__notify-icon {
-            font-size: 1.3rem; /* Adjusted font size */
-          }
-          
-          .news-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 10px 0;
-          }
-          
-          .news-item {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-          }
-          
-          .news-link {
-            text-decoration: none;
-            color: #333;
-          }
-          
-          .news-headline {
-            font-size: 1rem; /* Adjusted font size */
-            font-weight: bold;
-            margin-bottom: 5px;
-          }
-          
-          .news-subtext {
-            font-size: 0.8rem; /* Adjusted font size */
-            color: #666;
-          }
-          
-          .show-more-button {
-            background: #0073b1;
-            color: #fff;
-            border: none;
-            padding: 8px 12px; /* Adjusted padding */
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem; /* Adjusted font size */
-          }
-          
-          .show-more-button:hover {
-            background: #005a8e;
-          }
-          
-
-        /* post css */
-        .feed-container {
-            max-width: 800px;
-            margin: 20px auto;
-            overflow-y: auto;
-            max-height: 72vh;
-            background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 999;
-            color: #fff;
-        }
-
-        .post {
-            display: flex;
-            flex-direction: column;
-            border-bottom: 1px solid #ddd;
-            padding: 20px;
-        }
-
-
-
-        .profile-pic {
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .profile-pic img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-
-        .user-info .user-name {
-            font-weight: bold;
-            color: #385898;
-        }
-
-        /* Adjust the color and other styles as needed */
-        .user-info p {
-            color: #000000;
-            margin: 5px 0;
-            z-index: 1;
-        }
-
-        .post-info {
-            font-size: 14px;
-            color: #606770;
-        }
-
-        .post img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        .post-content {
-            margin-top: 10px;
-        }
-
-        .post-actions {
-            margin-top: 10px;
-            color: #606770;
-        }
-
-        .post-actions i {
-            margin-right: 10px;
-        }
-
-        .midpart {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 45%
-        }
-
-        .message-popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .message-popup {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            text-align: center;
-        }
-
-        .close-button {
-            margin-top: 10px;
-            padding: 5px 10px;
-            cursor: pointer;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-        }
-
-
-        /* ________________________--------------------- FEEDS STYLE ----------------------____________________*/
-
-
-
-        .feeds-all {
-            width: 670px;
-            margin-top: 20px;
-        }
-        
-        .post-box {
-            background-color: white;
-            padding: 15px; 
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden; 
-        }
-        
-        .post-caption {
-            color: #545454;
-            word-wrap: break-word; 
-            margin-bottom: 10px; 
-            padding: 10px;
-        }
-        
-        .post-image {
-            margin-top: 10px; 
-        }
-        
-        .post-image img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 15px;
-            padding: 10px;
-        }
-        
-        .user-profile-feeds img {
-            max-width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-
-        .user-profile-feeds{
-            display: flex;
-            align-items: center;
-            margin-top:-10px ;
-        }
-
-        .user-profile-feeds h4{
-            z-index: 999;
-            color: #000;
-        }
-
-        .more-info-feeds{
-            display: flex;
-            z-index: 999;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-        }
     
-        .more-info-feeds p {
-            color: #7e7e7e;
-            font-style: italic; 
-            z-index: 999;
-            margin-top: -15px;
-            font-size: small;
-        }
 
 
-        
-
-    </style>
-
-
-
-</head>
-
-<body class="main-body">
-    <!-- ------------------------------------NAVBAR -->
-    <nav class="navbar">
-        <div class="logo">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-image">
-            </a>
+<!-- navbar -->
+    <div class="navpg1" style="background-color: grey;">
+      <div class="navbarpg1">
+        <div class="leftnavpg1">
+            <img src="dpimg.jpg" alt="logo..." style="margin-right: 1.5vw; ">
+            <h3>College Connect</h3>
         </div>
         
-        <div class="navbar-links">
-            <div class="dropdown">
-                <a href="#">About Us</a>
-                <div class="dropdown-content">
-                    <a href="{%url 'about' %}">Team</a>
-                    <a href="#">Mission</a>
-                    <a href="#">Blog/News</a>
-                    <a href="#">Partnership</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a href="">Features</a>
-                <div class="dropdown-content">
-                    <a href="{% url 'social:feeds_view' %}">Social Networking</a>
-                    <a href="{% url 'career:academic' %}">Academic Resources</a>
-                    <a href="{% url 'career:jobs' %}">Career Development</a>
-                    <!-- <a href="#">User Engagement</a> -->
 
-                </div>
-            </div>
-            <div class="dropdown">
-                <a href="">Get Involved</a>
-                <div class="dropdown-content">
-                    <a href="#">Support</a>
-                    <a href="#">Feedback/Survey</a>
-                    <a href="#">Alumni Network</a>
-                    <a href="#">User Dashboard</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a href="">Contact Us</a>
-                <div class="dropdown-content">
-                    <a href="#">Contact Information</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">Help/Support</a>
-                </div>
-            </div>
+        <div class="rightnavpg1">
+            <input type="text" style="padding-inline: 2vw; border-radius: 1rem; height: 3.5vh;width:15vw; border:none;">
+            <i class="fas fa-search"></i>
+            <i class="fa-solid fa-bell" style="margin-right: 1vw; color:white; font-size:1.5vw; cursor: pointer;"></i>
+            <img src="dpimg.jpg" alt="dp...">
         </div>
-        <div class="navbar-icons">
-            <div class="search-icon"><i class="material-icons" style="font-size: 1.8rem;">search</i></div>
-            <div class="notification-icon"><i class="material-icons" style="font-size: 1.8rem;">notifications</i></div>
-
-            <div class="dropdown">
-                {% if user.is_authenticated %}
-                    {% if user.userprofile.profile_picture %}
-                        <div class="user-profile">
-                            {% if user.userprofile.profile_picture %}
-                            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
-                        {% else %}
-                        <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
-                        {% endif %}                        </div>
-                    {% else %}
-                        <div class="user-profile">
-                            <!-- Add a default image or placeholder if profile picture doesn't exist -->
-                            <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture">
-                        </div>
-                    {% endif %}
-                {% else %}
-                    <a class="login-text" href="{% url 'user:signin' %}">Login</a>
-                {% endif %}
-                
-                {% if user.is_authenticated %}
-                    <div class="dropdown-content">
-                        <a href="{% url 'user:profile' %}">Profile</a>
-                        <a href="{% url 'user:signout' %}">Logout</a>
-                    </div>
-                {% else %}
-                    <div class="dropdown-content">
-                        <a href="{% url 'user:signin' %}">Login</a>
-                        <a href="{% url 'user:signup' %}">Signup</a>
-                    </div>
-                {% endif %}
-            </div>
-            
-
-        </div>
-        
-    </nav>
-
-
-    <br><br>
-    <div class="content">
-        <!-- Other content goes here -->
-
-        <div class="feedpg">
-            <!-- left -->
-            <div class="feedpgleft">
-
-                <div class="left-top">
-                    <img class="bg-picture" src="{% static 'images/ind.jpeg' %}" alt="Bg Picture">
-                    {% if user.userprofile.profile_picture %}
-                    <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
-                {% else %}
-                <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
-                {% endif %}
-                    <h4>{{ user.userprofile.first_name }} {{ user.userprofile.last_name }}</h4>
-                    <p>{{ user.userprofile.bio }}</p>
-                    <div class="custom-line-break"></div>
-                
-                    <div class="group">
-                        <h4 class="group-h"> My Groups </h4>
-                        <div class="group-list">
-                            {% if user_groups %}
-                                {% for joined_group in user_groups %}
-                                    <div class="group-list-item">
-                                        <a href="{% url 'social:group_detail' group_id=joined_group.group_id %}">{{ joined_group.name }}</a>
-                                    </div>
-                                {% endfor %}
-                            {% else %}
-                                <p>No groups found for this user.</p>
-                            {% endif %}
-                        </div>
-                        <br><br>
-                        <a href="{% url 'social:create_group' %}"><h4 class="group-h-create"> Click To Create More Groups </h4></a>
-                    </div>
-                </div>
-                
-
-            </div>
-            
-            
-            
-
-            <!-- mid -->
-            <div class="midpart">
-
-                <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                        const captionInput = document.querySelector('.caption-input');
-                        const postButton = document.querySelector('.post-button');
-                
-                        // Function to check if the caption is empty and update button state
-                        function updateButtonState() {
-                            postButton.disabled = captionInput.value.trim() === '';
-                        }
-                
-                        // Add event listener to the caption input
-                        captionInput.addEventListener('input', updateButtonState);
-                
-                        // Initial state check
-                        updateButtonState();
-                    });
-                </script>
-                                            
-            <!-- Add a form to create a post -->
-            <!-- _____________________________________________POST STARTS -->
-
-            {% if messages %}
-    <script>
-        function closeMessagePopup() {
-            document.getElementById("message-popup-overlay").style.display = "none";
-        }
-
-        function showMessagePopup() {
-            var messagePopup = document.getElementById("message-popup-overlay");
-            messagePopup.style.display = "flex";
-            setTimeout(function () {
-                closeMessagePopup();
-            }, 5000);
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            showMessagePopup();
-        });
-    </script>
-
-    <div id="message-popup-overlay" class="message-popup-overlay" onclick="closeMessagePopup()">
-        <div id="message-popup" class="message-popup" onclick="event.stopPropagation()">
-            <div class="message-content">
-                {% for message in messages %}
-                    <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-                {% endfor %}
-                <button class="close-button" onclick="closeMessagePopup()">Cancel</button>
-            </div>
-        </div>
+      </div>
     </div>
-{% endif %}
+    
 
-<div class="card">
-    <form method="post" enctype="multipart/form-data" action="{% url 'social:create_post' %}">
-        {% csrf_token %}
-        <div class="profile-section">
-            {% if user.userprofile.profile_picture %}
-            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
-        {% else %}
-        <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
-        {% endif %}
-            <div class="post-section">
-                <textarea name="caption" class="caption-input" placeholder="Write your caption..."></textarea>
+<!-- FeedsContents -->
+    <h1 style="background-color: grey; padding-left:3vw; padding-top:1vh;padding-bottom:1vh;">Groups</h1>
+    <div class="feedpgcont1">
+        <div class="firstcolfeedpg1">
+            <div class="JoinedGroupspg1">
+                <p>Joined Groups</p>
+                
+                <div class="container-wrapperpg1">
+                    <div class="containerpg1">
+                        <div class="containerpg11">
+                            <i class="fa-solid fa-user-group grpicon"></i>
+                            <p>Group name</p>
+                        </div>
+                        <div class="containerpg12">
+                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
+                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </div>
+                    </div>
+                    <div class="containerpg1">
+                        <div class="containerpg11">
+                            <i class="fa-solid fa-user-group grpicon"></i>
+                            <p>Group name</p>
+                        </div>
+                        <div class="containerpg12">
+                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
+                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
+                            <i class="fa-solid fa-trash-can"></i>
+
+                        </div>
+                    </div>
+                    <div class="containerpg1">
+                        <div class="containerpg11">
+                            <i class="fa-solid fa-user-group grpicon"></i>
+                            <p>Group name</p>
+                        </div>
+                        <div class="containerpg12">
+                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
+                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
+                            <i class="fa-solid fa-trash-can"></i>
+
+                        </div>
+                    </div>
+                    <div class="containerpg1">
+                        <div class="containerpg11">
+                            <i class="fa-solid fa-user-group grpicon"></i>
+                            <p>Group name</p>
+                        </div>
+                        <div class="containerpg12">
+                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
+                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
+                            <i class="fa-solid fa-trash-can"></i>
+
+                        </div>
+                    </div>
+                    
+                    <!-- Add more containers as needed -->
+                </div>
+                
+            </div>
+            <div class="createdgrpspg1" >
+                <p>Created Groups</p>
+                <div class="container-wrapperpg2">
+                    <div class="containerpg1">
+                        <div class="containerpg11">
+                            <i class="fa-solid fa-user-group grpicon"></i>
+                            <p>Group name</p>
+                        </div>
+                        <div class="containerpg12">
+                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
+                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
+                            <i class="fa-solid fa-trash-can"></i>
+
+                        </div>
+                    </div>
+                    <div class="containerpg1">
+                        <div class="containerpg11">
+                            <i class="fa-solid fa-user-group grpicon"></i>
+                            <p>Group name</p>
+                        </div>
+                        <div class="containerpg12">
+                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
+                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
+                            <i class="fa-solid fa-trash-can"></i>
+
+                        </div>
+                    </div>
+                    <div class="containerpg1">
+                        <div class="containerpg11">
+                            <i class="fa-solid fa-user-group grpicon"></i>
+                            <p>Group name</p>
+                        </div>
+                        <div class="containerpg12">
+                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
+                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
+                            <i class="fa-solid fa-trash-can"></i>
+
+                        </div>
+                    </div>
+                    <div class="containerpg1">
+                        <div class="containerpg11">
+                            <i class="fa-solid fa-user-group grpicon"></i>
+                            <p>Group name</p>
+                        </div>
+                        <div class="containerpg12">
+                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
+                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
+                            <i class="fa-solid fa-trash-can"></i>
+
+                        </div>
+                    </div>
+                    
+                    <!-- Add more containers as needed -->
+                </div>
             </div>
         </div>
-        
-        <div class="post-section-bottom">
-            <div class="post-type-section">
-                <label for="post-type" class="post-type-label">Select post type:</label>
-                <select name="post_type" id="post-type" class="post-type-dropdown">
-                    <option value="normal">Normal Post</option>
-                    <option value="event">Event</option>
-                </select>
+
+        <div class="secondcolfeedpg1">
+            <h2>Group feed</h2>
+            <div class="feedswrapperpg1">
+                <div class="feedscontainerpg1">
+
+                    <div class="firstrowpg1">
+                        <div class="firstrowleftpg1">
+                            <img src="dpimg.jpg" alt="">
+                            <p>Akarsh</p>
+                        </div>
+                        <div class="firstrowrightpg1">
+                            <i class="fa-solid fa-user-group grpicon"></i>
+                            <p>Group1</p>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="secondrowpg1">
+                        <div class="featured-events" id="featured-events"> 
+                            <br /><br />
+                            <h1 class="heading">Featured Events</h1>
+                            <br /><br /><br />
+                            <div class="featured-boxes">
+                              <div class="box-container" id="box-container">
+                                <div class="box">
+                                  <a href="#">
+                                  <div class="box-content-featured">
+                                    <h3>Build With GKV</h3>
+                                    <p>Build your path to success with job listings, resume builders, and mentorship.</p>
+                                  </div>
+                                  <div class="box-content-featured-img"><img src="dpimg.jpg" alt="background image" class="bg-image box-image" loading="lazy" />
+                                  </div></a>
+                                </div>
+                                <div class="box">
+                                  <a href="#">
+                                  <div class="box-content-featured">
+                                      <h3>Professor Power Panel</h3>
+                                      <p>Listen to professors discuss their research and career paths.
+                                    </p> 
+                                  </div>
+                                  <div class="box-content-featured-img"> 
+                                      <img style="padding-bottom: 20px;" src="{% static 'images/Pop.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy">
+                                  </div></a>
+                                </div>
+                                <div class="box">
+                                  <a href="#">
+                                  <div class="box-content-featured">
+                                    <h3>Book Worms</h3>
+                                    <p> Dive into a world of stories</p>
+                                  </div>
+                                  <div class="box-content-featured-img"> <img style="position:relative; top:20px; padding-bottom: 20px;" src="{% static 'images/BookWorms.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
+                                  </div></a>
+                                </div>
+                                <div class="box">
+                                  <a href="#">
+                                  <div class="box-content-featured">
+                                    <h3>Careerathon</h3>
+                                    <p>Build your path to success with job listings, resume builders, and mentorship.</p>
+                                  </div>
+                                  <div class="box-content-featured-img"> <img style="position:relative; top:-20px; padding-bottom: 20px;" src="{% static 'images/Careerathon.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
+                                  </div></a>
+                                </div>
+                                <div class="box">
+                                  <a href="#">
+                                  <div class="box-content-featured">
+                                    <h3>Movie Marathon Mania</h3>
+                                    <p>Settle in for a night of classic and cult-favorite films</p>
+                                  </div>
+                                  <div class="box-content-featured-img"> <img style=" padding-bottom: 20px;" src="{% static 'images/mvm.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
+                                  </div></a>
+                                </div>
+                                <div class="box">
+                                  <a href="#">
+                                  <div class="box-content-featured">
+                                    <h3>Open Mic</h3>
+                                    <p>Engage with your fellow students.</p>
+                                  </div>
+                                  <div class="box-content-featured-img"> <img style=" padding-bottom: 20px;" src="{% static 'images/openmic.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
+                                  </div></a>
+                                </div>
+                                <div class="box">
+                                  <a href="#">
+                                  <div class="box-content-featured">
+                                    <h3>Campus Comedy Night</h3>
+                                    <p>Enjoy stand-up routines from local comedians and fellow students.</p>
+                                  </div>
+                                  <div class="box-content-featured-img"> <img style="position:relative; top:-20px; padding-bottom: 20px;" src="{% static 'images/cmc.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
+                                  </div></a>
+                                </div>
+                                <div class="box">
+                                  <a href="#">
+                                  <div class="box-content-featured">
+                                    <h3>Jnanagni</h3>
+                                    <p>Stay updated with events.</p>
+                                  </div>
+                                  <div class="box-content-featured-img"> <img style="position:relative; top:20px; padding-bottom: 20px;" src="{% static 'images/jnanagni.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
+                                  </div></a>
+                                </div>
+                                <div class="box">
+                                  <a href="#">
+                                  <div class="box-content-featured">
+                                    <h3>Artsy Affair</h3>
+                                    <p>Showcase your creative talents in an art competition or exhibition.</p>
+                                  </div>
+                                  <div class="box-content-featured-img"> <img style="position:relative; top:-20px; padding-bottom: 20px;" src="{% static 'images/artsy.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
+                                  </div></a>
+                                </div>
+                                <div class="box">
+                                  <a href="#">
+                                  <div class="box-content-featured">
+                                      <h3>Career Closet</h3>
+                                      <p>Stock up on professional attire for free and get interview tips.</p>
+                                  </div>
+                                  <div class="box-content-featured-img"> <img style="position:relative; top:0px; padding-bottom: 20px;" src="{% static 'images/careercloset.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
+                                  </div>        
+                                </a>
+                                </div>
+                              </div>
+                              <div class="dot-container">
+                                <div class="dot" onclick="showBoxes(0)"></div>
+                                <div class="dot" onclick="showBoxes(1)"></div>
+                                <div class="dot" onclick="showBoxes(2)"></div>
+                              </div>
+                              <a>
+                                <div class="rectangle-feature">
+                                  <h4>EXPLORE ALL</h4>
+                                </div>
+                              </a>
+                              <br /><br />
+                            </div>
+                      
+                            <script>
+                              // Store the original content of each box
+                              const originalContent = Array.from(document.getElementsByClassName('box')).map((box) => box.innerHTML)
+                              
+                              function showBoxes(index) {
+                                const container = document.getElementById('box-container')
+                                const boxes = container.getElementsByClassName('box')
+                                const start = index * 3
+                              
+                                for (let i = 0; i < boxes.length; i++) {
+                                  const dataIndex = start + i
+                              
+                                  // Restore the original content for each box
+                                  boxes[i].innerHTML = originalContent[dataIndex]
+                                }
+                              }
+                            </script>
+                          </div>
+                    </div>
+                    <div class="thirdrowpg1">
+                      <div class="likepg1">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                        <p>22,553 Likes</p>
+                      </div>
+                      <div class="commentpg1">
+                        <i class="fa-solid fa-comment"></i>
+                        <p>200 Comments</p>
+                      </div>
+                    </div>
+                </div>
+                <!-- Hardcoded extra feeds -->
+                <div class="feedscontainerpg1">
+                  
+                </div>
+                <div class="feedscontainerpg1">
+
+                </div>
             </div>
-            <div class="group-section">
-                <label for="group_dropdown" class="group-type-label">Select Group</label>
-                <select name="groups" id="group_dropdown" class="group_dropdown">
-                    <option value="" disabled selected>Select group</option>
-                    {% for group in user_groups %}
-                        <option value="{{ group.id }}">{{ group.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="upload">
-                <label for="image-upload" class="custom-file-upload" id="custom-upload-label">
-                    <i class="material-icons">cloud_upload</i> Upload Image
-                </label>
-            </div>
-            <input type="file" name="image" id="image-upload" class="image-upload visually-hidden" accept="image/*">
-            <button type="submit" class="post-button">Post</button>
         </div>
-    </form>
-</div>
 
+        <!-- third column -->
 
-
-
-
-
-
-
-
-{% for post in user_posts %}
-
-
-<div class="feeds-all">
-    <div class="post-box">
-        <div class="user-profile-feeds">
-            {% if user.userprofile.profile_picture %}
-            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
-        {% else %}
-        <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
-        {% endif %}            <div class="more-info-feeds">
-                <h4>{{ user.first_name }} {{ user.last_name }}</h4>
-                {% for group in user_groups %}
-                <p>Posted in Group : {{ group.name }}</p>
-                {% endfor %}
+        <div class="thirdcolfeedpg1">
+          <div class="searchgrpspg1" style="padding:2vw;margin-bottom:2vh;background-color: pink; border-radius: 1rem;">
+            <p style="font-weight: bold;font-size:1.2rem;margin-left: 0.3vw;margin-bottom: 3vh;">Search Groups</p>
+            <input type="text" placeholder="Enter the group code" style="border-radius:3rem; padding:2vh;width:90%; margin-bottom:2vh;">
+            <div class="grpnamecol3pg1" style="border:2px solid black;display:flex;align-items: center;border-radius: 3rem;padding-top:0.5vh;padding-bottom:0.5vh;justify-content: space-between;margin-bottom:3vh;">
+              <i class="fa-solid fa-user-group grpicon"></i>
+              <p>Group Name</p>
+              <button style="background-color: red;width:5vw; height:5vh;border-radius:3rem;font-weight: bold;margin-right: 0.3vw;">Join</button>
             </div>
-        </div>
-        <div class="post-caption"> {{ post.caption }} </div>
-        <div class="post-image">
-            {% if post.image %}
-                <img src="{{ post.image.url }}" alt="Post Image" class="post-image">
-            {% endif %}
-        </div>
-    </div>
-</div>
+          </div>
 
 
-{% endfor %}
-
-
-  
-            </div>
-
-
-            <!-- right -->
-            <div class="feedpgright">
-                <div class="news-module">
-                  <div class="news-module__header">
-                    <h2 class="news-module__title">Student Chronicles | News</h2>
+          <div class="creategrppg1" style="background-color: pink; border-radius: 1rem;text-align: center;padding:2vw; margin-bottom:2vh;">
+            <button id="open-modal" style="background-color: red;width:15vw; height:6vh;border-radius:3rem;font-weight: bold;">Create Group</button>
+            <!-- Vertically centered modal -->
+            <div id="myModal" class="modal">
+              <div class="modal-content">
+                <div class="modal1pg1">
+                  <h2 style="margin-bottom:2vh;margin-left:-1vw;">Create Group</h2>
+                  <span class="close">&times;</span>
+                </div>
+                <div class="covermodalpg1" style="width:100%; height:25vh;background-color: red;border-radius: 1rem;position:relative;">
+                  <!-- coverimage and other contents inside it -->
+                  <img src="dpimg.jpg" alt="" style="width:100%;height:100%;border-radius:1rem;position:relative;">
+                  <div class="dpimgmodalpg1" style="position:absolute; right:50vw;top:8vw;">
+                    <div style="position: relative; display: inline-block;">
+                    <img src="dpimg.jpg" alt="" style="width:4vw;height:4vw;border-radius:5rem;">
+                    <i class="fa-sharp fa-solid fa-pen" style="position: absolute; right: -0.6vw; top: 2.5vw;border-radius:5rem;color:rgb(50, 179, 222);width:2vw;height:2vw;"></i>
+                    </div>
                   </div>
-              
-                  <ul class="news-list">
-                    <li class="news-item">
-                      <a href="#" class="news-link">
-                        <div class="news-headline">Breakthrough Innovations in College Education</div>
-                        <div class="news-subtext">Exploring groundbreaking ideas for the future • 5,309 readers</div>
-                      </a>
-                    </li>
-                    <li class="news-item">
-                      <a href="#" class="news-link">
-                        <div class="news-headline">Record Funding for Student-Led Startups</div>
-                        <div class="news-subtext">Empowering the next generation • 1d ago • 3,687 readers</div>
-                      </a>
-                    </li>
-                    <li class="news-item">
-                      <a href="#" class="news-link">
-                        <div class="news-headline">Revolutionizing College E-learning Platforms</div>
-                        <div class="news-subtext">Adapting to the digital age • 4d ago • 726 readers</div>
-                      </a>
-                    </li>
-                    <li class="news-item">
-                      <a href="#" class="news-link">
-                        <div class="news-headline">Green Initiatives on Campus: Students Take the Lead</div>
-                        <div class="news-subtext">Creating sustainable educational environments • 2d ago • 493 readers</div>
-                      </a>
-                    </li>
-                    <li class="news-item">
-                      <a href="#" class="news-link">
-                        <div class="news-headline">The Rise of Digital Learning Resources</div>
-                        <div class="news-subtext">Transforming education with technology • 2d ago</div>
-                      </a>
-                    </li>
-                  </ul>
-              
-                  <button class="show-more-button" aria-label="Show more">Show more</button>
+                  
                 </div>
+
+                <i class="fa-sharp fa-solid fa-pen" style="position: absolute; right: 23.4vw; top: 12vw;border-radius:5rem;color:rgb(50, 179, 222);width:2vw;height:2vw;"></i>
+
+                <div class="grpnametagsmodalpg1" style="display: flex; align-items: center; justify-content: space-between;padding:1vw;">
+                  <div class="grpnamemmodalpg1">
+                    <p>Group Name*</p>
+                    <input type="text">
+                  </div>
+                  <div class="tagsmodalpg1">
+                    <p>Tags*</p>
+                    <input type="text">
+                  </div>
+                </div>
+
+                <div class="descriptionbuttonmodalpg1" style="display:flex; justify-content: space-between; align-items: center;padding:1vw;">
+                  <div class="descmodalpg1" style="display:flex;flex-direction: column;text-align: start;">
+                    <p>Group Description*</p>
+                    <input type="text" style="border-radius:1rem; height:20vh;width:24vw;margin-top: 0.8vh;">
+                  </div>
+                  <div class="buttonmodalpg1" style="display:flex;align-items: center; justify-content: center;padding-right:7vw;">
+                    <button style="background-color: red;width:12vw; height:6vh;border-radius:1rem;font-weight: bold;font-size: 1.2rem;">Create</button>
+                  </div>
+                </div>
+
               </div>
-              
+            </div>
+          </div>
+
+
+          <div class="suggestedgrppg1" style="background-color: pink; border-radius:1rem;padding:2vw;">
+            <p style="font-weight: bold;font-size: 1.3rem;">Suggested Groups</p>
+            <div class="suggestedgrpcontainer" style="background: white; padding:1vw; border-radius: 1rem;margin-top:1.9vh;">
+              <div class="suggestedgrpinnercontainer" style="background-color: grey;display:flex;align-items: center; border-radius: 1.5rem; padding:1vh 0;">
+                <i class="fa-solid fa-user-group grpicon"></i>
+                <p style="font-size:1.3rem;margin-left:1vw;">Group name</p>
+              </div>
+              <div class="memberspg1" style="display: flex;align-items: center;justify-content: space-between;padding:1vw;">
+                <i class="fa-solid fa-user-group "></i>
+                <p style="margin-left:-2vw;">200K members</p>
+                <button style="background-color: red;width:5vw; height:5vh;border-radius:3rem;font-weight: bold;">Join</button>
+              </div>
+            </div>
+          </div>
         </div>
-
-
-
-
     </div>
     <script>
-        document.getElementById('custom-upload-label').addEventListener('click', function () {
-            document.getElementById('image-upload').click();
-        });
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("open-modal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x) or the close button inside the modal, close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
     </script>
 </body>
-
 </html>
