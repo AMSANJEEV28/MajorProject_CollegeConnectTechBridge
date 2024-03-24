@@ -3,6 +3,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views 
+from .views import linkedin_signup
+
+from django.urls import path
+from .views import linkedin_signup, CustomOAuth2LoginView
+
+from user.views import CustomOAuth2LoginView
+
+
+
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
@@ -16,11 +26,14 @@ urlpatterns = [
     path('getinvolved/', include('getinvolved.urls')),
     path('events/', include('events.urls')),
     
-     
+    path('accounts/', include('allauth.urls')),
+    path('linkedin/signup/', linkedin_signup, name='linkedin_signup'),
+    path('linkedin/login/', CustomOAuth2LoginView.as_view(), name='oauth2_login'),
 
-
-    # Add more URL patterns for other apps if needed
 ]
+
+
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
