@@ -20,84 +20,85 @@
 
   <body class="main-body">
 
+    
     <nav class="navbar">
-        <div class="logo">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo-image">
-            </a>
-        </div>
-        
-      <div class="navbar-links">
-        <div class="dropdown">
-          <a href="{% url 'about' %}">About Us</a>
-          <div class="dropdown-content">
-            <a href="{% url 'team' %}">Team</a>
-            <a href="{% url 'mission' %}">Mission</a>
-            <a href="{% url 'blog' %}">Blog/News</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="">Features</a>
-          <div class="dropdown-content">
-            <a href="{% url 'social:feeds_view' %}">Social Networking</a>
-            <a href="{% url 'events:events' %}">Events</a>
-            <a href="{% url 'career:academic' %}">Academic Resources</a>
-            <a href="{% url 'career:jobs' %}">Career Development</a>
-            <!-- <a href="#">User Engagement</a> -->
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="">Get Involved</a>
-          <div class="dropdown-content">
-            <a href="{% url 'getinvolved:alumni_network'%}">Alumni Network</a>
-          </div>
-        </div>
-        <div class="dropdown">
-          <a href="">Contact Us</a>
-          <div class="dropdown-content">
-            <a href="{% url 'contactus:contactinfo' %}">Contact Information</a>
-            <a href="{% url 'contactus:faq' %}">FAQ</a>
-            {% comment %} <a href="{% url 'contactus:support' %}">Help/Support</a> {% endcomment %}
-          </div>
-        </div>
+      <div class="logo">
+          <a href="{% url 'home' %}">
+              <img src="{% static 'images/logo.jpg' %}" alt="Logo" class="logo-image">
+          </a>
       </div>
+  
+      <ul class="navbar-links">
+          <li class="dropdown">
+              <a href="">About Us</a>
+              <ul class="dropdown-content">
+                  <li><a href="{% url 'team' %}">Team</a></li>
+                  <li><a href="{% url 'mission' %}">Mission</a></li>
+                  <li><a href="{% url 'blog' %}">Blog/News</a></li>
+              </ul>
+          </li>
+          <li class="dropdown">
+              <a href="">Features</a>
+              <ul class="dropdown-content">
+                  <li><a href="{% url 'social:feeds_view' %}">Social Networking</a></li>
+                  <li><a href="{% url 'events:events' %}">Events</a></li>
+                  <li><a href="{% url 'career:academic' %}">Academic Resources</a></li>
+                  <li><a href="{% url 'career:jobs' %}">Career Development</a></li>
+              </ul>
+          </li>
+          <li class="dropdown">
+              <a href="">Get Involved</a>
+              <ul class="dropdown-content">
+                  <li><a href="{% url 'getinvolved:alumni_network'%}">Alumni Network</a></li>
+              </ul>
+          </li>
+          <li class="dropdown">
+              <a href="">Contact Us</a>
+              <ul class="dropdown-content">
+                  <li><a href="{% url 'contactus:contactinfo' %}">Contact Information</a></li>
+                  <li><a href="{% url 'contactus:faq' %}">FAQ</a></li>
+              </ul>
+          </li>
+      </ul>
+  
       <div class="navbar-icons">
-        <div class="search-icon">
-          <i class="material-icons" style="font-size: 1.8rem;">search</i>
-        </div>
-        <div class="notification-icon">
-          <i class="material-icons" style="font-size: 1.8rem;">notifications</i>
-        </div>
-
-        <div class="dropdown" style="margin-left:-10px;">
-          {% if user.is_authenticated %}
-            <div class="user-profile">
-
-              {% if user.userprofile.profile_picture %}
+          {% comment %} <div class="search-icon">
+              <i class="material-icons" style="font-size: 1.8rem;">search</i>
+          </div> {% endcomment %}
+          <div class="notification-icon">
+              <i class="material-icons" style="font-size: 1.8rem;">notifications</i>
+          </div>
+  
+          <div class="dropdown">
+              {% if user.is_authenticated %}
+              <div class="user-profile">
+                  <!-- profile.html -->
+                  {% if user.userprofile.profile_picture %}
                   <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
+                  {% else %}
+                  <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture"
+                      class="profile-picture">
+                  {% endif %}
+              </div>
               {% else %}
-              <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
-          {% endif %}
-            </div>
-            
-          {% else %}
-            <a class="login-text" href="{% url 'user:signin' %}">Login</a>
-          {% endif %}
-
-          {% if user.is_authenticated %}
-            <div class="dropdown-content" style="margin-left:-40px;">
-              <a href="{% url 'user:profile' %}">Profile</a>
-              <a href="{% url 'user:signout' %}">Logout</a>
-            </div>
-          {% else %}
-            <div class="dropdown-content" style="margin-left:-50px;">
-              <a href="{% url 'user:signin' %}">Login</a>
-              <a href="{% url 'user:signup' %}">Signup</a>
-            </div>
-          {% endif %}
-        </div>
+              <a class="login-text" href="{% url 'user:signin' %}">Login</a>
+              {% endif %}
+  
+              {% if user.is_authenticated %}
+              <ul class="dropdown-content" style="margin-left:-40px;">
+                  <li><a href="{% url 'user:profile' %}">Profile</a></li>
+                  <li><a href="{% url 'user:signout' %}">Logout</a></li>
+              </ul>
+              {% else %}
+              <ul class="dropdown-content" style="margin-left:-40px;">
+                  <li><a href="{% url 'user:signin' %}">Log In</a></li>
+                  <li><a href="{% url 'user:signup' %}">Sign Up</a></li>
+              </ul>
+              {% endif %}
+          </div>
       </div>
-    </nav>
+  </nav>
+  
 
 
     <div class="home" id="home">

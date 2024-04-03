@@ -60,7 +60,8 @@
                     <p>Sign Up</p>
 
                     <div class="signup-buttons">
-                        <div class="linkedin-signup">
+
+                        {% comment %} <div class="linkedin-signup">
                             <div class="login-via-linkedin">
 
                                 <a href="">
@@ -70,10 +71,9 @@
                                         height="auto" 
                                         border="0">
                                 </a>
-
-                                
                             </div>
-                        </div>
+                        </div> {% endcomment %}
+
                         <div class="google-signup">
                             <div class="login-via-google">
 
@@ -174,8 +174,20 @@
                                 <button type="submit" class="btn btn-primary signup-btn-signup">Continue</button>
                             </form>
                         </div>
-
                     </div>
+
+                    <br>
+                    {% if form.errors %}
+                    <ul>
+                        {% for field, errors in form.errors.items %}
+                            {% for error in errors %}
+                                <li style="color:red;">{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <br>
+                    <br>
 
                 </div>
 

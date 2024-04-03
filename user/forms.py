@@ -67,7 +67,7 @@ CustomUser = get_user_model()
 
 class SignUpForm(UserCreationForm):
     # email = forms.EmailField(label='Email', widget=forms.TextInput(attrs={'placeholder': 'Email'}))
-    email = forms.EmailField(label='Email', widget=forms.TextInput(attrs={'id': 'id_email_signup', 'placeholder': 'Email'}))  
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.', label='Email', widget=forms.TextInput(attrs={'id': 'id_email_signup', 'placeholder': 'Email'}))  
 
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
     password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}))

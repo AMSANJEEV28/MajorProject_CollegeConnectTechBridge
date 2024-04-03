@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP</title>
+</head>
+<body>
+    <h2>Enter OTP</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="otp" placeholder="Enter OTP">
+        <button type="submit">Verify OTP</button>
+    </form>
+</body>
+</html>
