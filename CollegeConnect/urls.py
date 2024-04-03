@@ -4,12 +4,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views 
-from .views import linkedin_signup
-
 from django.urls import path
-from .views import linkedin_signup, CustomOAuth2LoginView
+from . import views
+# from .views import linkedin_signup
 
-from user.views import CustomOAuth2LoginView
+# from allauth.socialaccount import providers
+from django.urls import path
+from django.urls import path, include
 
 
 
@@ -27,8 +28,8 @@ urlpatterns = [
     path('events/', include('events.urls')),
     
     path('accounts/', include('allauth.urls')),
-    path('linkedin/signup/', linkedin_signup, name='linkedin_signup'),
-    path('linkedin/login/', CustomOAuth2LoginView.as_view(), name='oauth2_login'),
+
+
 
 ]
 

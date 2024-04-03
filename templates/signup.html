@@ -1,4 +1,6 @@
 {% load static %}
+{% load socialaccount %}
+
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -56,15 +58,20 @@
             <div class="signup-body-left">
                 <div class="sign-up-main">
                     <p>Sign Up</p>
+
                     <div class="signup-buttons">
                         <div class="linkedin-signup">
                             <div class="login-via-linkedin">
-                                <a href="{% url 'linkedin_signup' %}?auth_login=linkedin">                                    <img src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png" 
-                                         alt="Sign in with LinkedIn" 
-                                         width="160" 
-                                         height="auto" 
-                                         border="0">
+
+                                <a href="">
+                                    <img src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png" 
+                                        alt="Sign in with LinkedIn" 
+                                        width="160" 
+                                        height="auto" 
+                                        border="0">
                                 </a>
+
+                                
                             </div>
                         </div>
                         <div class="google-signup">
@@ -73,7 +80,9 @@
                                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
     
                                 <!-- Custom button with Google logo -->
-                                <a href="#" onclick="onSignIn()" class="google-button-signup">
+
+
+                                <a href="{% provider_login_url 'google' %}" onclick="onSignIn()" class="google-button-signup">
                                   <img src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA" alt="Google Logo" width="20" height="20">
                                   Continue with Google
                                 </a>

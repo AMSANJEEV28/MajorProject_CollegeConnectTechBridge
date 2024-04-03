@@ -108,7 +108,7 @@
                         {% if user.userprofile.profile_picture %}
                             <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture">
                         {% else %}
-                            <img src="/media/profile_pics/default_profile_picture.jpg" alt="Default Profile Picture" class="profile-picture">
+                            <img src="{% static 'images/default_profile/Gemini_Generated_Image (39).jpg' %}" alt="Default Profile Picture" class="profile-picture">
                         {% endif %}
                     </div>
                         
