@@ -3,348 +3,598 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'css/feeds_new.css' %}" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
+    
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 
 <!-- navbar -->
-    <div class="navpg1" style="background-color: grey;">
+    <div class="navpg1" style="background-color: rgb(219, 218, 218);">
       <div class="navbarpg1">
         <div class="leftnavpg1">
-            <img src="dpimg.jpg" alt="logo..." style="margin-right: 1.5vw; ">
-            <h3>College Connect</h3>
+            <a href="{% url 'home' %}"> <img src="{% static 'images/logo.jpg' %}" alt="logo..." style="margin-right: 1.5vw; width: 70px;height: 70px; "></a>
+            <p style="font-family:sans-serif; font-size: 2rem;">College Connect</p>
         </div>
         
-
-        <div class="rightnavpg1">
-            <input type="text" style="padding-inline: 2vw; border-radius: 1rem; height: 3.5vh;width:15vw; border:none;">
+        <div class="rightnavpg1 navbar-links">
+            <input type="text" style=" padding: 0 10px; border-radius: 16px; height: 4.9vh;width:270px; height: 30px; border:4px solid transparent; margin-top:0.4vh;">
             <i class="fas fa-search"></i>
-            <i class="fa-solid fa-bell" style="margin-right: 1vw; color:white; font-size:1.5vw; cursor: pointer;"></i>
-            <img src="dpimg.jpg" alt="dp...">
+
+            <!-- notification bell and its dropdowns -->
+              <div class="dropdown">
+                  <i class="material-icons" style="font-size: 1.8rem; color:white;cursor:pointer; margin-right: 2.18vw; margin-left:1.2vw; margin-top:0.4vh;" id="notification-Bell">notifications</i>
+                  <div class="dropdown-content2" id="dropdown-content-bell">
+                    <h3 style="margin:0.5vh 0.5vw;">Notifications</h3>
+                    <button style="display:flex;align-items:center;background-color: #ff3131; width:30%; cursor:pointer; font-size:0.6rem;border-radius:0.3rem; padding: 0.5vh 0.1vw; margin:1vh 0; margin-left: 67%; border:none;">
+                      <span class="material-symbols-outlined" style="font-size: 0.7rem; padding-right:0.3vw;">
+                        done
+                      </span>
+                      <p>Mark all as read</p>
+                    </button>
+                <!-- vertical scroller of notification bar (make it dynamic) -->
+                    <div class="verticalscrollnotificfeedpg">
+                      <a href="#">
+                        <!-- dot, pic and notification para -->
+                        <div style="display:flex; align-items: center;">
+                          <span class="material-icons" style="color:#ff3131;font-size: 1rem; padding-left: 0.4vw;">
+                            fiber_manual_record
+                          </span>
+                          <img src="{%static 'images/team/akarsh.jpg' %}" alt="..." style="padding: 0.5vw;">
+                          <p style="font-size: 0.88rem; padding-right:3vw;font-family: sans-serif;">someone liked this post and i it is to be converted to dynamic</p>
+                        </div>
+                        <!-- Timer of notification -->
+                        <p style="font-size: 0.6rem; margin-top:-0.9vh; color: #ff3131; padding-left:0.7vw;">1 hour ago</p>
+                      </a>
+                      <hr>
+                    </div>
+                    
+                    
+                  </div>
+                
+              </div>
+
+
+            <!-- profile pic and its dropdown menu -->
+
+            <div class="dropdown">
+              {% if user.is_authenticated %}
+                  {% if user.userprofile.profile_picture %}
+                      <div class="user-profile">
+                          <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture" id="profile-pic" style="width:40px; height:40px;">
+                      </div>
+                      
+                  {% else %}
+                      <div class="user-profile">
+                          <!-- Add a default image or placeholder if profile picture doesn't exist -->
+                          <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture" id="profile-pic">
+                      </div>
+                      
+                  {% endif %}
+                  <div class="dropdown-content" id="dropdown-content">
+                    <h3 style="margin-left:0.3vw; padding-bottom: 0.5vh;font-weight: bolder;">Me</h3>
+                    
+                    <a href="{% url 'user:profile' %}" style="background-color: #ff3131;border-radius: 0.5rem;padding:0.5vw;padding-left: 1vw;">
+                      <div class="profeedpgdropdown" style="display:flex;align-items: center;">
+                        {% if user.userprofile.profile_picture %}
+                          <img src="{{ user.userprofile.profile_picture.url }}" alt="profile pic" class="profile-picture">
+                        {% else %}
+                          <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture" id="profile-pic">
+                        {% endif %}
+                        <div style="margin-left: 0.5vw;">
+                          <p style="font-family: sans-serif;">Profile Name</p>
+                          <p style="font-size: 0.7rem; font-family: sans-serif;">@ username</p>
+                        </div>
+                      </div>
+                      
+                    </a>
+
+                    <a href="#" class="profiledropdownfeedpg_a_tag">
+                      <span class="material-symbols-outlined">
+                        group
+                      </span>
+                      <span>Groups</span>
+                    </a>
+
+                    <a href="#" class="profiledropdownfeedpg_a_tag">
+                      <span class="material-symbols-outlined">
+                        event
+                      </span>
+                      <span>Events</span>
+                    </a>
+
+                    <hr>
+
+                    <a href="#" class="profiledropdownfeedpg_a_tag">
+                      <span class="material-symbols-outlined">
+                        manufacturing
+                      </span>
+                      <span>Settings</span>
+                    </a>
+                    <a href="#" class="profiledropdownfeedpg_a_tag">
+                      <span class="material-symbols-outlined">
+                        lock
+                      </span>
+                      <span>Privacy and Security</span>
+                    </a>
+                    <a href="#" class="profiledropdownfeedpg_a_tag">
+                      <span class="material-symbols-outlined">
+                        help
+                      </span>
+                      <span>Help</span>
+                    </a>
+
+                    <hr>
+
+                    <a href="{% url 'user:signout' %}" class="profiledropdownfeedpg_a_tag">
+                      <span class="material-symbols-outlined">
+                        logout
+                      </span>
+                      <span>Log out</span>
+                    </a>
+                </div>
+                      
+              {% endif %}
+          </div>
+
+
+            
         </div>
       </div>
     </div>
     
+<!-- navbar end -->
 
-<!-- FeedsContents -->
-    <h1 style="background-color: grey; padding-left:3vw; padding-top:1vh;padding-bottom:1vh;">Groups</h1>
+<!-- left side-->
+    
     <div class="feedpgcont1">
+      <div class="leftpartfeedspg">
+        <h1 style="padding-top:3.6vh;padding-bottom:3.6vh;font-family: sans-serif;">Groups</h1>
+
         <div class="firstcolfeedpg1">
-            <div class="JoinedGroupspg1">
-                <p>Joined Groups</p>
-                
-                <div class="container-wrapperpg1">
-                    <div class="containerpg1">
-                        <div class="containerpg11">
-                            <i class="fa-solid fa-user-group grpicon"></i>
-                            <p>Group name</p>
-                        </div>
-                        <div class="containerpg12">
-                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
-                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
-                            <i class="fa-solid fa-trash-can"></i>
-                        </div>
-                    </div>
-                    <div class="containerpg1">
-                        <div class="containerpg11">
-                            <i class="fa-solid fa-user-group grpicon"></i>
-                            <p>Group name</p>
-                        </div>
-                        <div class="containerpg12">
-                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
-                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
-                            <i class="fa-solid fa-trash-can"></i>
+          <div class="JoinedGroupspg1">
+              <p style="font-size: 1.2rem; font-family: sans-serif; padding: 1.3vh 0.2vw; ">Joined Groups</p>
+              
+              <div class="container-wrapperpg1">
 
-                        </div>
-                    </div>
-                    <div class="containerpg1">
-                        <div class="containerpg11">
-                            <i class="fa-solid fa-user-group grpicon"></i>
-                            <p>Group name</p>
-                        </div>
-                        <div class="containerpg12">
-                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
-                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
-                            <i class="fa-solid fa-trash-can"></i>
+                <!-- hardcoded containers of Joined groups -->
+                  <div class="containerpg1">
+                      <div class="containerpg11">
+                          <i class="fa-solid fa-user-group grpicon"></i>
+                          <p >Group name</p>
+                      </div>
+                      <div class="containerpg12">
+                          <i class="fa-solid fa-bell" style=" cursor: pointer; font-size: 1.5rem;position: relative;">
+                            <span class="material-icons" style="color:#ff3131;font-size: 0.8rem; position:absolute; left: 1vw;top:-1vh;">
+                              fiber_manual_record
+                            </span>
+                          </i>
+                          <i class="fa-sharp fa-solid fa-volume-xmark" style="font-size: 1.5rem;"></i>
+                          <span class="material-symbols-outlined" style="font-size: 1.8rem;color: #ff3131;">
+                            delete
+                          </span>
+                      </div>
+                  </div>
+                  <div class="containerpg1">
+                      <div class="containerpg11">
+                          <i class="fa-solid fa-user-group grpicon"></i>
+                          <p >Group name</p>
+                      </div>
+                      <div class="containerpg12">
+                          <i class="fa-solid fa-bell" style=" cursor: pointer; font-size: 1.5rem;position: relative;">
+                            <span class="material-icons" style="color:#ff3131;font-size: 0.8rem; position:absolute; left: 1vw;top:-1vh;">
+                              fiber_manual_record
+                            </span>
+                          </i>
+                          <i class="fa-sharp fa-solid fa-volume-xmark" style="font-size: 1.5rem;"></i>
+                          <span class="material-symbols-outlined" style="font-size: 1.8rem;color: #ff3131;">
+                            delete
+                          </span>
+                      </div>
+                  </div>
+                  <div class="containerpg1">
+                      <div class="containerpg11">
+                          <i class="fa-solid fa-user-group grpicon"></i>
+                          <p >Group name</p>
+                      </div>
+                      <div class="containerpg12">
+                          <i class="fa-solid fa-bell" style=" cursor: pointer; font-size: 1.5rem;position: relative;">
+                            <span class="material-icons" style="color:#ff3131;font-size: 0.8rem; position:absolute; left: 1vw;top:-1vh;">
+                              fiber_manual_record
+                            </span>
+                          </i>
+                          <i class="fa-sharp fa-solid fa-volume-xmark" style="font-size: 1.5rem;"></i>
+                          <span class="material-symbols-outlined" style="font-size: 1.8rem;color: #ff3131;">
+                            delete
+                          </span>
+                      </div>
+                  </div>
+                  <div class="containerpg1">
+                      <div class="containerpg11">
+                          <i class="fa-solid fa-user-group grpicon"></i>
+                          <p >Group name</p>
+                      </div>
+                      <div class="containerpg12">
+                          <i class="fa-solid fa-bell" style=" cursor: pointer; font-size: 1.5rem;position: relative;">
+                            <span class="material-icons" style="color:#ff3131;font-size: 0.8rem; position:absolute; left: 1vw;top:-1vh;">
+                              fiber_manual_record
+                            </span>
+                          </i>
+                          <i class="fa-sharp fa-solid fa-volume-xmark" style="font-size: 1.5rem;"></i>
+                          <span class="material-symbols-outlined" style="font-size: 1.8rem;color: #ff3131;">
+                            delete
+                          </span>
+                      </div>
+                  </div>
+                  
+                  
+                  
+                  <!-- Add more containers as needed -->
+              </div>
+      
+          </div>
 
-                        </div>
-                    </div>
-                    <div class="containerpg1">
-                        <div class="containerpg11">
-                            <i class="fa-solid fa-user-group grpicon"></i>
-                            <p>Group name</p>
-                        </div>
-                        <div class="containerpg12">
-                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
-                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
-                            <i class="fa-solid fa-trash-can"></i>
+          <!-- created groups -->
 
-                        </div>
-                    </div>
-                    
-                    <!-- Add more containers as needed -->
+          <div class="createdgrpspg1" >
+              <p style="font-size: 1.2rem; font-family: sans-serif; padding: 1vh 0.5vw; padding-top:2vh;">Created Groups</p>
+              <div class="container-wrapperpg2">
+                <div class="containerpg1">
+                  <div class="containerpg11">
+                      <i class="fa-solid fa-user-group grpicon"></i>
+                      <p >Group name</p>
+                  </div>
+                  <div class="containerpg12">
+                      <i class="fa-solid fa-bell" style=" cursor: pointer; font-size: 1.5rem;position: relative;">
+                        <span class="material-icons" style="color:#ff3131;font-size: 0.8rem; position:absolute; left: 1vw;top:-1vh;">
+                          fiber_manual_record
+                        </span>
+                      </i>             
+                      <i class="fa-sharp fa-solid fa-volume-xmark" style="font-size: 1.5rem;"></i>
+                      <span class="material-symbols-outlined">
+                        lock
+                      </span>
+                      <span class="material-symbols-outlined" style="font-size: 1.8rem;color: #ff3131;">
+                        delete
+                      </span>
+                  </div>
+              </div>
+              <div class="containerpg1">
+                <div class="containerpg11">
+                    <i class="fa-solid fa-user-group grpicon"></i>
+                    <p >Group name</p>
                 </div>
-                
-            </div>
-            <div class="createdgrpspg1" >
-                <p>Created Groups</p>
-                <div class="container-wrapperpg2">
-                    <div class="containerpg1">
-                        <div class="containerpg11">
-                            <i class="fa-solid fa-user-group grpicon"></i>
-                            <p>Group name</p>
-                        </div>
-                        <div class="containerpg12">
-                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
-                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
-                            <i class="fa-solid fa-trash-can"></i>
-
-                        </div>
-                    </div>
-                    <div class="containerpg1">
-                        <div class="containerpg11">
-                            <i class="fa-solid fa-user-group grpicon"></i>
-                            <p>Group name</p>
-                        </div>
-                        <div class="containerpg12">
-                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
-                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
-                            <i class="fa-solid fa-trash-can"></i>
-
-                        </div>
-                    </div>
-                    <div class="containerpg1">
-                        <div class="containerpg11">
-                            <i class="fa-solid fa-user-group grpicon"></i>
-                            <p>Group name</p>
-                        </div>
-                        <div class="containerpg12">
-                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
-                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
-                            <i class="fa-solid fa-trash-can"></i>
-
-                        </div>
-                    </div>
-                    <div class="containerpg1">
-                        <div class="containerpg11">
-                            <i class="fa-solid fa-user-group grpicon"></i>
-                            <p>Group name</p>
-                        </div>
-                        <div class="containerpg12">
-                            <i class="fa-solid fa-bell" style="margin-right: 1vw; cursor: pointer;"></i>
-                            <i class="fa-sharp fa-solid fa-volume-xmark"></i>
-                            <i class="fa-solid fa-trash-can"></i>
-
-                        </div>
-                    </div>
-                    
-                    <!-- Add more containers as needed -->
+                <div class="containerpg12">
+                  <i class="fa-solid fa-bell" style=" cursor: pointer; font-size: 1.5rem;position: relative;">
+                    <span class="material-icons" style="color:#ff3131;font-size: 0.8rem; position:absolute; left: 1vw;top:-1vh;">
+                      fiber_manual_record
+                    </span>
+                  </i>
+                  <i class="fa-sharp fa-solid fa-volume-xmark" style="font-size: 1.5rem;"></i>
+                    <span class="material-symbols-outlined">
+                      lock
+                    </span>
+                    <span class="material-symbols-outlined" style="font-size: 1.8rem;color: #ff3131;">
+                      delete
+                    </span>
                 </div>
             </div>
+            
+          
+                  
+                  <!-- Add more containers as needed -->
+              </div>
+          </div>
         </div>
 
+        <!-- Suggested events Container left part -->
+
+        <div class="suggestedevesfeedspg">
+          <p style="font-family: sans-serif; font-size:1.2rem; font-weight: bold; margin-left:0.78vw; margin-top:1.9vh;margin-bottom: 4.5vh;">Suggested Events</p>
+          <div class="sgstdgrp-wrapper">
+              <div style="display:flex; align-items: center; margin-bottom: 1.5vh; padding: 0.72vh 0.45vw; ">
+                <img src="{% static 'images/mvm2.jpg' %}" alt="" style="width:5vw;height:8.6vh;">
+                <div style="margin-left:1.6vw;">
+                  <p style="color: #ff3131;font-size:0.74rem;font-family: sans-serif;">12 May 2024</p>
+                  <p style="font-family: sans-serif;font-weight: bold;font-size: 0.87rem;">Engineers Day</p>
+                  <p style="font-family: sans-serif;font-size:0.74rem;">Campus</p>
+                </div>
+              </div>
+              <div style="display:flex; align-items: center; margin-bottom: 1.5vh; padding: 0.72vh 0.45vw; ">
+                <img src="{% static 'images/mvm2.jpg' %}" alt="" style="width:5vw;height:8.6vh;">
+                <div style="margin-left:1.6vw;">
+                  <p style="color: #ff3131;font-size:0.74rem;font-family: sans-serif;">12 May 2024</p>
+                  <p style="font-family: sans-serif;font-weight: bold;font-size: 0.87rem;">Engineers Day</p>
+                  <p style="font-family: sans-serif;font-size:0.74rem;">Campus</p>
+                </div>
+              </div>
+              <div style="display:flex; align-items: center; margin-bottom: 1.5vh; padding: 0.72vh 0.45vw; ">
+                <img src="{% static 'images/mvm2.jpg' %}" alt="" style="width:5vw;height:8.6vh;">
+                <div style="margin-left:1.6vw;">
+                  <p style="color: #ff3131;font-size:0.74rem;font-family: sans-serif;">12 May 2024</p>
+                  <p style="font-family: sans-serif;font-weight: bold;font-size: 0.87rem;">Engineers Day</p>
+                  <p style="font-family: sans-serif;font-size:0.74rem;">Campus</p>
+                </div>
+              </div>
+              
+              
+          </div>
+          
+        </div>
+
+        <!-- search events -->
+        <div class="searchevesfeedspg">
+          <p style="font-family: sans-serif; font-size:1.2rem; font-weight: bold; margin-left:0.78vw; margin-top:1.9vh;margin-bottom: 4.5vh;">Search Events</p>
+          <input type="text" placeholder="Enter the Event name" style="height:5.8vh; width:15vw; padding-left:1vw;border-radius: 0.8rem; margin-left: 1.8vw; margin-bottom: 2vh;">
+          <div class="sgstdgrp-wrapper" style="height:11vh;">
+              
+              <div style="display:flex; align-items: center; margin-bottom: 1.5vh; padding: 0.72vh 0.45vw; ">
+                <img src="{% static 'images/mvm2.jpg' %}" alt="" style="width:5vw;height:8.6vh;">
+                <div style="margin-left:1.6vw;">
+                  <p style="color: #ff3131;font-size:0.74rem;font-family: sans-serif;">12 May 2024</p>
+                  <p style="font-family: sans-serif;font-weight: bold;font-size: 0.87rem;">Engineers Day</p>
+                  <p style="font-family: sans-serif;font-size:0.74rem;">Campus</p>
+                </div>
+              </div>
+              <div style="display:flex; align-items: center; margin-bottom: 1.5vh; padding: 0.72vh 0.45vw; ">
+                <img src="{% static 'images/mvm2.jpg' %}" alt="" style="width:5vw;height:8.6vh;">
+                <div style="margin-left:1.6vw;">
+                  <p style="color: #ff3131;font-size:0.74rem;font-family: sans-serif;">12 May 2024</p>
+                  <p style="font-family: sans-serif;font-weight: bold;font-size: 0.87rem;">Engineers Day</p>
+                  <p style="font-family: sans-serif;font-size:0.74rem;">Campus</p>
+                </div>
+              </div>
+              
+              
+          </div>
+          
+        </div>
+
+        <div class="createevesfeedspg" style="background-color: rgb(255, 238, 238); border-radius: 1rem;text-align: center; margin:1.9vh 0;height:10.5vh;width:100%; display:flex;align-items: center;justify-content: center;">
+          <button style="background-color: #ff3131;width:9.5vw;border: none;cursor: pointer; height:4.6vh;border-radius:3rem;font-family: sans-serif;font-size:1rem;">Create Events</button>
+        </div>
+
+
+      </div>
+
+
+      
+
+        
+
+<!-- feeds column (Mid Part)-->
+
+
+        
+
         <div class="secondcolfeedpg1">
-            <h2>Group feed</h2>
-            <div class="feedswrapperpg1">
-                <div class="feedscontainerpg1">
+          <h1 style="padding-top:3.6vh;padding-bottom:3.6vh;font-family: sans-serif;">Groups feed</h1>
 
-                    <div class="firstrowpg1">
-                        <div class="firstrowleftpg1">
-                            <img src="dpimg.jpg" alt="">
-                            <p>Akarsh</p>
-                        </div>
-                        <div class="firstrowrightpg1">
-                            <i class="fa-solid fa-user-group grpicon"></i>
-                            <p>Group1</p>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="secondrowpg1">
-                        <div class="featured-events" id="featured-events"> 
-                            <br /><br />
-                            <h1 class="heading">Featured Events</h1>
-                            <br /><br /><br />
-                            <div class="featured-boxes">
-                              <div class="box-container" id="box-container">
-                                <div class="box">
-                                  <a href="#">
-                                  <div class="box-content-featured">
-                                    <h3>Build With GKV</h3>
-                                    <p>Build your path to success with job listings, resume builders, and mentorship.</p>
-                                  </div>
-                                  <div class="box-content-featured-img"><img src="dpimg.jpg" alt="background image" class="bg-image box-image" loading="lazy" />
-                                  </div></a>
-                                </div>
-                                <div class="box">
-                                  <a href="#">
-                                  <div class="box-content-featured">
-                                      <h3>Professor Power Panel</h3>
-                                      <p>Listen to professors discuss their research and career paths.
-                                    </p> 
-                                  </div>
-                                  <div class="box-content-featured-img"> 
-                                      <img style="padding-bottom: 20px;" src="{% static 'images/Pop.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy">
-                                  </div></a>
-                                </div>
-                                <div class="box">
-                                  <a href="#">
-                                  <div class="box-content-featured">
-                                    <h3>Book Worms</h3>
-                                    <p> Dive into a world of stories</p>
-                                  </div>
-                                  <div class="box-content-featured-img"> <img style="position:relative; top:20px; padding-bottom: 20px;" src="{% static 'images/BookWorms.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
-                                  </div></a>
-                                </div>
-                                <div class="box">
-                                  <a href="#">
-                                  <div class="box-content-featured">
-                                    <h3>Careerathon</h3>
-                                    <p>Build your path to success with job listings, resume builders, and mentorship.</p>
-                                  </div>
-                                  <div class="box-content-featured-img"> <img style="position:relative; top:-20px; padding-bottom: 20px;" src="{% static 'images/Careerathon.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
-                                  </div></a>
-                                </div>
-                                <div class="box">
-                                  <a href="#">
-                                  <div class="box-content-featured">
-                                    <h3>Movie Marathon Mania</h3>
-                                    <p>Settle in for a night of classic and cult-favorite films</p>
-                                  </div>
-                                  <div class="box-content-featured-img"> <img style=" padding-bottom: 20px;" src="{% static 'images/mvm.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
-                                  </div></a>
-                                </div>
-                                <div class="box">
-                                  <a href="#">
-                                  <div class="box-content-featured">
-                                    <h3>Open Mic</h3>
-                                    <p>Engage with your fellow students.</p>
-                                  </div>
-                                  <div class="box-content-featured-img"> <img style=" padding-bottom: 20px;" src="{% static 'images/openmic.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
-                                  </div></a>
-                                </div>
-                                <div class="box">
-                                  <a href="#">
-                                  <div class="box-content-featured">
-                                    <h3>Campus Comedy Night</h3>
-                                    <p>Enjoy stand-up routines from local comedians and fellow students.</p>
-                                  </div>
-                                  <div class="box-content-featured-img"> <img style="position:relative; top:-20px; padding-bottom: 20px;" src="{% static 'images/cmc.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
-                                  </div></a>
-                                </div>
-                                <div class="box">
-                                  <a href="#">
-                                  <div class="box-content-featured">
-                                    <h3>Jnanagni</h3>
-                                    <p>Stay updated with events.</p>
-                                  </div>
-                                  <div class="box-content-featured-img"> <img style="position:relative; top:20px; padding-bottom: 20px;" src="{% static 'images/jnanagni.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
-                                  </div></a>
-                                </div>
-                                <div class="box">
-                                  <a href="#">
-                                  <div class="box-content-featured">
-                                    <h3>Artsy Affair</h3>
-                                    <p>Showcase your creative talents in an art competition or exhibition.</p>
-                                  </div>
-                                  <div class="box-content-featured-img"> <img style="position:relative; top:-20px; padding-bottom: 20px;" src="{% static 'images/artsy.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
-                                  </div></a>
-                                </div>
-                                <div class="box">
-                                  <a href="#">
-                                  <div class="box-content-featured">
-                                      <h3>Career Closet</h3>
-                                      <p>Stock up on professional attire for free and get interview tips.</p>
-                                  </div>
-                                  <div class="box-content-featured-img"> <img style="position:relative; top:0px; padding-bottom: 20px;" src="{% static 'images/careercloset.jpg' %}" alt="background image" class="bg-image box-image" loading="lazy" />
-                                  </div>        
-                                </a>
-                                </div>
-                              </div>
-                              <div class="dot-container">
-                                <div class="dot" onclick="showBoxes(0)"></div>
-                                <div class="dot" onclick="showBoxes(1)"></div>
-                                <div class="dot" onclick="showBoxes(2)"></div>
-                              </div>
-                              <a>
-                                <div class="rectangle-feature">
-                                  <h4>EXPLORE ALL</h4>
-                                </div>
-                              </a>
-                              <br /><br />
-                            </div>
-                      
-                            <script>
-                              // Store the original content of each box
-                              const originalContent = Array.from(document.getElementsByClassName('box')).map((box) => box.innerHTML)
-                              
-                              function showBoxes(index) {
-                                const container = document.getElementById('box-container')
-                                const boxes = container.getElementsByClassName('box')
-                                const start = index * 3
-                              
-                                for (let i = 0; i < boxes.length; i++) {
-                                  const dataIndex = start + i
-                              
-                                  // Restore the original content for each box
-                                  boxes[i].innerHTML = originalContent[dataIndex]
-                                }
-                              }
-                            </script>
-                          </div>
-                    </div>
-                    <div class="thirdrowpg1">
-                      <div class="likepg1">
-                        <i class="fa-solid fa-thumbs-up"></i>
-                        <p>22,553 Likes</p>
-                      </div>
-                      <div class="commentpg1">
-                        <i class="fa-solid fa-comment"></i>
-                        <p>200 Comments</p>
-                      </div>
-                    </div>
-                </div>
-                <!-- Hardcoded extra feeds -->
-                <div class="feedscontainerpg1">
+          <div class="feedcreatefeedpg">
                   
+            <div class="user-profile">
+              {% if user.userprofile.profile_picture %}
+                <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture" id="profile-pic" style="width:3.3rem; height:3.3rem;border-radius:5rem;margin-inline:1.3vw;">
+              {% else %}
+                <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture" id="profile-pic">
+              {% endif %}
+            </div>
+
+            <p style="width:11.6vw; font-family: sans-serif;font-size: 1.2rem;">User_Name_</p>
+
+
+
+
+            <button id="open-post-modal" style="cursor: pointer; background-color: rgb(255, 238, 238); border-radius:2rem; border:none; width:31.3vw; height:6.3vh;margin-right: 3vw;font-family: sans-serif;font-size: 1.35rem;">Start a Post</button>
+          <!-- Post Modal -->
+            <div id="post-modal" class="modal">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 style="font-family: sans-serif; margin: 1.6vh 1.68vw;">Create Post</h1>
+                  <span class="close">&times;</span>
                 </div>
+                <div style="display:flex; align-items: center; margin-left:0.7vw;margin-top:-0.8vh;margin-bottom: 2.1vh;">
+                  {% if user.userprofile.profile_picture %}
+                  <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture" id="profile-pic" style="width:4.7rem; height:4.8rem;border-radius:5rem;margin-inline:1.3vw;">
+                  {% else %}
+                    <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture" id="profile-pic">
+                  {% endif %}
+
+                  <div style="display: flex; flex-direction: column; margin-left: -0.7vw; ">
+                    <p style="font-family: sans-serif; margin-bottom:1vh;margin-left:0.3vw;font-size: 1.2rem;">User_Name_</p>
+                    <div style="background-color: #ff5757; border-radius:0.3rem; display: flex; align-items: center;height:3.8vh;">
+                      <i class="fa-solid fa-user-group" style="margin-inline:0.2vw; font-size:0.8rem;"></i>
+
+                      <select id="myDropdown">
+                        <option value="selectgrp">Select Group</option>
+                        <option value="option1">Option </option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                      </select>
+                    </div>
+                    
+                  </div>
+
+                </div>
+                <div class="modal-body" style="display: flex; flex-direction: column;">
+                  <textarea placeholder="Write Something to your groups..." ></textarea>
+                  <div class="postoptionscreatefeedpg" style="">
+                    <p style="font-family: sans-serif;font-size:1.3rem;margin-left:1.2vw;width:52vw;">Add to your post</p>
+
+
+
+
+          <!-- create post(photo upload modal) -->
+                    <!-- Trigger element for the new photo upload modal -->
+                    <span class="material-symbols-outlined" id="open-photo-modal" style="cursor: pointer;">
+                      add_photo_alternate 
+                    </span>
+
+                    <!-- New Photo Upload Modal -->
+                    <div id="photo-modal" class="modal">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 style="font-family: sans-serif; margin: 1.6vh 1.68vw;">Upload Photo</h1>
+                          <span class="close">&times;</span>
+                        </div>
+
+                        <div style="display:flex; align-items: center; margin-left:0.7vw;margin-top:-0.8vh;margin-bottom: 2.1vh;">
+                          {% if user.userprofile.profile_picture %}
+                          <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture" id="profile-pic" style="width:4.7rem; height:4.8rem;border-radius:5rem;margin-inline:1.3vw;">
+                          {% else %}
+                            <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture" id="profile-pic">
+                          {% endif %}
+        
+                          <div style="display: flex; flex-direction: column; margin-left: -0.7vw; ">
+                            <p style="font-family: sans-serif; margin-bottom:1vh;margin-left:0.3vw;font-size: 1.2rem;">User_Name_</p>
+                            <div style="background-color: #ff5757; border-radius:0.3rem; display: flex; align-items: center;height:3.8vh;">
+                              <i class="fa-solid fa-user-group" style="margin-inline:0.2vw; font-size:0.8rem;"></i>
+                              <select id="myDropdown">
+                                <option value="selectgrp">Select Group</option>
+                                <option value="option1">Option </option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        
+
+                        <div class="modal-body">
+                          <!-- Content for uploading photo goes here -->
+                          <input type="file" accept="image/*">
+                        </div>
+                      </div>
+                    </div>
+
+
+
+              <!-- create post(photo upload modal) end -->
+                  
+                    <span class="material-symbols-outlined" >
+                      note_add
+                    </span>
+                    <span class="material-symbols-outlined">
+                      ballot
+                    </span>
+                    <span class="material-symbols-outlined" style="margin-right:3.2vw;">
+                      link
+                    </span>
+                  </div>
+
+                  <button style="background-color: #ff3131; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px; margin-top: 6.6vh; width:15.45%;margin-left: 49.8vw; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem;">Create</button>
+                </div>
+
+              </div>
+            </div>
+          <!-- post modal end -->
+
+
+
+
+
+
+            <span class="material-symbols-outlined" style="font-size:2.9rem; cursor: pointer;">
+              add_photo_alternate
+            </span>
+                      
+          </div>
+
+          <div class="feedswrapperpg1">
+                
+                <!-- Hardcoded feeds -->
+                <div class="feedscontainerpg1">
+                  <div class="firstrowcardfeedpg" style="display:flex; align-items: center; padding-top:1.5vh; justify-content: space-between;">
+
+                    <div style="display: flex; align-items: center;">
+                      <i class="fa-solid fa-user-group grpicon" style="width:2.8vw;height:2.9vw;font-size:1.9vw;cursor: pointer;"></i>
+                      <div class="grpnofeedspg">
+                        <div style="display:flex;align-items: center;">
+                          <p style="font-family: sans-serif;font-size:1.1rem;">Group 1</p>
+                          <span class="material-icons" style="color:black;font-size: 0.4rem;margin-inline: 0.4vw;;">
+                            fiber_manual_record
+                          </span>
+                          <p style="font-size:0.8rem;">5 days ago</p>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                          {% if user.userprofile.profile_picture %}
+                            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture" id="profile-pic" style="width:1.5rem; height:1.5rem;border-radius:5rem;margin-left:0.3vw;">
+                          {% else %}
+                            <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture" id="profile-pic">
+                          {% endif %}
+                          <p style="font-family: sans-serif;font-size: 0.7rem;">user_name_</p>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="material-symbols-outlined" style="font-size: 2.2rem;">
+                      more_horiz
+                    </span>
+                  </div>
+
+                  <p style="font-family: sans-serif;font-size: 1.3rem; margin-left:1vw;margin-top:3vh;margin-bottom: 1vh;">This is the area where the captions and text accomplining an image will be placed</p>
+                  <img src="{% static 'images/BuildWithGkv.jpg' %}" alt="" style="width:97%;height:68%;margin-left: 0.7vw;">
+                  <div class="likecommentfeedspg" style="display:flex; justify-content: space-between; padding:0.5vw 1.3vw;">
+                    <div style="display: flex;align-items: center;">
+                      <span class="material-symbols-outlined" style="font-size: 1.7rem;">
+                        thumb_up
+                      </span>
+                      <span class="material-icons" style="color:black;font-size: 0.4rem;margin-inline: 0.4vw;;">
+                        fiber_manual_record
+                      </span>
+                      <p>22,553 Likes</p>
+                    </div>
+
+                    <div style="display: flex;align-items: center;">
+                      <span class="material-symbols-outlined">
+                        comment
+                      </span>
+                      <span class="material-icons" style="color:black;font-size: 0.4rem;margin-inline: 0.4vw;;">
+                        fiber_manual_record
+                      </span>
+                      <p>200 Comments</p>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- some more hard coded feeds -->
                 <div class="feedscontainerpg1">
 
                 </div>
+                
             </div>
         </div>
 
         <!-- third column -->
 
         <div class="thirdcolfeedpg1">
-          <div class="searchgrpspg1" style="padding:2vw;margin-bottom:2vh;background-color: pink; border-radius: 1rem;">
-            <p style="font-weight: bold;font-size:1.2rem;margin-left: 0.3vw;margin-bottom: 3vh;">Search Groups</p>
-            <input type="text" placeholder="Enter the group code" style="border-radius:3rem; padding:2vh;width:90%; margin-bottom:2vh;">
-            <div class="grpnamecol3pg1" style="border:2px solid black;display:flex;align-items: center;border-radius: 3rem;padding-top:0.5vh;padding-bottom:0.5vh;justify-content: space-between;margin-bottom:3vh;">
-              <i class="fa-solid fa-user-group grpicon"></i>
-              <p>Group Name</p>
-              <button style="background-color: red;width:5vw; height:5vh;border-radius:3rem;font-weight: bold;margin-right: 0.3vw;">Join</button>
+          <h1 style="padding-top:3.6vh;padding-bottom:3.6vh;margin-left:5vw;font-family: sans-serif;">Explore</h1>
+
+          <div class="searchgrpspg1" style="padding:1.4vw;margin-bottom:1.8vh;background-color: rgb(255, 238, 238); border-radius: 1rem;">
+            <p style="font-size:1.15rem;margin-bottom: 2vh;font-family: sans-serif;">Search Groups</p>
+            <input type="text" placeholder="Enter the group code" style="border-radius:3rem; padding:1.5vh;width:94%; margin-bottom:1.5vh;margin-left:0.4vw;">
+            <div class="grpnamecol3pg1" style="border:1.7px solid black;display:flex;align-items: center;border-radius: 3rem;padding-top:0.1vh;padding-bottom:0.1vh;justify-content: space-between;margin-bottom:1.5vh;width:88%;height:5.1vh;margin-left:0.8vw;">
+              <i class="fa-solid fa-user-group grpicon" style="width:1.7vw;height:1.7vw;font-size:1.3vw;margin-left:0.3vw;cursor: pointer;"></i>
+              <p style="font-family: sans-serif; font-size: 1.1rem;margin-left:-2.3vw;">Group Name</p>
+              <button style="background-color: #ff3131;width:3vw; height:4vh;border-radius:3rem;font-weight: bold;margin-right: 0.3vw;border:none;cursor: pointer;">Join</button>
             </div>
           </div>
 
 
-          <div class="creategrppg1" style="background-color: pink; border-radius: 1rem;text-align: center;padding:2vw; margin-bottom:2vh;">
-            <button id="open-modal" style="background-color: red;width:15vw; height:6vh;border-radius:3rem;font-weight: bold;">Create Group</button>
-            <!-- Vertically centered modal -->
+          <div class="creategrppg1" style="background-color: rgb(255, 238, 238); border-radius: 1rem;text-align: center; margin-bottom:1.8vh;height:10.5vh;display:flex;align-items: center;justify-content: center;">
+            <button id="open-modal" style="background-color: #ff3131;width:9.5vw;border: none;cursor: pointer; height:4.6vh;border-radius:3rem;font-family: sans-serif;font-size:1rem;">Create Group</button>
+            <!-- Vertically cente#ff3131 modal -->  
             <div id="myModal" class="modal">
               <div class="modal-content">
                 <div class="modal1pg1">
                   <h2 style="margin-bottom:2vh;margin-left:-1vw;">Create Group</h2>
                   <span class="close">&times;</span>
                 </div>
-                <div class="covermodalpg1" style="width:100%; height:25vh;background-color: red;border-radius: 1rem;position:relative;">
+                <div class="covermodalpg1" style="width:100%; height:25vh;background-color: #ff3131;border-radius: 1rem;position:relative;">
                   <!-- coverimage and other contents inside it -->
                   <img src="dpimg.jpg" alt="" style="width:100%;height:100%;border-radius:1rem;position:relative;">
                   <div class="dpimgmodalpg1" style="position:absolute; right:50vw;top:8vw;">
@@ -375,7 +625,7 @@
                     <input type="text" style="border-radius:1rem; height:20vh;width:24vw;margin-top: 0.8vh;">
                   </div>
                   <div class="buttonmodalpg1" style="display:flex;align-items: center; justify-content: center;padding-right:7vw;">
-                    <button style="background-color: red;width:12vw; height:6vh;border-radius:1rem;font-weight: bold;font-size: 1.2rem;">Create</button>
+                    <button style="background-color: #ff3131;width:12vw; height:6vh;border-radius:1rem;font-weight: bold;font-size: 1.2rem;">Create</button>
                   </div>
                 </div>
 
@@ -384,53 +634,161 @@
           </div>
 
 
-          <div class="suggestedgrppg1" style="background-color: pink; border-radius:1rem;padding:2vw;">
-            <p style="font-weight: bold;font-size: 1.3rem;">Suggested Groups</p>
-            <div class="suggestedgrpcontainer" style="background: white; padding:1vw; border-radius: 1rem;margin-top:1.9vh;">
-              <div class="suggestedgrpinnercontainer" style="background-color: grey;display:flex;align-items: center; border-radius: 1.5rem; padding:1vh 0;">
-                <i class="fa-solid fa-user-group grpicon"></i>
-                <p style="font-size:1.3rem;margin-left:1vw;">Group name</p>
+          <div class="suggestedgrppg1" style="background-color: rgb(255, 238, 238); border-radius:1rem;padding:1vw;height:29.8vh;">
+            <p style="font-family: sans-serif;font-size: 1.17rem;margin-top:1.2vh;margin-left: 0.9vw;margin-bottom: 1.1vh;">Suggested Groups</p>
+
+            <div class="verticalscroll3rdcolfeedpg" style="height:80%;overflow-y: auto;padding-right: 0.3vw;width:102%;">
+
+              <!-- hardcoded Suggested groups to be converted into dynamic -->
+
+              <div class="suggestedgrpcontainer" style="background: white; border-radius: 1rem;margin-bottom: 1.5vh;height:12vh;display: flex;flex-direction: column; align-items: center;">
+                <div class="suggestedgrpinnercontainer" style="background-color: rgb(230, 221, 221);display:flex;align-items: center; border-radius: 1.5rem; width:95%;margin-top:1.3vh; margin-bottom: 0.4vh; height:4.8vh;">
+                  <i class="fa-solid fa-user-group grpicon"></i>
+                  <p style="font-size:1.1rem;margin-left:0.2vw;font-family: sans-serif;">Group name</p>
+                </div>
+                <div class="memberspg1" style="display: flex; align-items: center;justify-content:space-around;width:98%;">
+                  <i class="fa-solid fa-user-group " style="font-size: 0.9rem;"></i>
+                  <span class="material-icons" style="color:black;font-size: 0.5rem; margin-left: -2vw;">
+                    fiber_manual_record
+                  </span>
+                  <p style="margin-left:-2vw;font-family: sans-serif;font-size:0.8rem;">200K members</p>
+                  <button style="border:none;cursor: pointer; background-color: #ff3131;width:3vw; height:4vh;border-radius:3rem;font-weight: bold;margin-right:-0.3vw;">Join</button>
+                </div>
               </div>
-              <div class="memberspg1" style="display: flex;align-items: center;justify-content: space-between;padding:1vw;">
-                <i class="fa-solid fa-user-group "></i>
-                <p style="margin-left:-2vw;">200K members</p>
-                <button style="background-color: red;width:5vw; height:5vh;border-radius:3rem;font-weight: bold;">Join</button>
+
+
+              <div class="suggestedgrpcontainer" style="background: white; border-radius: 1rem;margin-bottom: 1.5vh;height:12vh;display: flex;flex-direction: column; align-items: center;">
+                <div class="suggestedgrpinnercontainer" style="background-color: rgb(230, 221, 221);display:flex;align-items: center; border-radius: 1.5rem; width:95%;margin-top:1.3vh; margin-bottom: 0.4vh; height:4.8vh;">
+                  <i class="fa-solid fa-user-group grpicon"></i>
+                  <p style="font-size:1.1rem;margin-left:0.2vw;font-family: sans-serif;">Group name</p>
+                </div>
+                <div class="memberspg1" style="display: flex; align-items: center;justify-content:space-around;width:98%;">
+                  <i class="fa-solid fa-user-group " style="font-size: 0.9rem;"></i>
+                  <span class="material-icons" style="color:black;font-size: 0.5rem; margin-left: -2vw;">
+                    fiber_manual_record
+                  </span>
+                  <p style="margin-left:-2vw;font-family: sans-serif;font-size:0.8rem;">200K members</p>
+                  <button style="border:none;cursor: pointer; background-color: #ff3131;width:3vw; height:4vh;border-radius:3rem;font-weight: bold;margin-right:-0.3vw;">Join</button>
+                </div>
               </div>
+
             </div>
+
+            
           </div>
         </div>
     </div>
-    <script>
+  <script>
+
+  // script for the pop up of create group modal
 // Get the modal
 var modal = document.getElementById("myModal");
-
 // Get the button that opens the modal
 var btn = document.getElementById("open-modal");
-
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
-
-
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
 }
-
 // When the user clicks on <span> (x) or the close button inside the modal, close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
-
-
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.addEventListener('click', function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+});
+
+// script for dropdown of profile pic of navbar and notification
+document.addEventListener('DOMContentLoaded', function() {
+  // Dropdown for profile picture
+  var profilePic = document.getElementById('profile-pic');
+  var dropdownContent = document.getElementById('dropdown-content');
+
+  profilePic.addEventListener('click', function(event) {
+    event.stopPropagation(); // Prevent click event from bubbling up
+    dropdownContent.classList.toggle('show');
+  });
+
+  // Dropdown for notification bell
+  var notificationBell = document.getElementById('notification-Bell');
+  var dropdownContentBell = document.getElementById('dropdown-content-bell');
+
+  notificationBell.addEventListener('click', function(event){
+    event.stopPropagation();
+    dropdownContentBell.classList.toggle('show');
+  });
+
+  // Close the dropdowns if the user clicks outside of them
+  window.addEventListener('click', function(event) {
+    if (!event.target.matches('.profile-picture')) {
+      dropdownContent.classList.remove('show');
+    }
+    if (!event.target.matches('.fa-bell')) {
+      dropdownContentBell.classList.remove('show');
+    }
+  });
+});
+
+// script for create post
+// Get the post modal
+var postModal = document.getElementById("post-modal");
+// Get the button that opens the post modal
+var postBtn = document.getElementById("open-post-modal");
+
+// When the user clicks the button, open the post modal 
+postBtn.onclick = function(event) {
+  event.stopPropagation(); // Prevent click event from propagating
+  postModal.style.display = "block";
 }
 
+// Get the <span> element that closes the post modal
+var postCloseBtn = postModal.querySelector(".close");
 
-    </script>
+// When the user clicks on <span> (x) or the close button inside the post modal, close the modal
+postCloseBtn.onclick = function(event) {
+  event.stopPropagation(); // Prevent click event from propagating
+  postModal.style.display = "none";
+}
+
+// Get the trigger element for the photo modal
+var openPhotoModalSpan = document.getElementById("open-photo-modal");
+
+// Get the photo modal
+var photoModal = document.getElementById("photo-modal");
+
+// When the user clicks the open photo modal span, open the photo modal
+openPhotoModalSpan.onclick = function(event) {
+  event.stopPropagation(); // Prevent click event from propagating
+  photoModal.style.display = "block";
+}
+
+// Get the <span> element that closes the photo modal
+var closePhotoModalSpan = photoModal.querySelector(".close");
+
+// When the user clicks on <span> (x) or the close button inside the photo modal, close the modal
+closePhotoModalSpan.onclick = function(event) {
+  event.stopPropagation(); // Prevent click event from propagating
+  photoModal.style.display = "none";
+}
+
+// Close the modals if the user clicks anywhere outside of them
+window.addEventListener('click', function(event) {
+  if (event.target == postModal) {
+    postModal.style.display = "none";
+  }
+  if (event.target == photoModal) {
+    photoModal.style.display = "none";
+  }
+});
+
+
+
+
+
+  </script>
 </body>
 </html>

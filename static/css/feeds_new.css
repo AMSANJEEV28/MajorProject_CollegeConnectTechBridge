@@ -8,7 +8,7 @@
 .leftnavpg1{
     display:flex;
     align-items: center;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 3vh;
     font-weight: 100;
     
@@ -18,16 +18,15 @@
 .rightnavpg1{
     display:flex;
     align-items: center;
-    justify-content: ;
+    margin-right:2.6vw;
 }
 
 .navbarpg1{
-    background: red;
+    background: rgb(255, 49, 49);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: 1rem;
-    height: 10vh;
+    height: 12.87vh;
     padding-inline: 1vw;
 }
 
@@ -40,51 +39,173 @@
 
 
 .fa-search{
-    margin-left: -1.9vw;
+    margin-left: -1.5vw;
     margin-right: 2vw;
-    color:red;
+    color:#ff3131;
     cursor: pointer;
+    margin-top: 0.4vh;
+    
+    
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 0.5vw;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(255, 238, 238);
+    padding: 0.5vw 0.7vw;
+    min-width: 15vw;
+    z-index: 1;
+    top: 115%;
+    right: -2.8vw;
+    border:1.5px solid #ff3131;
+    border-radius: 0.5rem;
+}
+
+.dropdown-content a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    display:flex;
+    align-items: center;
+    padding: 1vh 1vw;
+}
+.dropdown-content hr{
+    border-color: rgb(208, 208, 208);
+    margin: 0.7vh auto;
+    width:90%;
+    
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(219, 218, 218);
+    border-radius: 1rem;
+}
+
+
+
+.profiledropdownfeedpg_a_tag span:nth-child(2) {
+    margin-left: 1.2vw;
+    font-family: sans-serif;
+  }
+
+.dropdown-content2{
+    display: none;
+    position: absolute;
+    background-color: rgb(255, 238, 238);
+    min-width: 21vw;
+    padding: 1vh 0.5vw;
+    z-index: 1;
+    top: 6vh; 
+    right: -5.5vw;
+    border:1.5px solid #ff3131;
+    border-radius: 0.5rem;
+}
+
+.verticalscrollnotificfeedpg{
+    height:65vh;
+    overflow-y: auto;
+}
+
+.verticalscrollnotificfeedpg::-webkit-scrollbar {
+    display: none;
+  }
+
+.dropdown-content2 a{
+    color: black;
+    text-decoration: none;
+    display: block;
+    display:flex;
+    flex-direction:column;
+    padding: 0vh 0vw;
+}
+
+.dropdown-content2 hr{
+    border-color: rgb(229, 227, 227);
+    margin: 0.5vh auto;
+    width:94%;
+    
+}
+
+.dropdown-content2 a:hover {
+    background-color: rgb(219, 218, 218);
+    border-radius: 0.8rem;
+}
+
+.show {
+    display: block;
+}
+
 
 /* Feeds page content */
 
+
+
 .feedpgcont1{
     display:flex;
-    justify-content: space-around;
-    background:grey;
-    height:83.2vh;
+    justify-content: space-evenly;
+    background:rgb(219, 218, 218);
+    
+}
+
+/* left side css */
+
+.leftpartfeedspg{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:19%;
 }
 
 .firstcolfeedpg1{
     display: flex;
     flex-direction: column;
-    background-color: pink;
-    padding-left:1vw;
-    padding-right:0.3vw;
-    padding-top:1vw;
-    width:20vw;
+    background-color: rgb(255, 238, 238);
+    width:100%;
+    height: 66.4vh;
     border-radius: 1rem;
-    height:97%;
 
 }
 
 .JoinedGroupspg1{
-    height:60%;
+    height:44vh;
+    padding-inline:0.8vw;
 }
 
 .container-wrapperpg1 {
     width: 100%;
     height: 90%; /* Adjust the height as needed */
     overflow-y: auto;
+    padding-right: 3px;
     
 }
 
+.container-wrapperpg1::-webkit-scrollbar {
+    width: 0;
+}
+
+.container-wrapperpg1:hover::-webkit-scrollbar {
+    width: 7px;
+}
+
+.container-wrapperpg1::-webkit-scrollbar-thumb{
+    background-color: #ff3131;
+    border-radius: 1rem;
+    border:1px solid #ccc;
+}
+
 .containerpg1 {
-    padding:0.5vw 0.3vw;
-    width: 95%; /* Adjust the width as needed */
-    height: 12vh; /* Adjust the height as needed */
+    padding:0.5vw 0vw;
+    padding-left: 0.5vw;
+    width: 94%; /* Adjust the width as needed */
+    height: 10.5vh; /* Adjust the height as needed */
     margin-bottom: 1vh; /* Adjust the spacing between containers */
-    background-color: #f0f0f0;
+    background-color: rgb(255, 255, 255);;
     border-radius: 1rem;
     box-shadow: 0 0 5px rgba(195, 45, 45, 0.1);
     overflow: hidden; /* Ensure content doesn't overflow */
@@ -93,62 +214,266 @@
 .containerpg11{
     display:flex;
     align-items: center;
-    border:2px solid grey;
-    background-color: grey;
-    border-radius: 2rem;
+    border:2px solid rgb(230, 221, 221);
+    background-color: rgb(230, 221, 221);
+    border-radius: 1.5rem;
     padding:1vw 0vw;
-    width:98%;
-    height:3vh;
+    width:95%;
+    height:1vh;
+    margin-top: 0.3vh;
 }
+
+.containerpg11 p{
+    font-family: sans-serif;
+    font-size:1.2rem;
+}
+
 .containerpg12{
     display:flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.5vw 1vw;
     font-size: 1.3vw;
+    padding-bottom:0;
+    padding-right: 1.5vw;
     
 }
 
 .grpicon{
-    border: 2px solid black;
     padding: 0.2vw;
     margin: 0 0.5vw;
     border-radius: 10rem;
-    background-color: red;
-    width:2vw;
-    height:2vw;
+    background-color: #ff3131;
+    width:1.3vw;
+    height:1.3vw;
     font-size: 1vw; 
+    text-align: center;
 }
 
 .fa-trash-can{
-    color:red;
+    color:#ff3131;
 }
+
 
 .container-wrapperpg2{
     width: 100%;
-    height: 91%; /* Adjust the height as needed */
+    height: 13.5vh; /* Adjust the height as needed */
     overflow-y: auto;
+    padding-right: 3px;
+}
+
+.container-wrapperpg2::-webkit-scrollbar{
+    width: 0px;
+}
+.container-wrapperpg2:hover::-webkit-scrollbar{
+    width: 7px;
+}
+
+.container-wrapperpg2::-webkit-scrollbar-thumb{
+    background-color: #ff3131;
+    border-radius: 1rem;
 }
 
 .createdgrpspg1{
-    height:39%;
+    height:21.5%;
+    padding-inline:0.8vw;
+}
+
+.suggestedevesfeedspg{
+    margin-top: 1.3vh;
+    height:32vh;
+    width: 100%;
+    border-radius:1rem;
+    background-color: rgb(255, 238, 238);
+}
+
+.sgstdgrp-wrapper{
+    height:20.8vh;
+    width:15.2vw;
+    overflow-y: auto;
+    margin-left:1.28vw;
+    padding-right: 7px;
+}
+
+.sgstdgrp-wrapper::-webkit-scrollbar{
+    width: 0px;
+}
+.sgstdgrp-wrapper:hover::-webkit-scrollbar{
+    width: 7px;
+}
+
+.sgstdgrp-wrapper::-webkit-scrollbar-thumb{
+    background-color: #ff3131;
+    border-radius: 1rem;
+}
+
+.sgstdgrp-wrapper div:hover{
+    background-color: #ff3131;
+    
+    border-radius:0.8rem;
+}   
+
+.sgstdgrp-wrapper > div:hover img + div > p:first-child {
+    color: white;
+  }
+
+
+.searchevesfeedspg{
+    margin-top: 1.3vh;
+    height:28vh;
+    width: 100%;
+    border-radius:1rem;
+    background-color: rgb(255, 238, 238);
 }
 
 /* 2nd column feed */
 
 .secondcolfeedpg1{
-    width: 45%;
+    margin-right: -2vw;
+    width: 60%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.feedcreatefeedpg{
+    border-radius: 0.3rem;
+    background-color: white;
+    display: flex;
+    width: 96.7%;
+    height: 15.3vh;
+    align-items: center;
+    margin-left: -1.9vw;
+    margin-bottom: 2vh;
+    
+    
+}
+
+
+
+/* create post modal css */
+
+/* Styles for the new post modal */
+#post-modal .modal-content {
+    background-color: #f4dddd;
+    margin: 11% auto;
+    margin-bottom: 0;
+    width: 62%;
+    height: 75vh;
+    border-radius: 1rem;
+    border: 1.5px solid #ff3131;
+    padding:0;
+}
+
+#post-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#post-modal .modal-header .close{
+    font-size:4.8rem;
+    color:black;
+    font-weight: lighter;
+    margin-top:-2.2vh;
+    margin-right: 0.7vw;
+}
+
+#myDropdown{
+    background-color: #ff5757;
+    border:none;
+    padding-right:1vw;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.postoptionscreatefeedpg{
+    background-color: white;
+    display:flex; 
+    align-items: center; 
+    width:94%; 
+    height:8vh;
+    margin-left:1.8vw;
+    border-radius:0.7rem;
+}
+
+.postoptionscreatefeedpg span{
+    font-size: 2.5rem;
+    margin-right: 3.4vw;
+}
+
+
+
+#post-modal .modal-body textarea {
+    border-radius: 0.7rem;
+    width: 94%;
+    height:30vh;
+    margin-left:1.8vw;
+    margin-bottom: 1.6vh;
+    vertical-align: top;
+    border:none;
+    padding: 2vh 1vw;
+    font-family: sans-serif;
+    font-size:1.3rem;
+}
+
+#post-modal .modal-body button {
+    background-color: #ff3131;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    margin-top: 10px;
+}
+
+
+/* CSS for the new photo upload modal */
+#photo-modal .modal-content {
+    background-color: #f4dddd;
+    margin: 11% auto;
+    margin-bottom: 0;
+    width: 62%;
+    height: 50vh; /* Adjust the height as needed */
+    border-radius: 1rem;
+    border: 1.5px solid #ff3131;
+    padding: 0;
+  }
+  
+  #photo-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #photo-modal .modal-header .close {
+    font-size: 4.8rem;
+    color: black;
+    font-weight: lighter;
+    margin-top: -2.2vh;
+    margin-right: 0.7vw;
+  }
+  
+  #photo-modal .modal-body input[type="file"] {
+    width: 94%;
+    margin-left: 1.8vw;
+    margin-bottom: 1.6vh;
+    padding: 2vh 1vw;
+    font-family: sans-serif;
+    font-size: 1.3rem;
+  }
+  
+  /* Photo modal css end */
+  
+
+
+
+
+/* create post modal end */
 
 .feedswrapperpg1 {
     width: 100%;
     height: 93.3%; /* Adjust the height as needed */
-    overflow-y: hidden; /* Hide vertical scrollbar */
-    padding-top:2vh;
-}
-
-.feedswrapperpg1:hover {
-    overflow-y: auto; /* Show scrollbar on hover */
+    overflow-y: auto; /* Hide vertical scrollbar */
 }
 
 .feedswrapperpg1::-webkit-scrollbar {
@@ -156,233 +481,27 @@
 }
 
 .feedscontainerpg1 {
-    border: 2px solid black;
     background-color: white;
-    height: 55vh;
-    width: 90%;
+    height: 63.5vh;
+    width: 93.2%;
     margin-bottom:2vh;
-    padding-inline:2vw;
-}
-
-.firstrowpg1{
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top:1vh;
-    padding-bottom: 0.5vh;
-    padding-inline: 1vw;
-}
-
-.firstrowleftpg1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.firstrowleftpg1 img {
-    width: 2.5vw; /* 5% of the viewport width */
-    height: 2.5vw; /* 5% of the viewport height */
-    border-radius: 5rem; /* border-radius set to create a circular shape */
-    margin-right: 10px; /* Add spacing between the image and the paragraph */
-}
-
-.firstrowrightpg1{
-    display:flex;
-    align-items: center;
-}
-
-.feedscontainerpg1 hr{
-    height: 5%;
-    width:100%;
-    background-color: #de6f6f;
-}
-
-
-
-.secondrowpg1{
-    height:75%;
-    width:100%;
-}
-
-/* <!-- ------------------------------------ Featured events --> */
-.box-content-featured-img {
-    border-radius: 0 0 5px 5px !important;
-}
-
-.featured-events {
-    height: 90%;
-    width:100%;
-}
-
-.featured-events h1{
-    margin-top: -5vh;
-    margin-left: 2vw;
-    height:10%;
-    font-size: 1.7vw;
-}
-
-.featured-boxes {  
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width:100%;
-    height:100%;
-    /* Stack the children vertically */
-    margin-top: -60px;
-}
-
-.boxes-container {
-    display: flex;
-    flex-direction: column;
-    /* Stack the children vertically */
-    align-items: center;
-}
-
-.box-container {
-    display: flex;
-    overflow: hidden;
-    width: 95%;
-    height:80%;
-    text-align: center;
-    padding-inline:1vw
-}
-
-.box-content-featured-img img{
-    width: 100% !important;
-    height: 7.7vw !important;
-}
-
-.box {
-    overflow: hidden;
-    border:2px solid #de6f6f;
-    flex: 0 0 auto;
-    width: 11vw;
-    height: 85%;
-    background-color: #e0cbd2;
-    margin: 1vw 1vw;
-    /* Adjust the margin as needed */
-    border-radius: 5px;
-    transition: transform 0.3s;
-    font-size:0.7rem;
-}
-
-.box:hover {
-    transform: scale(1.03);
-}
-
-.box-content-featured>h3{
-    height:20%;
-}
-
-.box-content-featured>p {
-    margin-top: -3vh !important;
-    height: 30%;
-    color: #000000;
-    text-align:center;
-    font-size: 0.5rem !important;
-}
-
-.dot-container {
-    margin-top: -2vh;
-    display: flex;
-    justify-content: center;
-    padding: 0.7vh;
-}
-
-.dot {
-    width: 1vw;
-    height: 1vw;
-    background-color: #e43232;
-    border-radius: 50%;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.rectangle-feature {
-    color:white;
-    padding:1vh;
-    text-align: center;
-    background-color: red;
-    margin-bottom: -5vh;
-    border-radius: 10px;
-    transition: transform 0.3s, background-color 0.3s;
-
-}
-
-.rectangle-feature:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-    background-color: #000000;
-}
-
-.rectangle-feature h3 {
-    transition: color 0.3s;
-    /* Add transition property for h3 element */
-    color: #000;
-    /* Initial color */
-    width: 100%;
-}
-
-.rectangle-feature:hover h3 {
-    color: #fff;
-}
-
-
-.box-content-featured {
-    text-align: center;
-}
-
-.box-content-featured>h3 {
-    margin-bottom: 20px;
-    font-size: larger;
-}
-
-.box-content-featured>p {
-    margin-top: 20px;
-    padding: 20px;
-    color: #000000;
-    text-align: justify;
-    font-size: large;
-}
-
-.thirdrowpg1{
-    margin-top:-1vw;
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
     padding-inline:1vw;
-}
-.likepg1{
-    display:flex;
-    align-items: center;
-}
-.commentpg1{
-    display: flex;
-    align-items: center;
-}
+    border-radius: 0.3rem;
 
-.likepg1 i{
-    font-size: 2vw;
-    color:red;
 }
-
-.commentpg1 i{
-    font-size: 2vw;
-    color: red;
-}
-
 
 
 
 /* 3rd column feed */
 .thirdcolfeedpg1{
-    width:25%;
+    width:19%;
     display:flex;
     flex-direction: column;
+    /* align-items: center; */
     
 }
 
-/* vertically centered modal css */
+/* vertically cente#ff3131 modal css */
 
 /* Modal styles */
 .modal {
@@ -441,7 +560,18 @@
     /* background-color: white; */
 }
 
+.verticalscroll3rdcolfeedpg::-webkit-scrollbar{
+    width: 0px;
+}
+.verticalscroll3rdcolfeedpg:hover::-webkit-scrollbar{
+    width: 7px;
+}
 
+.verticalscroll3rdcolfeedpg::-webkit-scrollbar-thumb{
+    background-color: #ff3131;
+    border-radius: 1rem;
+}
   
+
 
 
