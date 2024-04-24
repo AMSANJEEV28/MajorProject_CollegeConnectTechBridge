@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+
 
 
 <!-- navbar -->
@@ -464,9 +466,155 @@
                         </div>
                         
 
+                        <textarea placeholder="Write Something to your groups..." ondragenter="dragEnter(event)" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="drop(event)" style="margin-top:1.4vh;margin-left:1.9vw; height: 14vh;border:none;" ></textarea>
+
                         <div class="modal-body">
-                          <!-- Content for uploading photo goes here -->
-                          <input type="file" accept="image/*">
+
+                          <!-- Parent container for "Add More Photo" button and preview images container -->
+                          <div class="photo-preview-container">
+                            <!-- Container for image previews -->
+                            <div id="preview-container" class="preview-container"></div>
+                            <!-- "Add More Photo" button -->
+                            <button id="add-more-photo-btn" onclick="openFilePicker()" style="display: none;">Add More Photo</button>
+                          </div>
+
+                          <!-- Container for upload button -->
+                          <div class="photouploadbuttonsectionfeedspg" style="display:flex;flex-direction: column; align-items: center; justify-content: center; background-color: white; width:94%;height:27.9vh;margin-top:-0.5vh;margin-left:1.9vw;border-radius: 0.7rem;">
+                              <span class="material-symbols-outlined" id="open-photo-modal" onclick="openFilePicker()" style="cursor: pointer; font-size: 3.6rem;margin:0;margin-top:-3vh;margin-bottom:1vh;margin-left:-1vw;"> add_photo_alternate </span>
+                              <p onclick="openFilePicker()" style="cursor: pointer; font-family: sans-serif; font-size: 1.6rem; font-weight: bold;">Add Photos/Videos</p>
+                              <p onclick="openFilePicker()" style="cursor: pointer; font-family:sans-serif;font-weight: 550;font-size:0.8rem;">or Drag and Drop your media</p>
+                          </div>
+
+                          
+
+
+                          <!-- buttons -->
+                          <div style="display: flex; justify-content: right; margin-top:0.5vh;margin-right:2vw;">
+                            <button id="back-button" style="background-color: white; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px; ; width:15.8%; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem; cursor: pointer;" onmouseover="this.style.backgroundColor='#a6a6a6'; this.style.color='black'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'" >Back</button>
+
+                            <button id="create-button" style="background-color: white; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px;  width:15.8%; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem; margin-left:0.6vw; cursor:pointer;" onmouseover="this.style.backgroundColor='#a6a6a6'; this.style.color='black'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'">Create</button>
+                          <!-- Select Group Modal -->
+                          <div id="select-group-modal" class="modal">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 style="font-family: sans-serif;">Select Group</h1>
+                                    <span class="close">&times;</span>
+                                </div>
+                                <hr style="width:82%; height:0.1vh;background-color:#ccb8b8;margin-left:1.2vw;">
+                                <div class="modal-body">
+                                    <p style="font-family: sans-serif; font-size: 1.4rem;margin-top: 1.5vh;margin-bottom: 1.4vh;">Select which group you would like to post into?</p>
+                                    <!-- Search bar -->
+                                    <div style="display: flex;">
+                                      <input type="text" id="search-bar" placeholder="Search groups...">
+                                      <span class="material-symbols-outlined" style="position:absolute;left:56.5vw; font-size:2rem;top:37.2vh">
+                                        search
+                                      </span>
+                                    </div>
+                                    
+                                    <!-- Categorized suggestion containers -->
+                                    <div class="sgstgrpselectgrpmodalfeedspg" >
+                                      <div class="suggestion-category">
+                                        <h2>Suggested Groups</h2>
+                                          <div class="suggestion-container" style="display: flex;align-items: center;">
+                                            <img src="{% static '/images/logo.png' %}" alt="group photo..." style="width:3.5rem; height:3.5rem; border-radius: 5rem;">
+                                            <div style="margin-left:0.7vw;">
+                                              <p class="group-name" style="font-family: sans-serif;margin-left:0.3vw;font-size: 1.2rem;">Group name here</p>
+                                              <div style="display: flex; align-items: center;">
+                                                  <span class="material-icons" style="color:black;font-size: 0.4rem;margin-inline: 0.4vw;">
+                                                      fiber_manual_record
+                                                  </span>
+                                                  <p style="font-family: sans-serif; font-size: 0.7rem">200 members</p>
+                                              </div>
+                                            </div>
+                                              
+                                          </div>
+                                          <div class="suggestion-container" style="display: flex;align-items: center;">
+                                            <img src="{% static '/images/logo.png' %}" alt="group photo..." style="width:3.5rem; height:3.5rem; border-radius: 5rem;">
+                                            <div style="margin-left:0.7vw;">
+                                              <p class="group-name" style="font-family: sans-serif;margin-left:0.3vw;font-size: 1.2rem;">1st group</p>
+                                              <div style="display: flex; align-items: center;">
+                                                  <span class="material-icons" style="color:black;font-size: 0.4rem;margin-inline: 0.4vw;">
+                                                      fiber_manual_record
+                                                  </span>
+                                                  <p style="font-family: sans-serif; font-size: 0.7rem">200 members</p>
+                                              </div>
+                                            </div>
+                                              
+                                          </div>
+                                          <div class="suggestion-container" style="display: flex;align-items: center;">
+                                            <img src="{% static '/images/logo.png' %}" alt="group photo..." style="width:3.5rem; height:3.5rem; border-radius: 5rem;">
+                                            <div style="margin-left:0.7vw;">
+                                              <p class="group-name" style="font-family: sans-serif;margin-left:0.3vw;font-size: 1.2rem;">2nd group</p>
+                                              <div style="display: flex; align-items: center;">
+                                                  <span class="material-icons" style="color:black;font-size: 0.4rem;margin-inline: 0.4vw;">
+                                                      fiber_manual_record
+                                                  </span>
+                                                  <p style="font-family: sans-serif; font-size: 0.7rem">200 members</p>
+                                              </div>
+                                            </div>
+                                              
+                                          </div>
+                                          
+                                          
+                                          
+                                      </div>
+                                      <div class="suggestion-category">
+                                        <h2>Created Groups</h2>
+                                        <div class="suggestion-container" style="display: flex;align-items: center;">
+                                          <img src="{% static '/images/logo.png' %}" alt="group photo..." style="width:3.5rem; height:3.5rem; border-radius: 5rem;">
+                                          <div style="margin-left:0.7vw;">
+                                            <p class="group-name" style="font-family: sans-serif;margin-left:0.3vw;font-size: 1.2rem;">3rd group</p>
+                                            <div style="display: flex; align-items: center;">
+                                                <span class="material-icons" style="color:black;font-size: 0.4rem;margin-inline: 0.4vw;">
+                                                    fiber_manual_record
+                                                </span>
+                                                <p style="font-family: sans-serif; font-size: 0.7rem">200 members</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="suggestion-container" style="display: flex;align-items: center;">
+                                          <img src="{% static '/images/logo.png' %}" alt="group photo..." style="width:3.5rem; height:3.5rem; border-radius: 5rem;">
+                                          <div style="margin-left:0.7vw;">
+                                            <p class="group-name" style="font-family: sans-serif;margin-left:0.3vw;font-size: 1.2rem;">4th group</p>
+                                            <div style="display: flex; align-items: center;">
+                                                <span class="material-icons" style="color:black;font-size: 0.4rem;margin-inline: 0.4vw;">
+                                                    fiber_manual_record
+                                                </span>
+                                                <p style="font-family: sans-serif; font-size: 0.7rem">200 members</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="suggestion-container" style="display: flex;align-items: center;">
+                                          <img src="{% static '/images/logo.png' %}" alt="group photo..." style="width:3.5rem; height:3.5rem; border-radius: 5rem;">
+                                          <div style="margin-left:0.7vw;">
+                                            <p class="group-name" style="font-family: sans-serif;margin-left:0.3vw;font-size: 1.2rem;">5th group</p>
+                                            <div style="display: flex; align-items: center;">
+                                                <span class="material-icons" style="color:black;font-size: 0.4rem;margin-inline: 0.4vw;">
+                                                    fiber_manual_record
+                                                </span>
+                                                <p style="font-family: sans-serif; font-size: 0.7rem">200 members</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                                    
+                                    <!-- buttons -->
+                                    <div class="buttonsselectgrpmodalfeedspg" style="display: flex; justify-content: right;margin-right:2vw; margin-top:-0.5vh;">
+                                      <button id="back-button1" style="background-color: white; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px; ; width:15.8%; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem; cursor: pointer;" onmouseover="this.style.backgroundColor='#ff5757'; this.style.color='black'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'" >Back</button>
+                                      <button id="create-button" style="background-color: white; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px;  width:15.8%; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem; margin-left:0.6vw; cursor:pointer;" onmouseover="this.style.backgroundColor='#ff5757'; this.style.color='black'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'">Done</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <!-- Select group modal end -->
+                          </div>
+
+                          
                         </div>
                       </div>
                     </div>
@@ -475,18 +623,234 @@
 
               <!-- create post(photo upload modal) end -->
                   
-                    <span class="material-symbols-outlined" >
+
+
+                    <span class="material-symbols-outlined" id="open-document-modal">
                       note_add
                     </span>
-                    <span class="material-symbols-outlined">
+<!-- Share Document Modal start -->
+                      <!-- Document Share Modal -->
+                      <div id="document-modal" class="modal">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 style="font-family: sans-serif; margin: 4.1vh 3vw;">Share Document</h1>
+                            <span class="close">&times;</span>
+                          </div>
+                          <div style="display:flex; align-items: center; margin-left:0.7vw;margin-top:-0.8vh;margin-bottom: 2.1vh;">
+                            {% if user.userprofile.profile_picture %}
+                            <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture" id="profile-pic" style="width:4.7rem; height:4.8rem;border-radius:5rem;margin-inline:1.3vw;">
+                            {% else %}
+                              <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture" id="profile-pic">
+                            {% endif %}
+          
+                            <div style="display: flex; flex-direction: column; margin-left: -0.7vw; ">
+                              <p style="font-family: sans-serif; margin-bottom:1vh;margin-left:0.3vw;font-size: 1.2rem;">User_Name_</p>
+                              <div style="background-color: #ff5757; border-radius:0.3rem; display: flex; align-items: center;height:3.8vh;">
+                                <i class="fa-solid fa-user-group" style="margin-inline:0.2vw; font-size:0.8rem;"></i>
+                                <select id="myDropdown">
+                                  <option value="selectgrp">Select Group</option>
+                                  <option value="option1">Option </option>
+                                  <option value="option2">Option 2</option>
+                                  <option value="option3">Option 3</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="modal-body"  style="position:relative">
+                            <!-- Content for sharing document goes here -->
+                            <div class="doc_upload_buttonsectionfeedspg" style="display:flex;flex-direction: column; align-items: center; justify-content: center; background-color: white; width:94%;height:24vh;margin-top: 5vh;margin-left:1.9vw;border-radius: 0.7rem;">
+                              <span class="material-symbols-outlined" id="open-document-modal" onclick="openDocumentPicker()" style="cursor: pointer; font-size: 2.5rem;margin:0;margin-top:-3vh;margin-bottom:1vh;margin-left:-1vw;">
+                                note_add
+                              </span>
+                              <p onclick="openDocumentPicker()" style="cursor: pointer; font-family: sans-serif; font-size: 1.4rem; font-weight: bold;">Add your documents</p>
+                              <p onclick="openDocumentPicker()" style="cursor: pointer; font-family:sans-serif;font-weight: 550;font-size:0.6rem; margin-top:0.3vh;">or Drag and Drop your documents </p>
+                            </div>
+
+                            <div id="document-name-container" style="position: relative; width: 94%; margin-left: 1.9vw;">
+                              <p id="document-name" style="font-family: sans-serif; font-size: 1.3rem; color: rgb(196, 91, 193);"></p>
+                            </div>
+
+                            <p id="document-preview-heading" style="display:none; font-family: sans-serif; font-size: 1.1rem;font-weight: bold;margin-left: 3vw; margin-top:1.5vh;">Preview</p>
+                            
+                            <div id="document-preview-container" style="display: none; position: relative; width: 94%; height: 34vh; margin-top: 1.5vh; margin-left: 1.9vw; border-radius: 0.7rem; overflow: hidden;">
+                                <!-- JavaScript will add the PDF preview here -->
+                            </div>
+                          
+
+                            <!-- buttons -->
+                            <div class="buttonsselectdocmodalfeedspg" style="display: flex; position:absolute;right: 3vw; bottom: -23.5vh;">
+                              <button id="back-button2" style="background-color: white; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px; ; width:10vw; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem; cursor: pointer;" onmouseover="this.style.backgroundColor='#ff5757'; this.style.color='black'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'" >Back</button>
+                              <button id="create-button2" style="background-color: white; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px;  width:10vw; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem; margin-left:0.6vw; cursor:pointer;" onmouseover="this.style.backgroundColor='#ff5757'; this.style.color='black'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'">Create</button>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+
+<!-- Share Document Modal end -->
+
+
+
+                    <span class="material-symbols-outlined poll-icon" style="cursor: pointer;">
                       ballot
                     </span>
-                    <span class="material-symbols-outlined" style="margin-right:3.2vw;">
+<!-- Create Poll Modal start -->
+                    <!-- Create Poll Modal start -->
+                      <div id="poll-modal" class="modal poll-modal">
+                        <div class="modal-content poll-modal-content">
+                            <div class="modal-header">
+                                <h1 style="font-family: sans-serif; margin: 2vh 2.3vw;">Create Poll</h1>
+                                <span class="poll-close">&times;</span>
+                            </div>
+
+                            <div style="display:flex; align-items: center; margin-left:0.7vw;margin-top:-0.8vh;margin-bottom: 2.1vh;">
+                                <!-- Profile Picture and User Name -->
+                                <!-- Adjust the image source and alt text as needed -->
+                                {% if user.userprofile.profile_picture %}
+                                <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture" id="profile-pic" style="width:4.7rem; height:4.8rem;border-radius:5rem;margin-inline:1.3vw;">
+                                {% else %}
+                                <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture" id="profile-pic">
+                                {% endif %}
+
+                                <div style="display: flex; flex-direction: column; margin-left: -0.7vw;">
+                                    <p style="font-family: sans-serif; margin-bottom:1vh;margin-left:0.3vw;font-size: 1.2rem;">User_Name_</p>
+                                    <!-- Group Selection -->
+                                    <div style="background-color: #ff5757; border-radius:0.3rem; display: flex; align-items: center;height:3.8vh;">
+                                        <i class="fa-solid fa-user-group" style="margin-inline:0.2vw; font-size:0.8rem;"></i>
+                                        <select id="myDropdown">
+                                            <option value="selectgrp">Select Group</option>
+                                            <option value="option1">Option 1</option>
+                                            <option value="option2">Option 2</option>
+                                            <option value="option3">Option 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal-body">
+                                <!-- Content for creating poll goes here -->
+                                <textarea placeholder="Enter your poll question..." style="margin-top:2vh;margin-left:2vw; height: 13.8vh; border: 1.3px solid black; border-radius: 0;margin-bottom: 0;"></textarea>
+
+                                <div class="pollcontainerfeedpg" style="background-color: #f4dddd; height:36vh;width: 93.85%; margin-left: 2vw;border:1.3px solid black;padding-top: 3vh;">
+                                    <!-- Poll Options parent container -->
+                                    <div class="polloptionsparentcontfeedpg" style=" height:25vh; overflow-y: auto;">
+                                        <!-- Default option containers -->
+                                        <div class="default-option-container">
+                                            <div class="polloptionfeedpg option-container">
+                                                <span class="material-symbols-outlined" style="font-size:2rem; margin-right: 0.4vw;cursor:default;">
+                                                    drag_indicator
+                                                </span>
+                                                <input type="text" placeholder="Option 1" style="background-color: #a6a6a6; height: 6.2vh;width: 56%;border:none; border-radius:0.7rem; padding-left: 1.3vw;font-size: 1.2rem;">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="default-option-container">
+                                            <div class="polloptionfeedpg option-container">
+                                                <span class="material-symbols-outlined" style="font-size:2rem; margin-right: 0.4vw;cursor:default;">
+                                                    drag_indicator
+                                                </span>
+                                                <input type="text" placeholder="Option 2" style="background-color: #a6a6a6; height: 6.2vh;width: 56%;border:none; border-radius:0.7rem; padding-left: 1.3vw;font-size: 1.2rem;">
+                                                
+                                            </div>
+                                        </div>
+                                        <!-- End of default option containers -->
+                                    </div>
+
+                                    <div class="addoptiondurationpollfeedpg" style="display: flex;justify-content: space-between;align-items: center;width: 31.3vw;margin-left:2.9vw; margin-top: 0.7vh;">
+                                        <h2 id="add-option-heading" style="font-family: sans-serif; font-size:1.4rem; color:#ff5757; cursor: pointer;">Add Options</h2>
+                                        <div style="display: flex; align-items: center;">
+                                            <h2 style="font-family: sans-serif; font-size:1.1rem;">Poll duration:</h2>
+                                            <select name="" id="" style="background-color:#ff5757; border-radius: 0.4rem; font-family: sans-serif; width:6.6vw;height:3.8vh; font-size: 1rem;padding-left: 0.7vw; margin-left: 0.5vw;">
+                                                <option value="1day">1 Day</option>
+                                                <option value="2days">2 Days</option>
+                                                <option value="3days">3 Days</option>
+                                                <option value="4days">4 Days</option>
+                                                <option value="5days">5 Days</option>
+                                                <option value="6days">6 Days</option>
+                                                <option value="7days">7 Days</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- buttons -->
+                                <div class="buttonsselectpollmodalfeedspg" style="display: flex; justify-content: right;margin-right:2vw; margin-top: 1.6vh;">
+                                    <button id="back-button3" style="background-color: white; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px; ; width:15.8%; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem; cursor: pointer;" onmouseover="this.style.backgroundColor='#a6a6a6'; this.style.color='black'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'" >Back</button>
+                                    <button id="create-button3" style="background-color: white; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px;  width:15.8%; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem; margin-left:0.6vw; cursor:pointer;" onmouseover="this.style.backgroundColor='#a6a6a6'; this.style.color='black'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'">Create</button>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      <!-- Create Poll Modal end -->
+
+
+
+                    <span class="material-symbols-outlined" id="open-share-link-modal" style="margin-right:3.2vw;">
                       link
                     </span>
+<!-- share link modal -->
+                      <!-- Share Link Modal start -->
+                      <div id="share-link-modal" class="modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 style="font-family: sans-serif; margin: 2vh 2.3vw;">Share Link</h1>
+                                <span class="link-close">&times;</span>
+                            </div>
+
+                            <div style="display:flex; align-items: center; margin-left:0.7vw;margin-top:-0.8vh;margin-bottom: 2.1vh;">
+                              <!-- Profile Picture and User Name -->
+                              <!-- Adjust the image source and alt text as needed -->
+                              {% if user.userprofile.profile_picture %}
+                              <img src="{{ user.userprofile.profile_picture.url }}" alt="Profile Picture" class="profile-picture" id="profile-pic" style="width:4.7rem; height:4.8rem;border-radius:5rem;margin-inline:1.3vw;">
+                              {% else %}
+                              <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Profile Picture" class="profile-picture" id="profile-pic">
+                              {% endif %}
+
+                              <div style="display: flex; flex-direction: column; margin-left: -0.7vw;">
+                                  <p style="font-family: sans-serif; margin-bottom:1vh;margin-left:0.3vw;font-size: 1.2rem;">User_Name_</p>
+                                  <!-- Group Selection -->
+                                  <div style="background-color: #ff5757; border-radius:0.3rem; display: flex; align-items: center;height:3.8vh;">
+                                      <i class="fa-solid fa-user-group" style="margin-inline:0.2vw; font-size:0.8rem;"></i>
+                                      <select id="myDropdown">
+                                          <option value="selectgrp">Select Group</option>
+                                          <option value="option1">Option 1</option>
+                                          <option value="option2">Option 2</option>
+                                          <option value="option3">Option 3</option>
+                                      </select>
+                                  </div>
+                              </div>
+                            </div>
+
+                            <div class="modal-body">
+                                <!-- Content for sharing link goes here -->
+                                <textarea type="text" placeholder="Write something to your group..." style="margin-top:2vh;margin-left:2vw; width: 93%; height: 14vh; border-radius: 0.3rem; border:none; margin-bottom: 1.5vh;padding: 2vh 1vw; font-family: sans-serif;font-size: 1.2rem;"></textarea>
+                                
+                                <span class="material-symbols-outlined" style="margin-left:2vw;margin-bottom: 1vh;">
+                                  link
+                                </span>
+
+                                <textarea name="" id="" placeholder="Paste your link here" style="width: 93%; height: 17vh; border-radius: 0.3rem; border:none; margin-bottom: 1vh;padding: 2vh 1vw; font-family: sans-serif;font-size: 1.3rem;"></textarea>
+                            </div>
+                            <!-- buttons -->
+                            <div class="buttonsharelinkmodalfeedspg" style="display: flex; justify-content: right;margin-right:2vw; margin-top: 4vh;">
+                                <button id="back-button4" style="background-color: white; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px; ; width:15.8%; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem; cursor: pointer;" onmouseover="this.style.backgroundColor='#a6a6a6'; this.style.color='black'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'" >Back</button>
+                                <button id="share-button" style="background-color: white; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px;  width:15.8%; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem; margin-left:0.6vw; cursor:pointer;" onmouseover="this.style.backgroundColor='#a6a6a6'; this.style.color='black'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'">Share</button>
+                            </div>
+                        </div>
+                      </div>
+                      <!-- Share Link Modal end -->
+
+
+<!-- share link modal ends -->
+
+
+
+
                   </div>
 
-                  <button style="background-color: #ff3131; color: white; border: none; border-radius: 0.8rem; padding: 8px 16px; margin-top: 6.6vh; width:15.45%;margin-left: 49.8vw; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem;">Create</button>
+                  <button style="border: none; border-radius: 0.8rem; padding: 8px 16px; margin-top: 6.6vh; width:15.45%;margin-left: 49.8vw; height: 6vh;color:black;font-family: sans-serif; font-size:1.4rem;" onmouseover="this.style.backgroundColor='#ff5757'; this.style.color='black'" onmouseout="this.style.backgroundColor='white'; this.style.color='black'">Create</button>
                 </div>
 
               </div>
@@ -570,6 +934,8 @@
         </div>
 
         <!-- third column -->
+
+        
 
         <div class="thirdcolfeedpg1">
           <h1 style="padding-top:3.6vh;padding-bottom:3.6vh;margin-left:5vw;font-family: sans-serif;">Explore</h1>
@@ -678,7 +1044,8 @@
           </div>
         </div>
     </div>
-  <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+<script>
 
   // script for the pop up of create group modal
 // Get the modal
@@ -775,6 +1142,16 @@ closePhotoModalSpan.onclick = function(event) {
   photoModal.style.display = "none";
 }
 
+// Get the back button inside the photo modal
+var backButton = photoModal.querySelector("#back-button");
+
+// When the user clicks on the back button, close the photo modal
+backButton.onclick = function(event) {
+  event.stopPropagation(); // Prevent click event from propagating
+  photoModal.style.display = "none";
+}
+
+
 // Close the modals if the user clicks anywhere outside of them
 window.addEventListener('click', function(event) {
   if (event.target == postModal) {
@@ -787,8 +1164,508 @@ window.addEventListener('click', function(event) {
 
 
 
+// js for opening my computer to choose photo and video. Drag and Drop feature
+  // function openFilePicker() {
+  //     // Create an input element
+  //     var input = document.createElement('input');
+  //     input.type = 'file'; // Set input type to file
+  //     input.accept = 'image/*, video/*'; // Accept both images and videos
+  //     input.click(); // Simulate a click on the input element
+  // }
+
+  function dragEnter(event) {
+        event.preventDefault();
+        event.target.style.border = '2px dashed #007bff';
+    }
+
+    function dragOver(event) {
+        event.preventDefault();
+        event.target.style.border = '2px dashed #007bff';
+    }
+
+    function dragLeave(event) {
+        event.preventDefault();
+        event.target.style.border = 'none';
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        event.target.style.border = 'none';
+        var files = event.dataTransfer.files;
+        // Handle dropped files here
+    }
 
 
-  </script>
+// Function to handle file input and display image previews
+function openFilePicker() {
+    // Create an input element
+    var input = document.createElement('input');
+    input.type = 'file'; // Set input type to file
+    input.accept = 'image/*'; // Accept only images
+    input.multiple = true; // Allow multiple file selection
+    input.style.display = 'none'; // Hide the input element
+
+    // Event listener for file input change
+    input.addEventListener('change', function(event) {
+        var files = event.target.files; // Get the selected files
+        var previewContainer = document.getElementById("preview-container");
+        var photoPreviewContainer = document.getElementsByClassName("photo-preview-container");
+        
+
+        // Hide the original upload container
+        document.querySelector(".photouploadbuttonsectionfeedspg").style.display = "none";
+
+        // Create a new container for image previews
+        var newContainer = document.createElement("div");
+        newContainer.className = "preview-container";
+
+        // Iterate through selected files
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            if (!file.type.startsWith('image/')) { continue }
+
+            // Create elements for image preview and close button
+            var imgContainer = document.createElement("div");
+            imgContainer.className = "preview-image-container";
+            var image = document.createElement("img");
+            image.src = URL.createObjectURL(file);
+            image.className = "preview-image";
+            var closeButton = document.createElement("span");
+            closeButton.className = "close-button";
+            closeButton.innerHTML = "&times;";
+
+            // Event listener for close button to remove image preview
+            closeButton.onclick = function() {
+                this.parentNode.parentNode.removeChild(this.parentNode);
+                // Show the original upload container if no images left
+                if (previewContainer.children.length === 0) {
+                    document.querySelector(".photouploadbuttonsectionfeedspg").style.display = "flex";
+                }
+            };
+
+            // Append elements to the container
+            imgContainer.appendChild(image);
+            imgContainer.appendChild(closeButton);
+            newContainer.appendChild(imgContainer);
+        }
+
+        // Append the new container with image previews
+        previewContainer.appendChild(newContainer);
+
+        // Show the "Add More Photo" button
+        document.getElementById("add-more-photo-btn").style.display = "block";
+    });
+
+    // Simulate a click on the input element to open the file picker dialog
+    input.click();
+}
+
+
+
+    
+
+// end of js for opening my computer to choose photo and video. Drag and Drop feature
+
+
+// js for select group modal on clicking the create button in photo upload modal
+document.addEventListener('DOMContentLoaded', function() {
+      // JavaScript code goes here
+      // Get the create button inside the photo modal
+    var createButton = document.getElementById("create-button");
+
+    // Get the select group modal
+    var selectGroupModal = document.getElementById("select-group-modal");
+
+    // When the user clicks on the create button inside the photo modal, open the select group modal
+    createButton.onclick = function(event) {
+      event.stopPropagation(); // Prevent click event from propagating
+      selectGroupModal.style.display = "block";
+    }
+
+
+    // Get the close button inside the select group modal
+    var selectGroupCloseBtn = document.querySelector("#select-group-modal .close");
+
+    // When the user clicks on the close button, close the select group modal
+    selectGroupCloseBtn.onclick = function() {
+      selectGroupModal.style.display = "none";
+    }
+
+    // When the user clicks outside of the select group modal, close it
+    window.addEventListener('click', function(event) {
+      if (event.target == selectGroupModal) {
+        selectGroupModal.style.display = "none";
+      }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var searchBar = document.getElementById("search-bar");
+    searchBar.addEventListener("input", function() {
+        var filter = searchBar.value.toLowerCase();
+        var containers = document.querySelectorAll(".suggestion-container");
+        containers.forEach(function(container) {
+            var groupName = container.querySelector(".group-name").textContent.toLowerCase();
+            if (groupName.indexOf(filter) > -1) {
+                container.style.display = "";
+            } else {
+                container.style.display = "none";
+            }
+        });
+    });
+});
+
+var photoModal1 = document.getElementById("select-group-modal");
+// Get the back button inside the select group modal
+var backButton1 = photoModal.querySelector("#back-button1");
+
+// When the user clicks on the back button, close the photo modal
+backButton1.onclick = function(event) {
+  event.stopPropagation(); // Prevent click event from propagating
+  photoModal1.style.display = "none";
+}
+
+
+
+
+
+// script for document share modal
+
+// Get the trigger element for the document modal
+var openDocumentModalSpan = document.getElementById("open-document-modal");
+
+// Get the document modal
+var documentModal = document.getElementById("document-modal");
+
+// When the user clicks the open document modal span, open the document modal
+openDocumentModalSpan.onclick = function(event) {
+  event.stopPropagation(); // Prevent click event from propagating
+  documentModal.style.display = "block";
+}
+
+// Get the <span> element that closes the document modal
+var closeDocumentModalSpan = documentModal.querySelector(".close");
+
+// When the user clicks on <span> (x) or the close button inside the document modal, close the modal
+closeDocumentModalSpan.onclick = function(event) {
+  event.stopPropagation(); // Prevent click event from propagating
+  documentModal.style.display = "none";
+}
+
+// Close the modal if the user clicks anywhere outside of it
+window.addEventListener('click', function(event) {
+  if (event.target == documentModal) {
+    documentModal.style.display = "none";
+  }
+});
+
+
+
+var backButton2 = documentModal.querySelector("#back-button2");
+
+// When the user clicks on the back button, close the photo modal
+backButton2.onclick = function(event) {
+  event.stopPropagation(); // Prevent click event from propagating
+  documentModal.style.display = "none";
+}
+
+
+function openDocumentPicker() {
+    
+
+    // Create an input element
+    var input = document.createElement('input');
+    input.type = 'file'; // Set input type to file
+    input.accept = '.pdf'; // Accept only PDF files
+
+    // Listen for file selection event
+    input.onchange = function(event) {
+        var file = event.target.files[0]; // Get the selected file
+        if (file) {
+
+          // Hide the doc_upload_buttonsectionfeedspg container
+            var uploadContainer = document.querySelector('.doc_upload_buttonsectionfeedspg');
+            uploadContainer.style.display = 'none';
+          // Show the document-preview-container container
+            var previewContainer = document.getElementById('document-preview-container');
+            previewContainer.style.display = 'flex';
+            previewContainer.style.backgroundColor = '#a6a6a6';
+            previewContainer.style.justifyContent = 'center';
+            previewContainer.style.height = '34vh';
+            previewContainer.style.marginBottom = '-16vh';
+
+            var documentPreviewHeading = document.getElementById('document-preview-heading');
+            documentPreviewHeading.style.display =  'flex';
+            
+
+
+            // Append document name to the document-name-container
+            var documentNameContainer = document.getElementById('document-name-container');
+
+            // Create a parent container for the document info and close icon
+            var documentContainer = document.createElement('div');
+            documentContainer.style.display = 'flex';
+            documentContainer.style.alignItems = 'center';
+            documentContainer.style.justifyContent = 'space-between';
+            documentContainer.style.padding = '10px';
+            documentContainer.style.backgroundColor = 'white';
+            documentContainer.style.borderRadius = '0.5rem';
+
+            // Create a parent container for the icon and document info
+            var documentInfoContainer = document.createElement('div');
+            documentInfoContainer.style.display = 'flex';
+            documentInfoContainer.style.alignItems = 'center';
+
+            // Create a span for the icon
+            var iconSpan = document.createElement('span');
+            iconSpan.className = 'material-symbols-outlined';
+            iconSpan.textContent = 'description';
+
+            // Create a paragraph for the document name
+            var fileNameElement = document.createElement('p');
+            fileNameElement.textContent = file.name; // Set the document name
+
+            // Create a paragraph for the document size
+            var fileSizeMB = (file.size / (1024 * 1024)).toFixed(2) + ' MB'; // Convert file size to MB with 2 decimal places
+            var fileSizeElement = document.createElement('p');
+            fileSizeElement.textContent = 'Size: ' + fileSizeMB; // Set the size text
+
+            // Create a container for the document name and size
+            var nameSizeContainer = document.createElement('div');
+            nameSizeContainer.style.display = 'flex';
+            nameSizeContainer.style.flexDirection = 'column';
+
+            // Append icon to the parent container
+            documentInfoContainer.appendChild(iconSpan); // Icon
+
+            // Append nameSizeContainer to documentInfoContainer
+            documentInfoContainer.appendChild(nameSizeContainer);
+
+            // Append fileNameElement and fileSizeElement to the nameSizeContainer
+            nameSizeContainer.appendChild(fileNameElement); // Document name
+            nameSizeContainer.appendChild(fileSizeElement); // Document size
+
+            // Append documentInfoContainer to the documentContainer
+            documentContainer.appendChild(documentInfoContainer);
+
+            // Create a span for the close icon
+            var closeIconSpan = document.createElement('span');
+            closeIconSpan.className = 'material-symbols-outlined';
+            closeIconSpan.innerHTML = 'close';
+            closeIconSpan.style.cursor = 'pointer';
+            closeIconSpan.style.marginRight = " 0.5vw";
+            closeIconSpan.style.fontSize = "1.5rem";
+
+            // Append closeIconSpan to the documentContainer
+            documentContainer.appendChild(closeIconSpan);
+
+            // Append documentContainer to documentNameContainer
+            documentNameContainer.appendChild(documentContainer);
+
+            // Add click event listener to close icon
+            closeIconSpan.addEventListener('click', function() {
+                // Remove the documentContainer from its parent
+                documentContainer.remove();
+
+                // Clear the content of the document-preview-container
+                previewContainer.innerHTML = '';
+
+                // Hide the document-preview-container
+                previewContainer.style.display = 'none';
+
+                // Show the doc_upload_buttonsectionfeedspg container
+                uploadContainer.style.display = 'flex';
+
+                documentPreviewHeading.style.display = 'none';
+            });
+
+            // Apply styles directly to iconSpan
+            iconSpan.style.fontSize = "2.5rem";
+            iconSpan.style.color = "black";
+            iconSpan.style.margin = "0";
+
+            // Apply styles directly to fileNameElement
+            fileNameElement.style.fontFamily = "sans-serif";
+            fileNameElement.style.fontSize = "1rem";
+            fileNameElement.style.color = "black";
+            fileNameElement.style.margin = "0";
+
+            // Apply styles directly to fileSizeElement
+            fileSizeElement.style.fontFamily = "sans-serif";
+            fileSizeElement.style.fontSize = "1rem";
+            fileSizeElement.style.color = "black";
+            fileSizeElement.style.margin = "0";
+
+            // Clear the content of the preview container
+            previewContainer.innerHTML = '';
+
+            // Use PDF.js to render the PDF document
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var pdfData = new Uint8Array(event.target.result);
+                pdfjsLib.getDocument(pdfData).promise.then(function(pdf) {
+                    pdf.getPage(1).then(function(page) {
+                        var viewport = page.getViewport({ scale: 1 });
+
+                        // Create a canvas element with custom dimensions to render the PDF preview
+                        var canvas = document.createElement('canvas');
+                        var context = canvas.getContext('2d');
+                        previewContainer.appendChild(canvas);
+
+                        // Calculate the scale factor to fit the page inside the custom-sized canvas
+                        var scale = Math.min(previewContainer.offsetWidth / viewport.width, previewContainer.offsetHeight / viewport.height);
+
+                        canvas.width = viewport.width * scale;
+                        canvas.height = viewport.height * scale;
+
+                        var renderContext = {
+                            canvasContext: context,
+                            viewport: page.getViewport({ scale: scale })
+                        };
+                        page.render(renderContext);
+                    });
+                }).catch(function(error) {
+                    console.error('Error rendering PDF:', error);
+                });
+            };
+            reader.readAsArrayBuffer(file);
+        }
+    };
+
+    // Simulate a click on the input element to trigger the file selection dialog
+    input.click();
+}
+
+// js for share document modal end
+
+// js for create poll modal start--------->
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Get the poll modal element
+  var pollModal = document.getElementById("poll-modal");
+
+  // Get the poll icon element
+  var pollIcon = document.querySelector(".poll-icon");
+
+  // Get the <span> element that closes the poll modal
+  var pollCloseSpan = pollModal.querySelector(".poll-close");
+
+  // When the user clicks on the poll icon, open the poll modal
+  pollIcon.onclick = function() {
+    pollModal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the poll modal
+  pollCloseSpan.onclick = function() {
+    pollModal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the poll modal, close it
+  window.onclick = function(event) {
+    if (event.target == pollModal) {
+      pollModal.style.display = "none";
+    }
+  }
+
+  var backButton3 = document.getElementById("back-button3");
+  // Event listener for the back button to close the modal
+  backButton3.addEventListener("click", function() {
+        pollModal.style.display = "none";
+    });
+
+
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Get references to the elements
+    var addOptionHeading = document.querySelector("#add-option-heading");
+    var optionsContainer = document.querySelector(".polloptionsparentcontfeedpg");
+    var optionCounter = 3; // Start from 3 since we already have two default options
+    
+
+    // Function to add a new option container
+    function addOption() {
+        var newOption = document.createElement("div");
+        newOption.classList.add("polloptionfeedpg", "option-container");
+        newOption.innerHTML = `
+            <span class="material-symbols-outlined" style="font-size:2rem; margin-right: 0.4vw;cursor:default;">
+                drag_indicator
+            </span>
+            <input type="text" placeholder="Option ${optionCounter}" style="background-color: #a6a6a6; height: 6.2vh;width: 56%;border:none; border-radius:0.7rem; padding-left: 1.3vw;font-size: 1.2rem;">
+            <span class="material-symbols-outlined delete-option" style="font-size: 2rem;color: black;position:relative; right:2.7vw; cursor: pointer;">
+                delete
+            </span>
+        `;
+        optionsContainer.appendChild(newOption);
+        optionCounter++;
+    }
+
+    // Event listener for the "Add Options" heading
+    addOptionHeading.addEventListener("click", function() {
+        addOption();
+    });
+
+    // Event delegation for delete icons
+    optionsContainer.addEventListener("click", function(event) {
+        if (event.target.classList.contains("delete-option")) {
+            var optionToRemove = event.target.parentElement;
+            optionsContainer.removeChild(optionToRemove);
+        }
+    });
+});
+
+
+// js for create poll modal ends<---------
+
+
+// js for share link modal starts
+
+  // JavaScript for handling modal functionality
+
+// Get the modal element
+var shareLinkModal = document.getElementById('share-link-modal');
+
+// Get the button that opens the modal
+var openShareLinkModalBtn = document.getElementById("open-share-link-modal");
+
+// Get the <span> element that closes the modal
+var closeShareLinkModalBtn = document.getElementsByClassName("link-close")[0];
+
+// Get the "Back" button inside the modal
+var backBtn = document.getElementById("back-button4");
+
+// When the user clicks the button, open the modal
+openShareLinkModalBtn.onclick = function() {
+    shareLinkModal.style.display = "block";
+}
+
+// When the user clicks on <span> (x) or "Back" button, close the modal
+closeShareLinkModalBtn.onclick = function() {
+    shareLinkModal.style.display = "none";
+}
+
+backBtn.onclick = function() {
+    shareLinkModal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == shareLinkModal) {
+        shareLinkModal.style.display = "none";
+    }
+}
+
+
+
+
+
+
+</script>
 </body>
 </html>
